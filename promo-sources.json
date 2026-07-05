@@ -1,0 +1,38 @@
+{
+  "note": "Sources checked daily by the promo watcher. Edit freely — add/remove firms, fix affiliate URLs.",
+  "affiliateCode": "DTJ",
+  "rules": [
+    "Only publish a promo when a source page clearly shows an active sale/discount (percentage off, promo code, limited-time offer).",
+    "Prefer the biggest/most relevant single promo of the day — one banner, not a rotation.",
+    "Always include the affiliate code DTJ in the message when the firm supports it.",
+    "The banner id must be unique per promotion (e.g. apex-90off-2026-07-05) so users who dismissed the last promo see the new one.",
+    "If no active promo is found anywhere, leave announce.json unchanged.",
+    "Never invent a promo. If unsure whether it's active, skip it."
+  ],
+  "sources": [
+    {
+      "name": "Apex Trader Funding",
+      "promoPage": "https://apextraderfunding.com/",
+      "affiliateUrl": "TODO-your-apex-affiliate-link",
+      "codeWorks": true
+    },
+    {
+      "name": "Topstep",
+      "promoPage": "https://www.topstep.com/",
+      "affiliateUrl": "TODO-your-topstep-affiliate-link",
+      "codeWorks": false
+    },
+    {
+      "name": "Take Profit Trader",
+      "promoPage": "https://takeprofittrader.com/",
+      "affiliateUrl": "TODO-your-tpt-affiliate-link",
+      "codeWorks": false
+    },
+    {
+      "name": "MyFundedFutures",
+      "promoPage": "https://myfundedfutures.com/",
+      "affiliateUrl": "TODO-your-mff-affiliate-link",
+      "codeWorks": false
+    }
+  ]
+}
