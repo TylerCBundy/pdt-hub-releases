@@ -8,6 +8,12 @@
   timeframe rebuilds the panels and can briefly drop the Pine editor. (Hub v0.1.15+ makes
   pine_set_source reopen the editor automatically if this happens, but ordering it right
   is still faster.)
+- If pine_set_source/pine_get_source repeatedly returns "Could not open Pine Editor" or
+  "Monaco not found in React fiber tree" even though the editor is visibly open, it's a
+  mount race (Monaco lazy-loads). Do NOT loop it more than ~2 times. Instead: pine_check to
+  confirm the code is valid server-side (works without the editor), tell the user the code
+  is good, and suggest they fully quit + reopen the Hub — a fresh launch remounts the editor
+  cleanly. Hub v0.1.17+ forces the mount automatically so this should be rare.
 - Load ALL TradingView tools you might need in ONE ToolSearch call at the start of the task
   (workspace_prepare, pine_check, pine_set_source, pine_smart_compile, ui_click,
   chart_get_state, data_get_strategy_results, data_get_trades, pine_save, capture_screenshot).
