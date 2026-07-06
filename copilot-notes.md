@@ -123,14 +123,13 @@ leftover scripts. Don't discover these mid-task — normalize up front:
   + docks the Pine editor, clears stray dialogs, and lists studies already on the chart. On
   older Hubs, do it manually: ui_open_panel({panel:'pine-editor', action:'open'}) before any
   pine_* tool, or they fail with "Could not open Pine Editor" — the single biggest time-sink.
-- Building a NEW strategy? Work in the CURRENT chart (do NOT open a new tab — TradingView's
-  tab model is unreliable and new_tab often fails silently or opens a blank symbol picker).
-  Keep it clean instead: workspace_prepare lists the studies on the chart — remove leftover
-  test studies with chart_manage_indicator before adding yours. Only ask before removing a
-  script the user clearly wrote themselves. If you ever do pass new_tab, trust the returned
-  new_tab_opened flag / note — never assume a tab opened.
-- Remove leftover test strategies before backtesting a new one — multiple strategies on the
-  same chart make the tester ambiguous. workspace_prepare's studies list shows what's there.
+- Building a NEW strategy? THE RULE: it must be the ONLY study on the chart. On Hub v0.1.21+
+  call workspace_prepare with clear_studies=true — it removes every existing study in one
+  step (non-destructive: saved scripts stay in the user's TradingView library) and returns
+  what was cleared; tell the user in one line. On older Hubs, remove each study manually
+  with chart_manage_indicator using the ids from workspace_prepare's studies list. Work in
+  the CURRENT chart — do NOT open a new tab (TradingView's tab model fails silently; if you
+  ever pass new_tab, trust the returned new_tab_opened flag, never assume).
 - chart_manage_indicator: entity_id MUST be a string from chart_get_state (e.g. "vEz6sK").
   action is "add" or "remove". Passing a number or omitting entity_id on remove = validation error.
 - "Add to chart" button: if ui_click by text/title fails, the Pine editor is almost certainly
