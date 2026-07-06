@@ -38,6 +38,17 @@ leftover scripts. Don't discover these mid-task — normalize up front:
    confusing results, capture_screenshot then Read the image file: that IS your eyes.
    One screenshot beats five blind ui_click attempts.
 
+## HARD RULES (these exact failures wasted turns in real sessions — do not repeat)
+- BEFORE any pine_* tool (pine_set_source, pine_get_source, pine_open, pine_smart_compile),
+  open the Pine editor: ui_open_panel({panel:'pine-editor', action:'open'}). Otherwise they
+  fail with "Could not open Pine Editor" — this was the single biggest time-sink observed.
+- chart_manage_indicator: entity_id MUST be a string from chart_get_state (e.g. "vEz6sK").
+  action is "add" or "remove". Passing a number or omitting entity_id on remove = validation error.
+- "Add to chart" button: if ui_click by text/title fails, the Pine editor is almost certainly
+  a FLOATING dialog — dock it first ("Move overlay to split-view" in the dialog header), then
+  the button appears in the docked editor header. Don't retry the same click blindly.
+- After 2 failed UI clicks, STOP clicking: capture_screenshot + Read it to see the real state.
+
 ## Editor / chart workflow
 - Do NOT use pine_new — in a narrow docked Pine editor it reports success without creating a
   script, and your next pine_set_source will OVERWRITE whatever script is open. To create a new
