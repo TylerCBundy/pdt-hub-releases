@@ -1,5 +1,5 @@
 {
-  "note": "Sources checked daily by the promo watcher. Edit freely — add/remove firms, fix affiliate URLs.",
+  "note": "Sources checked daily by the promo watcher. Edit freely — add/remove firms, fix affiliate URLs. affiliateUrl TODO = banner links to promoPage instead. codeWorks true = code DTJ may be mentioned for that firm.",
   "affiliateCode": "DTJ",
   "rules": [
     "Only publish a promo when a source page clearly shows an active sale/discount (percentage off, promo code, limited-time offer).",
@@ -17,21 +17,39 @@
       "codeWorks": true
     },
     {
-      "name": "Topstep",
-      "promoPage": "https://www.topstep.com/",
-      "affiliateUrl": "TODO-your-topstep-affiliate-link",
-      "codeWorks": false
-    },
-    {
       "name": "Take Profit Trader",
       "promoPage": "https://takeprofittrader.com/",
       "affiliateUrl": "TODO-your-tpt-affiliate-link",
       "codeWorks": false
     },
     {
+      "name": "Tradeify",
+      "promoPage": "https://tradeify.co/",
+      "affiliateUrl": "TODO-your-tradeify-affiliate-link",
+      "codeWorks": false
+    },
+    {
+      "name": "Lucid Trading",
+      "promoPage": "https://lucidtrading.com/",
+      "affiliateUrl": "TODO-your-lucid-affiliate-link",
+      "codeWorks": false
+    },
+    {
       "name": "MyFundedFutures",
       "promoPage": "https://myfundedfutures.com/",
       "affiliateUrl": "TODO-your-mff-affiliate-link",
+      "codeWorks": false
+    },
+    {
+      "name": "FundedNext Futures",
+      "promoPage": "https://fundednext.com/",
+      "affiliateUrl": "TODO-your-fundednext-affiliate-link",
+      "codeWorks": false
+    },
+    {
+      "name": "Bulenox",
+      "promoPage": "https://bulenox.com/",
+      "affiliateUrl": "TODO-your-bulenox-affiliate-link",
       "codeWorks": false
     }
   ]
