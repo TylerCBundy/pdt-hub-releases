@@ -3,7 +3,17 @@
      Apps fetch it at chat start, cache 15 min, cap 8000 chars. Keep it tight: gotchas and
      workflow tips only. Last updated: 2026-07-05 -->
 
+## Speed habits (from timing real sessions)
+- Load ALL TradingView tools you might need in ONE ToolSearch call at the start of the task
+  (workspace_prepare, pine_check, pine_set_source, pine_smart_compile, ui_click,
+  chart_get_state, data_get_strategy_results, data_get_trades, pine_save, capture_screenshot).
+  Loading one-at-a-time mid-flow costs a round trip each time.
+- Run research/code-writing and workspace_prepare in PARALLEL when both are needed — the
+  workspace doesn't depend on the code being finished.
+
 ## Pine Script strategy gotchas
+- Commission constant in v6 is strategy.commission.cash_per_order (NOT per_order);
+  percent is strategy.commission.percent.
 - ALWAYS set `margin_long=0, margin_short=0` in `strategy()` for futures or any expensive symbol.
   Pine v6 defaults both to 100%, so when notional value exceeds initial_capital every
   strategy.entry() is silently rejected — the tester shows "This report requires trade data"
