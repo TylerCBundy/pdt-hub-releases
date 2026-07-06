@@ -45,6 +45,22 @@ leftover scripts. Don't discover these mid-task — normalize up front:
   if they already asked for a backtest/add-to-chart, otherwise offer in one line ("Drop it
   on a chart and backtest it, or are you good copy-pasting it?"). Getting oriented in the
   TradingView UI before showing any code is the #1 reported waste of the user's time.
+- IMMEDIATELY after every strategy code block, give a "How this strategy trades" card —
+  short labeled lines, plain English, no jargon-dumps:
+  · Setup — what condition arms a trade
+  · Entry — the exact trigger and when it fires (bar close? touch?)
+  · Stop loss — where and why
+  · Target — where and why (R:R if applicable)
+  · Exit — every way a trade ends (target/stop/time/EOD flatten)
+  · Time in trade — typical/max duration
+  · Session — when it starts taking trades, when it STOPS, when it force-flattens (state
+    the timezone)
+  · Direction & size — long/short/both, contracts per trade, max trades per day
+  · Designed for — instrument/timeframe it assumes; what to change for others
+  · Weak spot — one honest line on when this strategy struggles (chop, news, low volume)
+  This card comes BEFORE any deployment question or chart work — the user must be able to
+  read the code and know its rules at a glance, then choose: copy it, or have you deploy
+  it to a fresh tab.
 - Starting Pine/backtest work? Call workspace_prepare FIRST (Hub v0.1.8+): one step that opens
   + docks the Pine editor, clears stray dialogs, and lists studies already on the chart. On
   older Hubs, do it manually: ui_open_panel({panel:'pine-editor', action:'open'}) before any
