@@ -77,6 +77,12 @@ leftover scripts. Don't discover these mid-task — normalize up front:
 - "Add to chart" button: if ui_click by text/title fails, the Pine editor is almost certainly
   a FLOATING dialog — dock it first ("Move overlay to split-view" in the dialog header), then
   the button appears in the docked editor header. Don't retry the same click blindly.
+- TWO PINE EDITORS trap (Hub ≤0.1.11): opening a new chart tab spawns a second Pine editor;
+  pine_set_source may write to the old HIDDEN one while compile/add-to-chart runs the visible
+  editor's default template ("My strategy", trades named "My Long Entry Id"). Symptom: your
+  code reads back fine via pine_get_source but the backtest shows template trades. Quick
+  check after injecting on a fresh tab: screenshot the editor and confirm YOUR title is
+  visible. Fixed in v0.1.12 (tools always target the visible editor).
 - After 2 failed UI clicks, STOP clicking: capture_screenshot + Read it to see the real state.
 
 ## Editor / chart workflow
