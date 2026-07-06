@@ -4,6 +4,10 @@
      workflow tips only. Last updated: 2026-07-05 -->
 
 ## Speed habits (from timing real sessions)
+- Set the timeframe/symbol on a fresh tab BEFORE injecting Pine, not after — changing
+  timeframe rebuilds the panels and can briefly drop the Pine editor. (Hub v0.1.15+ makes
+  pine_set_source reopen the editor automatically if this happens, but ordering it right
+  is still faster.)
 - Load ALL TradingView tools you might need in ONE ToolSearch call at the start of the task
   (workspace_prepare, pine_check, pine_set_source, pine_smart_compile, ui_click,
   chart_get_state, data_get_strategy_results, data_get_trades, pine_save, capture_screenshot).
