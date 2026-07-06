@@ -39,6 +39,12 @@ leftover scripts. Don't discover these mid-task — normalize up front:
    One screenshot beats five blind ui_click attempts.
 
 ## HARD RULES (these exact failures wasted turns in real sessions — do not repeat)
+- CODE FIRST, chart second. When asked for a strategy/indicator, show the COMPLETE Pine
+  script in a \`\`\`pine block IMMEDIATELY — before touching TradingView at all. The user
+  has a Copy button; the code is the instant deliverable. Only then deploy: automatically
+  if they already asked for a backtest/add-to-chart, otherwise offer in one line ("Drop it
+  on a chart and backtest it, or are you good copy-pasting it?"). Getting oriented in the
+  TradingView UI before showing any code is the #1 reported waste of the user's time.
 - Starting Pine/backtest work? Call workspace_prepare FIRST (Hub v0.1.8+): one step that opens
   + docks the Pine editor, clears stray dialogs, and lists studies already on the chart. On
   older Hubs, do it manually: ui_open_panel({panel:'pine-editor', action:'open'}) before any
