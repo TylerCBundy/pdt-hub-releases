@@ -39,9 +39,12 @@ leftover scripts. Don't discover these mid-task — normalize up front:
    One screenshot beats five blind ui_click attempts.
 
 ## HARD RULES (these exact failures wasted turns in real sessions — do not repeat)
-- BEFORE any pine_* tool (pine_set_source, pine_get_source, pine_open, pine_smart_compile),
-  open the Pine editor: ui_open_panel({panel:'pine-editor', action:'open'}). Otherwise they
-  fail with "Could not open Pine Editor" — this was the single biggest time-sink observed.
+- Starting Pine/backtest work? Call workspace_prepare FIRST (Hub v0.1.8+): one step that opens
+  + docks the Pine editor, clears stray dialogs, and lists studies already on the chart. On
+  older Hubs, do it manually: ui_open_panel({panel:'pine-editor', action:'open'}) before any
+  pine_* tool, or they fail with "Could not open Pine Editor" — the single biggest time-sink.
+- Remove leftover test strategies before backtesting a new one — multiple strategies on the
+  chart make the tester ambiguous. workspace_prepare's studies list shows what's there.
 - chart_manage_indicator: entity_id MUST be a string from chart_get_state (e.g. "vEz6sK").
   action is "add" or "remove". Passing a number or omitting entity_id on remove = validation error.
 - "Add to chart" button: if ui_click by text/title fails, the Pine editor is almost certainly
