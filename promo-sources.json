@@ -1,11 +1,12 @@
 {
-  "note": "Sources checked daily by the promo watcher. Edit freely — add/remove firms, fix affiliate URLs. affiliateUrl TODO = banner links to promoPage instead. codeWorks true = code DTJ may be mentioned for that firm.",
+  "note": "Sources checked daily by the promo watcher. Edit freely — add/remove firms, fix affiliate URLs. codeWorks true = code DTJ may be mentioned for that firm.",
   "affiliateCode": "DTJ",
   "rules": [
     "Only publish a promo when a source page clearly shows an active sale/discount (percentage off, promo code, limited-time offer).",
     "Prefer the biggest/most relevant single promo of the day — one banner, not a rotation.",
     "Always include the affiliate code DTJ in the message when the firm supports it.",
     "The banner id must be unique per promotion (e.g. apex-90off-2026-07-05) so users who dismissed the last promo see the new one.",
+    "Banner url must ALWAYS be the firm's affiliateUrl — that's how clicks are attributed to Tyler.",
     "If no active promo is found anywhere, leave announce.json unchanged.",
     "Never invent a promo. If unsure whether it's active, skip it."
   ],
@@ -13,44 +14,45 @@
     {
       "name": "Apex Trader Funding",
       "promoPage": "https://apextraderfunding.com/",
-      "affiliateUrl": "TODO-your-apex-affiliate-link",
+      "affiliateUrl": "https://apextraderfunding.com/member/aff/go/tbundy3688",
       "codeWorks": true
     },
     {
       "name": "Take Profit Trader",
       "promoPage": "https://takeprofittrader.com/",
-      "affiliateUrl": "TODO-your-tpt-affiliate-link",
-      "codeWorks": false
+      "affiliateUrl": "https://takeprofittrader.com/?referralCode=DTJ",
+      "codeWorks": true
     },
     {
       "name": "Tradeify",
       "promoPage": "https://tradeify.co/",
-      "affiliateUrl": "TODO-your-tradeify-affiliate-link",
-      "codeWorks": false
+      "affiliateUrl": "https://tradeify.co/ref/DTJ/",
+      "codeWorks": true
     },
     {
       "name": "Lucid Trading",
       "promoPage": "https://lucidtrading.com/",
-      "affiliateUrl": "TODO-your-lucid-affiliate-link",
-      "codeWorks": false
+      "affiliateUrl": "https://lucidtrading.com/ref/dtj",
+      "codeWorks": true
     },
     {
       "name": "MyFundedFutures",
       "promoPage": "https://myfundedfutures.com/",
-      "affiliateUrl": "TODO-your-mff-affiliate-link",
-      "codeWorks": false
+      "affiliateUrl": "https://myfundedfutures.com/?ref=5020",
+      "codeWorks": true
     },
     {
       "name": "FundedNext Futures",
       "promoPage": "https://fundednext.com/",
-      "affiliateUrl": "TODO-your-fundednext-affiliate-link",
-      "codeWorks": false
+      "affiliateUrl": "https://fundednext.com/?fpr=tyler49",
+      "codeWorks": true
     },
     {
       "name": "Bulenox",
       "promoPage": "https://bulenox.com/",
-      "affiliateUrl": "TODO-your-bulenox-affiliate-link",
-      "codeWorks": false
+      "affiliateUrl": "https://bulenox.com/member/aff/go/tbundy3688",
+      "codeWorks": true,
+      "codeNote": "Bulenox honors both DTJ and DTJ7"
     }
   ]
 }
