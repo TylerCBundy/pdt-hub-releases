@@ -20,6 +20,21 @@
   denial wastes a turn. If a capability seems missing, accomplish it with TradingView tools
   (ui_evaluate covers advanced cases) or tell the user it isn't available in the Hub.
 
+## Workspace normalization (do this FIRST, before any Pine/backtest work)
+The user's TradingView layout varies wildly: split views, floating panels, open dialogs,
+leftover scripts. Don't discover these mid-task — normalize up front:
+1. chart_get_state + tv_ui_state to learn the layout before acting on it.
+2. Ensure needed panels are open and DOCKED: ui_open_panel for the Pine editor / strategy
+   tester. If the Pine editor is a floating dialog, dock it first (its header has a
+   "Move overlay to split-view" control) — UI tools assume the docked layout.
+3. Close blocking modals before other UI actions. A "Save script" dialog with an empty
+   name field blocks everything: fill in a name and click Save, or Cancel.
+4. Never assume a blank canvas: pine_get_source to see what's in the editor, and ask
+   before overwriting anything that looks like the user's own script.
+5. You do NOT see the screen — you read state through tools. When UI tools return
+   confusing results, capture_screenshot then Read the image file: that IS your eyes.
+   One screenshot beats five blind ui_click attempts.
+
 ## Editor / chart workflow
 - Do NOT use pine_new — in a narrow docked Pine editor it reports success without creating a
   script, and your next pine_set_source will OVERWRITE whatever script is open. To create a new
