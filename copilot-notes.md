@@ -123,11 +123,12 @@ leftover scripts. Don't discover these mid-task — normalize up front:
   + docks the Pine editor, clears stray dialogs, and lists studies already on the chart. On
   older Hubs, do it manually: ui_open_panel({panel:'pine-editor', action:'open'}) before any
   pine_* tool, or they fail with "Could not open Pine Editor" — the single biggest time-sink.
-- Building a NEW strategy? Open a fresh chart tab and work there — NEVER ask the user
-  whether to move/remove their existing scripts. On v0.1.9+: workspace_prepare with
-  new_tab=true does it in one call. On older versions: tab_new, then normalize. Tell the
-  user in one line: "Opened a new tab so your current chart stays untouched." Only work on
-  their existing chart when they explicitly ask about a script already on it.
+- Building a NEW strategy? Work in the CURRENT chart (do NOT open a new tab — TradingView's
+  tab model is unreliable and new_tab often fails silently or opens a blank symbol picker).
+  Keep it clean instead: workspace_prepare lists the studies on the chart — remove leftover
+  test studies with chart_manage_indicator before adding yours. Only ask before removing a
+  script the user clearly wrote themselves. If you ever do pass new_tab, trust the returned
+  new_tab_opened flag / note — never assume a tab opened.
 - Remove leftover test strategies before backtesting a new one — multiple strategies on the
   same chart make the tester ambiguous. workspace_prepare's studies list shows what's there.
 - chart_manage_indicator: entity_id MUST be a string from chart_get_state (e.g. "vEz6sK").
