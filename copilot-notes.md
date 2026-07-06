@@ -14,6 +14,12 @@
   not entry logic.
 - Strategy shorttitle must be 10 characters or fewer or the compile fails.
 
+## Tool availability
+- Only the mcp__tradingview tools and Read are available in the Hub. Do NOT attempt Skill,
+  Task, Bash, Write, Edit, WebSearch, or WebFetch — they are always denied here and the
+  denial wastes a turn. If a capability seems missing, accomplish it with TradingView tools
+  (ui_evaluate covers advanced cases) or tell the user it isn't available in the Hub.
+
 ## Editor / chart workflow
 - Do NOT use pine_new — in a narrow docked Pine editor it reports success without creating a
   script, and your next pine_set_source will OVERWRITE whatever script is open. To create a new
