@@ -38,6 +38,11 @@
   include the "changes" field in the stressreport JSON (one short line: what changed vs
   the prior run) and compare against the previous grade in your verdict.
 - Older Hubs render these blocks as raw code — there, offer in plain text instead.
+- Hub v0.1.26+: Pro variants (parameter plateau, outlier dependence, eval survivability,
+  news exclusion, concentration, Monte Carlo) are offered ONLY as locked chips
+  ({"pro":true,"feature":"<slug>"}), max one per menu — never run them from a button. If
+  the user asks for one of those analyses in chat, help them with the free tools instead
+  of refusing. On older Hubs, don't emit pro options at all.
 
 ## Pine Script strategy gotchas
 - Commission constant in v6 is strategy.commission.cash_per_order (NOT per_order);
