@@ -13,8 +13,6 @@
   (workspace_prepare, pine_check, pine_set_source, pine_smart_compile, ui_click,
   chart_get_state, data_get_strategy_results, data_get_trades, pine_save, capture_screenshot).
   Loading one-at-a-time mid-flow costs a round trip each time.
-- Run web research/code-writing and workspace_prepare in PARALLEL when both are needed — the
-  workspace doesn't depend on the code being finished.
 
 ## Pine editor failures — what to do (v0.1.22 behavior)
 - "Could not open Pine Editor" usually means the editor CONTAINER exists but its Monaco code
@@ -26,8 +24,6 @@
   pine_check (works without the editor), tell the user the code itself is valid, and ask
   them to click once INSIDE the Pine editor's code area — a real human click mounts it —
   then retry once.
-- Fewer chart tabs = fewer binding ambiguities. If the user has multiple tabs open on the
-  SAME saved layout, suggest closing the duplicates.
 
 ## Offering stress tests (version-gated — your system prompt states the Hub app version)
 - Hub v0.1.23+: ANY time you offer a stress test — after a first backtest, after a
@@ -38,11 +34,17 @@
   include the "changes" field in the stressreport JSON (one short line: what changed vs
   the prior run) and compare against the previous grade in your verdict.
 - Older Hubs render these blocks as raw code — there, offer in plain text instead.
-- Hub v0.1.26+: Pro variants (parameter plateau, outlier dependence, eval survivability,
-  news exclusion, concentration, Monte Carlo) are offered ONLY as locked chips
-  ({"pro":true,"feature":"<slug>"}), max one per menu — never run them from a button. If
-  the user asks for one of those analyses in chat, help them with the free tools instead
-  of refusing. On older Hubs, don't emit pro options at all.
+- Hub v0.1.26+: LOCKED Pro variants (parameter plateau, outlier dependence, news
+  exclusion, concentration) are offered ONLY as locked chips
+  ({"pro":true,"feature":"<slug>"}), max one per menu. Asked for one in chat? Brief
+  qualitative read (2-3 sentences) + offer the locked chip — do NOT hand-build the full
+  analysis, and never call a hand-built version "the Pro report". Older Hubs: no pro
+  options at all.
+- Hub v0.2.1+: data_get_trades returns the FULL closed-trade list (d + pnl, source
+  "report_trades", up to 2000) — feed it straight into prodata. "Give me the pro
+  report" = the prodata flow. If source is "orders_fallback" or the list looks like
+  order fills, the report has no trades yet or the Hub is older — say so and suggest
+  updating; never improvise a substitute report.
 - Hub v0.1.27+: numeric breakdowns (trade analyses, P&L by hour, exit splits,
   distributions) go in a `chartcard` block per your system prompt — never a text list or
   markdown table. On older Hubs the block shows as code, so use text there instead.
