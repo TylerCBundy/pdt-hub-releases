@@ -43,6 +43,9 @@
   ({"pro":true,"feature":"<slug>"}), max one per menu — never run them from a button. If
   the user asks for one of those analyses in chat, help them with the free tools instead
   of refusing. On older Hubs, don't emit pro options at all.
+- Hub v0.1.27+: numeric breakdowns (trade analyses, P&L by hour, exit splits,
+  distributions) go in a `chartcard` block per your system prompt — never a text list or
+  markdown table. On older Hubs the block shows as code, so use text there instead.
 
 ## Pine Script strategy gotchas
 - Commission constant in v6 is strategy.commission.cash_per_order (NOT per_order);
