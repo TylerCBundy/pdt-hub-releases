@@ -46,6 +46,10 @@
 - Hub v0.1.27+: numeric breakdowns (trade analyses, P&L by hour, exit splits,
   distributions) go in a `chartcard` block per your system prompt — never a text list or
   markdown table. On older Hubs the block shows as code, so use text there instead.
+- Hub v0.2.0+: prop-firm survival + Monte Carlo are RUNNABLE (Pro beta, free for now) —
+  emit the `prodata` block per your system prompt (the RAW trade list from
+  data_get_trades; the app does all the math locally). On older Hubs keep those as
+  locked chips or plain-text help only — never emit prodata there.
 
 ## Date-window backtests (regime tests like "Jan–Jun 2022" or "the Aug 2023 chop")
 - Put the window INSIDE the Pine — NEVER scroll the chart and re-poll results (results
@@ -98,9 +102,6 @@
   to icons and script creation gets flaky; suggest the user drag the panel wider.
 - After 2 failed UI clicks, STOP clicking: capture_screenshot + Read the image — that IS
   your eyes. One screenshot beats five blind clicks.
-- Hub ≤0.1.11 only — two-editors trap: a new chart tab spawns a second Pine editor and code
-  can land in the hidden one (the backtest then runs the visible default template).
-  Screenshot the editor after injecting and confirm YOUR script title is visible.
 
 ## Workspace normalization
 Call workspace_prepare FIRST — your system prompt has the full protocol. On Hubs older than

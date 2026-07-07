@@ -1,0 +1,196 @@
+{
+  "note": "Prop-firm eval rules for the Hub's survival simulator. Live-updatable like copilot-notes (no app release needed). Rules change CONSTANTLY — verify against firm sites before trusting; 'verified' = date last checked, 'confidence' high|partial. drawdown.type: 'intraday' (real-time high-watermark incl. unrealized) or 'eod' (threshold recalculated at day close). stopsTrailing: null = trails until target; {lockAtStartPlus:N} = floor locks N above start. All figures for the eval phase, not funded.",
+  "updated": "2026-07-07",
+  "disclaimer": "Educational estimates. Rules and prices change frequently — always confirm at the firm before purchasing. PDT may earn a commission (code DTJ).",
+  "simCaveat": "Simulation uses trade-close granularity: intraday trailing that counts UNREALIZED highs can breach in ways trade-level data cannot see. Survival numbers for intraday-type accounts are optimistic estimates.",
+  "firms": [
+    {
+      "id": "apex",
+      "name": "Apex Trader Funding",
+      "affiliateUrl": "https://apextraderfunding.com/member/aff/go/tbundy3688",
+      "code": "DTJ",
+      "accounts": [
+        {
+          "id": "apex-50k",
+          "label": "Apex 50K",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2500, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+          "dailyLossLimit": null,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-07",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "tpt",
+      "name": "Take Profit Trader",
+      "affiliateUrl": "https://takeprofittrader.com/?referralCode=DTJ",
+      "code": "DTJ",
+      "accounts": [
+        {
+          "id": "tpt-50k",
+          "label": "TPT 50K Test",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "dailyLossLimit": null,
+          "maxContracts": 6,
+          "minTradingDays": 5,
+          "consistencyMaxDayPct": 50,
+          "verified": "2026-07-07",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "tradeify",
+      "name": "Tradeify",
+      "affiliateUrl": "https://tradeify.co/ref/DTJ/",
+      "code": "DTJ",
+      "accounts": [
+        {
+          "id": "tradeify-select-50k",
+          "label": "Tradeify Select 50K",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "dailyLossLimit": null,
+          "maxContracts": 6,
+          "minTradingDays": 3,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-07",
+          "confidence": "partial"
+        },
+        {
+          "id": "tradeify-growth-50k",
+          "label": "Tradeify Growth 50K",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "dailyLossLimit": 1250,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-07",
+          "confidence": "partial"
+        }
+      ]
+    },
+    {
+      "id": "lucid",
+      "name": "Lucid Trading",
+      "affiliateUrl": "https://lucidtrading.com/ref/dtj",
+      "code": "DTJ",
+      "accounts": [
+        {
+          "id": "lucid-pro-50k",
+          "label": "LucidPro 50K",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "dailyLossLimit": null,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-07",
+          "confidence": "partial"
+        },
+        {
+          "id": "lucid-flex-50k",
+          "label": "LucidFlex 50K",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "dailyLossLimit": null,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": 50,
+          "verified": "2026-07-07",
+          "confidence": "partial"
+        }
+      ]
+    },
+    {
+      "id": "mff",
+      "name": "MyFundedFutures",
+      "affiliateUrl": "https://myfundedfutures.com/?ref=5020",
+      "code": "DTJ",
+      "accounts": [
+        {
+          "id": "mff-rapid-50k",
+          "label": "MFF Rapid 50K",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2000, "type": "intraday", "includesUnrealized": true, "stopsTrailing": { "lockAtStartPlus": 100 } },
+          "dailyLossLimit": null,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-07",
+          "confidence": "partial"
+        }
+      ]
+    },
+    {
+      "id": "fundednext",
+      "name": "FundedNext Futures",
+      "affiliateUrl": "https://fundednext.com/?fpr=tyler49",
+      "code": "DTJ",
+      "accounts": [
+        {
+          "id": "fn-bolt-50k",
+          "label": "FundedNext Bolt 50K",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": { "lockAtStartPlus": 100 } },
+          "dailyLossLimit": null,
+          "dailySoftLossLimit": 1000,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-07",
+          "confidence": "partial"
+        }
+      ]
+    },
+    {
+      "id": "bulenox",
+      "name": "Bulenox",
+      "affiliateUrl": "https://bulenox.com/member/aff/go/tbundy3688",
+      "code": "DTJ",
+      "codeNote": "Bulenox honors both DTJ and DTJ7",
+      "accounts": [
+        {
+          "id": "bulenox-50k-td",
+          "label": "Bulenox 50K (Trailing)",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2500, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+          "dailyLossLimit": null,
+          "maxContracts": 7,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-07",
+          "confidence": "partial"
+        },
+        {
+          "id": "bulenox-50k-eod",
+          "label": "Bulenox 50K (EOD + DLL)",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": { "amount": 2500, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "dailyLossLimit": 1100,
+          "maxContracts": 7,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-07",
+          "confidence": "partial"
+        }
+      ]
+    }
+  ]
+}
