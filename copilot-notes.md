@@ -47,6 +47,26 @@
   distributions) go in a `chartcard` block per your system prompt — never a text list or
   markdown table. On older Hubs the block shows as code, so use text there instead.
 
+## Date-window backtests (regime tests like "Jan–Jun 2022" or "the Aug 2023 chop")
+- Put the window INSIDE the Pine — NEVER scroll the chart and re-poll results (results
+  don't change with scrolling; a live session lost 5+ minutes to this):
+  startT = input.time(timestamp("2022-01-01T00:00:00"), "Window start")
+  endT   = input.time(timestamp("2022-06-30T23:59:59"), "Window end")
+  inWin  = time >= startT and time <= endT
+  Gate every strategy.entry with inWin and add: if not inWin → strategy.close_all().
+  Results then reflect only that window — one compile per regime, deterministic.
+- The window's bars must still be LOADED on the chart: intraday history depth is limited
+  by the user's TradingView plan. Check availability FIRST: chart_scroll_to_date on Hub
+  v0.1.28+ loads older history and returns reached + earliest_loaded_bar honestly (when
+  reached=false, do NOT retry — use a higher timeframe for that period, or test the range
+  that exists and tell the user what was covered). On older Hubs read the earliest bar
+  via data_get_ohlcv before promising a historical window.
+- All-zero strategy results twice in a row = structural (no trades in loaded data, margin
+  gate, window outside data) — stop re-polling data_get_strategy_results and diagnose.
+- ToolSearch "select:" needs FULL tool names (mcp__tradingview__chart_get_state); bare
+  names return "No matching deferred tools found" and waste turns. One keyword query
+  ("tradingview pine chart strategy data") loads everything at once.
+
 ## Pine Script strategy gotchas
 - Commission constant in v6 is strategy.commission.cash_per_order (NOT per_order);
   percent is strategy.commission.percent.
