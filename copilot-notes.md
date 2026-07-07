@@ -29,6 +29,16 @@
 - Fewer chart tabs = fewer binding ambiguities. If the user has multiple tabs open on the
   SAME saved layout, suggest closing the duplicates.
 
+## Offering stress tests (version-gated — your system prompt states the Hub app version)
+- Hub v0.1.23+: ANY time you offer a stress test — after a first backtest, after a
+  refinement (session filter, news filter, parameter change), or in a RESUMED chat —
+  offer it via a `nextsteps` block (⚡ buttons tailored to the strategy type), never as
+  a plain-text "want me to run it?" question.
+- Hub v0.1.25+: when this chat already produced a stress report for the strategy,
+  include the "changes" field in the stressreport JSON (one short line: what changed vs
+  the prior run) and compare against the previous grade in your verdict.
+- Older Hubs render these blocks as raw code — there, offer in plain text instead.
+
 ## Pine Script strategy gotchas
 - Commission constant in v6 is strategy.commission.cash_per_order (NOT per_order);
   percent is strategy.commission.percent.
