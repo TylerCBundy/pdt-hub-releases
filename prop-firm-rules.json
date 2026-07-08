@@ -1,6 +1,6 @@
 {
-  "note": "Prop-firm eval rules for the Hub's survival simulator. Live-updatable like copilot-notes (no app release needed). Rules change CONSTANTLY — verify against firm sites before trusting; 'verified' = date last checked, 'confidence' high|partial. drawdown.type: 'intraday' (real-time high-watermark incl. unrealized) or 'eod' (threshold recalculated at day close). stopsTrailing: null = trails until target; {lockAtStartPlus:N} = floor locks N above start. All figures for the eval phase, not funded.",
-  "updated": "2026-07-07",
+  "note": "Prop-firm eval rules for the survival simulator + Eval Gameplan. Live-updatable like copilot-notes (no app release needed). Rules change CONSTANTLY — verify against firm sites before trusting; 'verified' = date last checked, 'confidence' high|partial|low. drawdown.type: 'intraday' (real-time high-watermark incl. unrealized) or 'eod' (threshold recalculated at day close). stopsTrailing: null = trails until target; {lockAtStartPlus:N} = floor locks N above start. cost: structure 'onetime' (pay once, keep the eval) or 'per30d' (30-day access clock / monthly billing — evalPromo = first period with code DTJ, renewal = each later period). funded: buffer/payout mechanics for the Gameplan phase-2 simulator (bufferAmount omitted = app defaults to drawdown+100).",
+  "updated": "2026-07-08",
   "disclaimer": "Educational estimates. Rules and prices change frequently — always confirm at the firm before purchasing. PDT may earn a commission (code DTJ).",
   "simCaveat": "Simulation uses trade-close granularity: intraday trailing that counts UNREALIZED highs can breach in ways trade-level data cannot see. Survival numbers for intraday-type accounts are optimistic estimates.",
   "firms": [
@@ -21,7 +21,32 @@
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
           "verified": "2026-07-07",
-          "confidence": "high"
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 167,
+            "evalPromo": 28,
+            "renewal": 167,
+            "promoNote": "code DTJ ≈ 90% off the first period; renewals bill at full price",
+            "verified": "2026-07-08",
+            "confidence": "low",
+            "structureNote": "CONFLICT TO RESOLVE: Jul-2026 research indicates Apex moved its mainline evals to ONE-TIME fees on 2026-03-01 ('Apex 4.0'; ~$249 list, deep promos, one-time PA activation $79-99), with the monthly 30-day-clock accounts relabeled Legacy. Tyler to confirm in the affiliate dashboard which product his links sell, then correct structure here."
+          },
+          "funded": {
+            "bufferAmount": 2600,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 14,
+            "minPayout": 500,
+            "maxPayoutPct": 100,
+            "payoutCap": 1500,
+            "maxPayoutsLifetime": 6,
+            "consistencyMaxDayPct": 50,
+            "activationFee": 85,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "partial",
+            "note": "Safety Net = drawdown+$100 held for PA life. Payout ladder caps rise per payout (50K ≈ $1,500→$3,000); PA closes after the 6th payout (lifetime ≈ $13k). 5 qualifying days (~$250/day) before each payout. Activation: legacy $85/mo or ~$160 lifetime — verify current terms."
+          }
         },
         {
           "id": "apex-150k",
@@ -34,7 +59,32 @@
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 297,
+            "evalPromo": 30,
+            "renewal": 297,
+            "promoNote": "code DTJ ≈ 90% off the first period; renewals bill at full price",
+            "verified": "2026-07-08",
+            "confidence": "low",
+            "structureNote": "Same Apex 4.0 one-time-fee conflict as apex-50k — verify before trusting cost math."
+          },
+          "funded": {
+            "bufferAmount": 5100,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 14,
+            "minPayout": 500,
+            "maxPayoutPct": 100,
+            "payoutCap": 2500,
+            "maxPayoutsLifetime": 6,
+            "consistencyMaxDayPct": 50,
+            "activationFee": 99,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "partial",
+            "note": "150K ladder ≈ $2,500→$5,000 per payout, lifetime ≈ $20.5k, closes after 6th payout."
+          }
         }
       ]
     },
@@ -55,7 +105,30 @@
           "minTradingDays": 5,
           "consistencyMaxDayPct": 50,
           "verified": "2026-07-07",
-          "confidence": "high"
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 170,
+            "evalPromo": 102,
+            "renewal": 102,
+            "promoNote": "40%-off-for-life codes common (verify DTJ terms); each monthly renewal includes a free reset; $130 PRO activation often waived by promo",
+            "verified": "2026-07-08",
+            "confidence": "partial"
+          },
+          "funded": {
+            "drawdown": { "amount": 2000, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+            "bufferAmount": 2000,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "consistencyMaxDayPct": null,
+            "activationFee": 130,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "partial",
+            "note": "PRO = sim, intraday trailing, withdraw only above the $2,000 buffer (80/20, daily). PRO+ after ~$5k cumulative profits: LIVE account, EOD drawdown, 90/10, no buffer. Buffer profits mostly unrecoverable on termination."
+          }
         },
         {
           "id": "tpt-150k",
@@ -68,7 +141,29 @@
           "minTradingDays": 5,
           "consistencyMaxDayPct": 50,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 360,
+            "evalPromo": 216,
+            "renewal": 216,
+            "promoNote": "40%-off-for-life codes common (verify DTJ terms); renewals include a free reset",
+            "verified": "2026-07-08",
+            "confidence": "partial"
+          },
+          "funded": {
+            "drawdown": { "amount": 4500, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+            "bufferAmount": 4500,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "consistencyMaxDayPct": null,
+            "activationFee": 130,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "partial"
+          }
         }
       ]
     },
@@ -89,7 +184,29 @@
           "minTradingDays": 3,
           "consistencyMaxDayPct": 40,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 159,
+            "evalPromo": 111,
+            "promoNote": "one-time fee — no renewals however long the eval takes; ~30% promo codes typical (verify DTJ %)",
+            "verified": "2026-07-08",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 2100,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "payoutCap": 1000,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "partial",
+            "note": "Daily payout path modeled ($2,100 buffer, daily payouts, $1,000/day cap, 90/10). The alternative Flex path (5 winning days of $150+, no buffer, 50% of profits max $3k/payout) is chosen once at funding."
+          }
         },
         {
           "id": "tradeify-growth-50k",
@@ -102,7 +219,28 @@
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 139,
+            "evalPromo": 97,
+            "promoNote": "one-time fee — no renewals; ~30% promo codes typical (verify DTJ %)",
+            "verified": "2026-07-08",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 3000,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "consistencyMaxDayPct": 35,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "partial",
+            "note": "Needs balance ≥ $53,000 ($3,000 buffer) + 5 profitable days of $150+ before payouts; 1st payout capped $1,500; 35% funded consistency."
+          }
         }
       ]
     },
@@ -123,7 +261,28 @@
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 185,
+            "evalPromo": 130,
+            "promoNote": "one-time fee — no renewals; 30-40% codes typical (verify DTJ %)",
+            "verified": "2026-07-08",
+            "confidence": "low"
+          },
+          "funded": {
+            "bufferAmount": 2100,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 3,
+            "minPayout": 500,
+            "maxPayoutPct": 90,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "partial",
+            "note": "Buffer = initial max-loss limit + $100 (unwithdrawable); payouts every 3 days; 40% best-day rule per payout cycle. minPayout unverified — $500 assumed."
+          }
         },
         {
           "id": "lucid-flex-50k",
@@ -136,7 +295,28 @@
           "minTradingDays": 1,
           "consistencyMaxDayPct": 50,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 140,
+            "evalPromo": 95,
+            "promoNote": "one-time fee — no renewals; 30-40% codes typical (verify DTJ %)",
+            "verified": "2026-07-08",
+            "confidence": "low"
+          },
+          "funded": {
+            "bufferAmount": 0,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 7,
+            "minPayout": 500,
+            "maxPayoutPct": 90,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "partial",
+            "note": "No buffer; each payout cycle needs 5 days at the minimum required profit (cycle resets on payout). Contract size scales with sim profit, updated EOD. minPayout unverified — $500 assumed."
+          }
         }
       ]
     },
@@ -157,7 +337,29 @@
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 157,
+            "evalPromo": 126,
+            "renewal": 126,
+            "promoNote": "monthly subscription — billing auto-stops once you pass; ~20% codes on the official page (verify DTJ %)",
+            "verified": "2026-07-08",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 2100,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 500,
+            "maxPayoutPct": 90,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "high",
+            "note": "$2,100 realized-profit buffer before any payout, then daily payouts (90/10, $500 min). Intraday-only — holding overnight is a breach. 'Rapid Live' conversion path exists."
+          }
         }
       ]
     },
@@ -179,7 +381,30 @@
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 100,
+            "evalPromo": 95,
+            "promoNote": "one-time fee — no renewals, no activation; resets $92; small sitewide codes (verify DTJ %)",
+            "verified": "2026-07-08",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 0,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "payoutCap": 1200,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-08",
+            "confidence": "partial",
+            "note": "CLOSED-END: daily rewards (80%, $250 min, $1,200 cap for the first 4); the 5th payout concludes the account — lifetime ≈ $7.7k, then buy a new eval. Fixed 3 minis / 9 micros."
+          }
         }
       ]
     },
@@ -201,7 +426,29 @@
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 175,
+            "evalPromo": 125,
+            "renewal": 125,
+            "promoNote": "monthly billing; on-site promos ~$50 off, sales up to ~90% (verify DTJ %); $148 one-time Master activation",
+            "verified": "2026-07-08",
+            "confidence": "partial"
+          },
+          "funded": {
+            "minDaysToFirstPayout": 10,
+            "payoutFrequencyDays": 7,
+            "minPayout": 1000,
+            "maxPayoutPct": 100,
+            "payoutCap": 1500,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 148,
+            "isSim": null,
+            "verified": "2026-07-08",
+            "confidence": "partial",
+            "note": "Weekly payouts (Wednesdays), $1,000 min, first 3 capped $1,500; first $10k is 100% to trader then 90/10; 40% best-day rule blocks (not breaches) a payout. Sim-vs-live unstated."
+          }
         },
         {
           "id": "bulenox-50k-eod",
@@ -214,7 +461,28 @@
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
           "verified": "2026-07-07",
-          "confidence": "partial"
+          "confidence": "partial",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 175,
+            "evalPromo": 125,
+            "renewal": 125,
+            "promoNote": "monthly billing; on-site promos ~$50 off, sales up to ~90% (verify DTJ %); $148 one-time Master activation",
+            "verified": "2026-07-08",
+            "confidence": "partial"
+          },
+          "funded": {
+            "minDaysToFirstPayout": 10,
+            "payoutFrequencyDays": 7,
+            "minPayout": 1000,
+            "maxPayoutPct": 100,
+            "payoutCap": 1500,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 148,
+            "isSim": null,
+            "verified": "2026-07-08",
+            "confidence": "partial"
+          }
         }
       ]
     }
