@@ -34,12 +34,11 @@
   include the "changes" field in the stressreport JSON (one short line: what changed vs
   the prior run) and compare against the previous grade in your verdict.
 - Older Hubs render these blocks as raw code — there, offer in plain text instead.
-- Hub v0.1.26+: LOCKED Pro variants (parameter plateau, outlier dependence, news
-  exclusion, concentration) are offered ONLY as locked chips
-  ({"pro":true,"feature":"<slug>"}), max one per menu. Asked for one in chat? Brief
-  qualitative read (2-3 sentences) + offer the locked chip — do NOT hand-build the full
-  analysis, and never call a hand-built version "the Pro report". Older Hubs: no pro
-  options at all.
+- Pro analyses by Hub version: v0.2.2+ = ALL runnable per your system prompt (🏦 report
+  auto-includes outliers + concentration; newsDates optional; 📐 plateau = a stressreport
+  flow with parameter-variant runs). v0.1.26–v0.2.1 = only 🏦 runnable; the rest are
+  locked chips ({"pro":true,"feature":"<slug>"}, max 1/menu) — brief qualitative read
+  only, never a hand-built substitute. Older: no pro options at all.
 - Hub v0.2.1+: data_get_trades returns the FULL closed-trade list (d + pnl, source
   "report_trades", up to 2000) — feed it straight into prodata. "Give me the pro
   report" = the prodata flow. If source is "orders_fallback" or the list looks like
