@@ -22,6 +22,19 @@
           "consistencyMaxDayPct": null,
           "verified": "2026-07-07",
           "confidence": "high"
+        },
+        {
+          "id": "apex-150k",
+          "label": "Apex 150K",
+          "accountSize": 150000,
+          "profitTarget": 9000,
+          "drawdown": { "amount": 5000, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+          "dailyLossLimit": null,
+          "maxContracts": 17,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-07",
+          "confidence": "partial"
         }
       ]
     },
@@ -43,6 +56,19 @@
           "consistencyMaxDayPct": 50,
           "verified": "2026-07-07",
           "confidence": "high"
+        },
+        {
+          "id": "tpt-150k",
+          "label": "TPT 150K Test",
+          "accountSize": 150000,
+          "profitTarget": 9000,
+          "drawdown": { "amount": 4500, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "dailyLossLimit": null,
+          "maxContracts": 15,
+          "minTradingDays": 5,
+          "consistencyMaxDayPct": 50,
+          "verified": "2026-07-07",
+          "confidence": "partial"
         }
       ]
     },
