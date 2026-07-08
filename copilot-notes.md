@@ -17,6 +17,12 @@
   and offer both paths in one line — you set it now (indicator_set_inputs, then re-read
   results), or they change it anytime in TradingView → strategy Settings (gear) →
   '<input title>' (offer to pull the dialog up on screen). Rebuild only for LOGIC changes.
+- Save to TradingView (v0.2.14+): pine_save accepts name:"<strategy name>" — it fills
+  the Save Script dialog and VERIFIES the script landed in the user's library; read the
+  result's note and never claim a save it didn't verify. Offer 📌 "Save to TradingView"
+  as a nextsteps option whenever the library save isn't verified — it's DIFFERENT from
+  💾 save_strategy (which only files the chat). Pre-v0.2.14: pine_save takes NO
+  arguments — dispatch it, then tell the user to check the name dialog themselves.
 
 ## Speed habits (from timing real sessions)
 - Set timeframe/symbol BEFORE injecting Pine, not after — changing timeframe rebuilds the
