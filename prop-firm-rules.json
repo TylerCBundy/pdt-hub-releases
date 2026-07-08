@@ -24,13 +24,14 @@
           "confidence": "high",
           "cost": {
             "structure": "per30d",
+            "windowDays": 30,
             "evalFull": 167,
             "evalPromo": 28,
             "renewal": 167,
-            "promoNote": "code DTJ ≈ 90% off the first period; renewals bill at full price",
+            "promoNote": "code DTJ ≈ 90% off the FIRST purchase; repurchases bill at full price",
             "verified": "2026-07-08",
-            "confidence": "low",
-            "structureNote": "CONFLICT TO RESOLVE: Jul-2026 research indicates Apex moved its mainline evals to ONE-TIME fees on 2026-03-01 ('Apex 4.0'; ~$249 list, deep promos, one-time PA activation $79-99), with the monthly 30-day-clock accounts relabeled Legacy. Tyler to confirm in the affiliate dashboard which product his links sell, then correct structure here."
+            "confidence": "high",
+            "structureNote": "CONFIRMED (Tyler, 2026-07-08): the fee buys a 30-DAY EVAL WINDOW — pass inside it or the eval closes and you repurchase from scratch (progress does not carry). The simulator caps each attempt at ~21 trading days; Patience Path sizing is not possible on this account."
           },
           "funded": {
             "bufferAmount": 2600,
@@ -62,13 +63,14 @@
           "confidence": "partial",
           "cost": {
             "structure": "per30d",
+            "windowDays": 30,
             "evalFull": 297,
             "evalPromo": 30,
             "renewal": 297,
-            "promoNote": "code DTJ ≈ 90% off the first period; renewals bill at full price",
+            "promoNote": "code DTJ ≈ 90% off the FIRST purchase; repurchases bill at full price",
             "verified": "2026-07-08",
-            "confidence": "low",
-            "structureNote": "Same Apex 4.0 one-time-fee conflict as apex-50k — verify before trusting cost math."
+            "confidence": "high",
+            "structureNote": "CONFIRMED (Tyler, 2026-07-08): 30-day eval window, same as apex-50k — pass inside the window or repurchase from scratch."
           },
           "funded": {
             "bufferAmount": 5100,
