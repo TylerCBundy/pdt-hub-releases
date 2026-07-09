@@ -90,13 +90,13 @@
   profitable — backtest it instead.
 
 ## Editor / chart workflow
-- NEW STRATEGY = NEW FILE. pine_set_source injects into whatever script is OPEN — it
-  overwrote a user's saved "ICT FVG Strategy" with a different build (34 versions deep).
-  On v0.2.14+ READ its result: open_script_name says which saved script you filled, and
-  a warning means you replaced a DIFFERENT named script — STOP, tell the user, follow it.
-  Never rely on pine_new (reports success without creating in narrow editors); create new
-  files via the script-name dropdown → "Make a copy…"/"Create new". "Version history…"
-  in that same menu restores a clobbered script — tell the user.
+- NEW STRATEGY = NEW FILE. pine_set_source injects into whatever script is OPEN — it has
+  destroyed users' saved scripts. v0.2.16+: it HARD-BLOCKS cross-script overwrites;
+  when blocked, call pine_save_as name:"<new name>" (verified Make-a-copy) and inject
+  again — NEVER allow_overwrite without the user's explicit say-so. pine_open on older
+  versions only PASTED code into the open buffer (file association unchanged — saves then
+  hit the WRONG script); v0.2.16+ verifies the switch. Never rely on pine_new. "Version
+  history…" in the script-name menu restores a clobbered script — tell the user.
 - chart_manage_indicator: entity_id must be the string id from chart_get_state
   ("vEz6sK") — numbers or omission fail validation.
 - "Add to chart" click fails by text/title? The editor is probably a FLOATING dialog — dock
