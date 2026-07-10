@@ -1,6 +1,6 @@
 {
   "note": "Prop-firm eval rules for the survival simulator + Eval Gameplan. Live-updatable like copilot-notes (no app release needed). Rules change CONSTANTLY — verify against firm sites before trusting; 'verified' = date last checked, 'confidence' high|partial|low. drawdown.type: 'intraday' (real-time high-watermark incl. unrealized) or 'eod' (threshold recalculated at day close). stopsTrailing: null = trails until target; {lockAtStartPlus:N} = floor locks N above start. cost: structure 'onetime' (pay once, keep the eval) or 'per30d' (30-day access clock / monthly billing — evalPromo = first period with code DTJ, renewal = each later period). funded: buffer/payout mechanics for the Gameplan phase-2 simulator (bufferAmount omitted = app defaults to drawdown+100).",
-  "updated": "2026-07-08",
+  "updated": "2026-07-09",
   "disclaimer": "Educational estimates. Rules and prices change frequently — always confirm at the firm before purchasing. PDT may earn a commission (code DTJ).",
   "simCaveat": "Simulation uses trade-close granularity: intraday trailing that counts UNREALIZED highs can breach in ways trade-level data cannot see. Survival numbers for intraday-type accounts are optimistic estimates.",
   "firms": [
@@ -42,11 +42,11 @@
             "payoutCap": 1500,
             "maxPayoutsLifetime": 6,
             "consistencyMaxDayPct": 50,
-            "activationFee": 85,
+            "activationFee": 79,
             "isSim": true,
-            "verified": "2026-07-08",
+            "verified": "2026-07-09",
             "confidence": "partial",
-            "note": "Safety Net = drawdown+$100 held for PA life. Payout ladder caps rise per payout (50K ≈ $1,500→$3,000); PA closes after the 6th payout (lifetime ≈ $13k). 5 qualifying days (~$250/day) before each payout. Activation: legacy $85/mo or ~$160 lifetime — verify current terms."
+            "note": "Safety Net = drawdown+$100 held for PA life. Payout ladder caps rise per payout (50K ≈ $1,500→$3,000); PA closes after the 6th payout (lifetime ≈ $13k). 5 qualifying days (~$250/day) before each payout. ACTIVATION (verified 2026-07-09, third-party sources): ONE-TIME fee tied to drawdown type — $79 intraday / $99 EOD, any size; due within 7 days of passing; promo codes do NOT apply. A newer $0-activation purchase mode exists (eval costs more) — not modeled."
           }
         },
         {
@@ -81,11 +81,11 @@
             "payoutCap": 2500,
             "maxPayoutsLifetime": 6,
             "consistencyMaxDayPct": 50,
-            "activationFee": 99,
+            "activationFee": 79,
             "isSim": true,
-            "verified": "2026-07-08",
+            "verified": "2026-07-09",
             "confidence": "partial",
-            "note": "150K ladder ≈ $2,500→$5,000 per payout, lifetime ≈ $20.5k, closes after 6th payout."
+            "note": "150K ladder ≈ $2,500→$5,000 per payout, lifetime ≈ $20.5k, closes after 6th payout. Activation: one-time $79 (intraday-type account); promo codes do NOT apply."
           }
         }
       ]
