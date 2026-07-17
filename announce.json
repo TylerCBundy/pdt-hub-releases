@@ -1,6 +1,59 @@
 {
+  "_note": "Rolodex format (2026-07-17): apps v0.2.46+ rotate through `banners` every `rotateSeconds`; the top-level id/message/linkText/url are the LEGACY single-banner shape kept for older apps and should mirror the strongest promo. Rules: only code DTJ, only for codeWorks firms, never invent a promo (no verified sale = 'no current sale' line), url = the firm's affiliateUrl.",
   "id": "apex-90off-2026-07",
   "message": "Apex Trader Funding is running up to 90% off evaluations right now — use code DTJ.",
   "linkText": "Grab the deal",
-  "url": "https://apextraderfunding.com/member/aff/go/tbundy3688"
+  "url": "https://apextraderfunding.com/member/aff/go/tbundy3688",
+  "rotateSeconds": 8,
+  "banners": [
+    {
+      "id": "apex-90off-2026-07",
+      "firm": "Apex Trader Funding",
+      "message": "Apex Trader Funding is running up to 90% off evaluations right now — use code DTJ.",
+      "linkText": "Grab the deal",
+      "url": "https://apextraderfunding.com/member/aff/go/tbundy3688"
+    },
+    {
+      "id": "tpt-nosale-2026-07-17",
+      "firm": "Take Profit Trader",
+      "message": "Take Profit Trader — no current sale; code DTJ works anytime.",
+      "linkText": "Visit",
+      "url": "https://takeprofittrader.com/?referralCode=DTJ"
+    },
+    {
+      "id": "tradeify-nosale-2026-07-17",
+      "firm": "Tradeify",
+      "message": "Tradeify — no current sale; code DTJ works anytime.",
+      "linkText": "Visit",
+      "url": "https://tradeify.co/ref/DTJ/"
+    },
+    {
+      "id": "lucid-nosale-2026-07-17",
+      "firm": "Lucid Trading",
+      "message": "Lucid Trading — no current sale; code DTJ works anytime.",
+      "linkText": "Visit",
+      "url": "https://lucidtrading.com/ref/dtj"
+    },
+    {
+      "id": "mff-nosale-2026-07-17",
+      "firm": "MyFundedFutures",
+      "message": "MyFundedFutures — no current sale; code DTJ works anytime.",
+      "linkText": "Visit",
+      "url": "https://myfundedfutures.com/?ref=5020"
+    },
+    {
+      "id": "fundednext-nosale-2026-07-17",
+      "firm": "FundedNext Futures",
+      "message": "FundedNext Futures — no current sale; code DTJ works anytime.",
+      "linkText": "Visit",
+      "url": "https://fundednext.com/?fpr=tyler49"
+    },
+    {
+      "id": "bulenox-nosale-2026-07-17",
+      "firm": "Bulenox",
+      "message": "Bulenox — no current sale; code DTJ works anytime.",
+      "linkText": "Visit",
+      "url": "https://bulenox.com/member/aff/go/tbundy3688"
+    }
+  ]
 }
