@@ -1,10 +1,10 @@
 {
-  "_note": "Rolodex format (2026-07-17): apps v0.2.46+ rotate through `banners` every `rotateSeconds`; the top-level id/message/linkText/url are the LEGACY single-banner shape kept for older apps and should mirror the strongest promo. Rules: only code DTJ, only for codeWorks firms, never invent a promo (no verified sale = 'no current sale' line), url = the firm's affiliateUrl.",
+  "_note": "Rolodex format (2026-07-17): apps v0.2.46+ rotate through `banners` on a rotateSeconds schedule (14400 = 4h — Tyler: consistent presence, not an annoyance; dismissing hides only until the next slot). Top-level id/message/linkText/url = LEGACY single-banner shape for older apps — keep it mirroring the strongest promo. Rules: only code DTJ, only codeWorks firms, never invent a promo, url = affiliateUrl, unique id per promotion.",
   "id": "apex-90off-2026-07",
   "message": "Apex Trader Funding is running up to 90% off evaluations right now — use code DTJ.",
   "linkText": "Grab the deal",
   "url": "https://apextraderfunding.com/member/aff/go/tbundy3688",
-  "rotateSeconds": 8,
+  "rotateSeconds": 14400,
   "banners": [
     {
       "id": "apex-90off-2026-07",
