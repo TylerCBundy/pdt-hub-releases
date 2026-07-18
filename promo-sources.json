@@ -1,58 +1,61 @@
 {
-  "note": "Sources checked daily by the promo watcher. Edit freely — add/remove firms, fix affiliate URLs. codeWorks true = code DTJ may be mentioned for that firm.",
-  "affiliateCode": "DTJ",
-  "rules": [
-    "Only publish a promo when a source page clearly shows an active sale/discount (percentage off, promo code, limited-time offer).",
-    "Prefer the biggest/most relevant single promo of the day — one banner, not a rotation.",
-    "Always include the affiliate code DTJ in the message when the firm supports it.",
-    "The banner id must be unique per promotion (e.g. apex-90off-2026-07-05) so users who dismissed the last promo see the new one.",
-    "Banner url must ALWAYS be the firm's affiliateUrl — that's how clicks are attributed to Tyler.",
-    "If no active promo is found anywhere, leave announce.json unchanged.",
-    "Never invent a promo. If unsure whether it's active, skip it."
-  ],
-  "sources": [
-    {
-      "name": "Apex Trader Funding",
-      "promoPage": "https://apextraderfunding.com/",
-      "affiliateUrl": "https://apextraderfunding.com/member/aff/go/tbundy3688",
-      "codeWorks": true
-    },
-    {
-      "name": "Take Profit Trader",
-      "promoPage": "https://takeprofittrader.com/",
-      "affiliateUrl": "https://takeprofittrader.com/?referralCode=DTJ",
-      "codeWorks": true
-    },
-    {
-      "name": "Tradeify",
-      "promoPage": "https://tradeify.co/",
-      "affiliateUrl": "https://tradeify.co/ref/DTJ/",
-      "codeWorks": true
-    },
-    {
-      "name": "Lucid Trading",
-      "promoPage": "https://lucidtrading.com/",
-      "affiliateUrl": "https://lucidtrading.com/ref/dtj",
-      "codeWorks": true
-    },
-    {
-      "name": "MyFundedFutures",
-      "promoPage": "https://myfundedfutures.com/",
-      "affiliateUrl": "https://myfundedfutures.com/?ref=5020",
-      "codeWorks": true
-    },
-    {
-      "name": "FundedNext Futures",
-      "promoPage": "https://fundednext.com/",
-      "affiliateUrl": "https://fundednext.com/?fpr=tyler49",
-      "codeWorks": true
-    },
-    {
-      "name": "Bulenox",
-      "promoPage": "https://bulenox.com/",
-      "affiliateUrl": "https://bulenox.com/member/aff/go/tbundy3688",
-      "codeWorks": true,
-      "codeNote": "Bulenox honors both DTJ and DTJ7"
-    }
-  ]
+ "note": "Sources checked daily by the promo watcher. Edit freely — add/remove firms, fix affiliate URLs. codeWorks true = code DTJ may be mentioned for that firm.",
+ "affiliateCode": "DTJ",
+ "rules": [
+  "Only publish a promo when a source page clearly shows an active sale/discount (percentage off, promo code, limited-time offer).",
+  "Prefer the biggest/most relevant single promo of the day — one banner, not a rotation.",
+  "Always include the affiliate code DTJ in the message when the firm supports it.",
+  "The banner id must be unique per promotion (e.g. apex-90off-2026-07-05) so users who dismissed the last promo see the new one.",
+  "Banner url must ALWAYS be the firm's affiliateUrl — that's how clicks are attributed to Tyler.",
+  "If no active promo is found anywhere, leave announce.json unchanged.",
+  "Never invent a promo. If unsure whether it's active, skip it.",
+  "A firm may carry defaultMessage (an OWNER-VERIFIED standing offer, e.g. Bulenox’s perpetually-extended sale). Use defaultMessage for that firm whenever no FRESHER verified promo exists — the standing offer replaces the “no current sale” line, and expiring specific promos fall BACK to defaultMessage, never to “no current sale”."
+ ],
+ "sources": [
+  {
+   "name": "Apex Trader Funding",
+   "promoPage": "https://apextraderfunding.com/",
+   "affiliateUrl": "https://apextraderfunding.com/member/aff/go/tbundy3688",
+   "codeWorks": true
+  },
+  {
+   "name": "Take Profit Trader",
+   "promoPage": "https://takeprofittrader.com/",
+   "affiliateUrl": "https://takeprofittrader.com/?referralCode=DTJ",
+   "codeWorks": true
+  },
+  {
+   "name": "Tradeify",
+   "promoPage": "https://tradeify.co/",
+   "affiliateUrl": "https://tradeify.co/ref/DTJ/",
+   "codeWorks": true
+  },
+  {
+   "name": "Lucid Trading",
+   "promoPage": "https://lucidtrading.com/",
+   "affiliateUrl": "https://lucidtrading.com/ref/dtj",
+   "codeWorks": true
+  },
+  {
+   "name": "MyFundedFutures",
+   "promoPage": "https://myfundedfutures.com/",
+   "affiliateUrl": "https://myfundedfutures.com/?ref=5020",
+   "codeWorks": true
+  },
+  {
+   "name": "FundedNext Futures",
+   "promoPage": "https://fundednext.com/",
+   "affiliateUrl": "https://fundednext.com/?fpr=tyler49",
+   "codeWorks": true
+  },
+  {
+   "name": "Bulenox",
+   "promoPage": "https://bulenox.com/",
+   "affiliateUrl": "https://bulenox.com/member/aff/go/tbundy3688",
+   "codeWorks": true,
+   "codeNote": "Bulenox honors both DTJ and DTJ7",
+   "defaultMessage": "Bulenox — up to 89% off evaluations; use code DTJ.",
+   "defaultNote": "Owner-verified 2026-07-19 (Tyler): Bulenox keeps extending this sale without emailing; treat up-to-89%-off as the standing default."
+  }
+ ]
 }
