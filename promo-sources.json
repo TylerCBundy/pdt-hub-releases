@@ -2,51 +2,57 @@
  "note": "Sources checked daily by the promo watcher. Edit freely — add/remove firms, fix affiliate URLs. codeWorks true = code DTJ may be mentioned for that firm.",
  "affiliateCode": "DTJ",
  "rules": [
-  "Only publish a promo when a source page clearly shows an active sale/discount (percentage off, promo code, limited-time offer).",
-  "Prefer the biggest/most relevant single promo of the day — one banner, not a rotation.",
-  "Always include the affiliate code DTJ in the message when the firm supports it.",
-  "The banner id must be unique per promotion (e.g. apex-90off-2026-07-05) so users who dismissed the last promo see the new one.",
+  "CHECK THE FIRM'S OWN SITE FIRST with the per-firm `method` below — web search is a last resort only (2026-07-19 incident: search-first missed live sales on 5 of 7 firms while every homepage showed one in plain HTML).",
+  "Only publish a promo when the firm's own page/email clearly shows an active sale (percentage off, promo code, limited-time offer). Quote what the page actually says; include the end date when shown.",
+  "Always include the affiliate code DTJ in the message when codeWorks is true. NEVER publish a firm's sitewide code (JULY, NOFEE40, VAULT, SAVENOW, 300k, JLFLEX...) — report sitewide codes in the run summary so Tyler can spot-check that DTJ gets the same deal.",
+  "The banner id must be unique per promotion (e.g. tradeify-40off-2026-07-19) and STABLE while that promo is unchanged.",
   "Banner url must ALWAYS be the firm's affiliateUrl — that's how clicks are attributed to Tyler.",
-  "If no active promo is found anywhere, leave announce.json unchanged.",
-  "Never invent a promo. If unsure whether it's active, skip it.",
-  "A firm may carry defaultMessage (an OWNER-VERIFIED standing offer, e.g. Bulenox’s perpetually-extended sale). Use defaultMessage for that firm whenever no FRESHER verified promo exists — the standing offer replaces the “no current sale” line, and expiring specific promos fall BACK to defaultMessage, never to “no current sale”."
+  "NEVER write 'no current sale' — that asserts a fact a failed check cannot know. When no promo can be verified and there is no defaultMessage, the fallback line is exactly: '<Firm> — code DTJ works anytime.'",
+  "Never invent a promo. If unsure whether it's active, use the fallback line and flag the firm in the summary.",
+  "A firm may carry defaultMessage (an OWNER-VERIFIED standing offer, e.g. Bulenox's perpetually-extended sale). Use defaultMessage whenever no FRESHER verified promo exists; expiring promos fall back to defaultMessage."
  ],
  "sources": [
   {
    "name": "Apex Trader Funding",
    "promoPage": "https://apextraderfunding.com/",
    "affiliateUrl": "https://apextraderfunding.com/member/aff/go/tbundy3688",
-   "codeWorks": true
+   "codeWorks": true,
+   "method": "WebFetch gets 403 — use curl with a browser User-Agent, then grep the HTML for '% Off' (verified 2026-07-19: 'Any Size Evals up to 90% Off | Use code SAVENOW')."
   },
   {
    "name": "Take Profit Trader",
    "promoPage": "https://takeprofittrader.com/",
    "affiliateUrl": "https://takeprofittrader.com/?referralCode=DTJ",
-   "codeWorks": true
+   "codeWorks": true,
+   "method": "WebFetch works; promo banner in plain HTML at the top (verified 2026-07-19: '40% Off For Life + Never Pay An Activation Fee', code NOFEE40)."
   },
   {
    "name": "Tradeify",
    "promoPage": "https://tradeify.co/",
    "affiliateUrl": "https://tradeify.co/ref/DTJ/",
-   "codeWorks": true
+   "codeWorks": true,
+   "method": "WebFetch works; promo in the top announcement bar with an end date (verified 2026-07-19: '40% OFF 5 TIME USE, THEN 30% OFF', code JULY, ends 31 July 11:59PM EST)."
   },
   {
    "name": "Lucid Trading",
    "promoPage": "https://lucidtrading.com/",
    "affiliateUrl": "https://lucidtrading.com/ref/dtj",
-   "codeWorks": true
+   "codeWorks": true,
+   "method": "WebFetch gets 403 — curl with a browser UA, then grep for 'LucidPricingConfig' (JSON: planDiscounts.LucidPro['50K'] is the Pro-eval %; Flex/Direct listed too) and id=\"promoCode\" for the sitewide code (verified 2026-07-19: Pro 40%, Flex/Direct 30%, code VAULT)."
   },
   {
    "name": "MyFundedFutures",
    "promoPage": "https://myfundedfutures.com/",
    "affiliateUrl": "https://myfundedfutures.com/?ref=5020",
-   "codeWorks": true
+   "codeWorks": true,
+   "method": "WebFetch works; promo banner near the top (verified 2026-07-19: '50% OFF. Your Choice: Rapid, Builder (50K Only), or Pro', code 300k)."
   },
   {
    "name": "FundedNext Futures",
-   "promoPage": "https://fundednext.com/",
+   "promoPage": "https://fundednext.com/futures",
    "affiliateUrl": "https://fundednext.com/?fpr=tyler49",
-   "codeWorks": true
+   "codeWorks": true,
+   "method": "WebFetch https://fundednext.com/futures — the plain homepage does NOT show the futures promo; the pricing section carries it (verified 2026-07-19: 'SAVE 47% WITH CODE JLFLEX'). Tiered banners: use the headline percentage."
   },
   {
    "name": "Bulenox",
@@ -54,6 +60,7 @@
    "affiliateUrl": "https://bulenox.com/member/aff/go/tbundy3688",
    "codeWorks": true,
    "codeNote": "Bulenox honors both DTJ and DTJ7",
+   "method": "Do NOT scrape the website. Check Gmail: from:support@bulenox.com newer_than:3d, subject like 'new promotion added to your dashboard'. No email = promo unchanged (fall back to defaultMessage).",
    "defaultMessage": "Bulenox — up to 89% off evaluations; use code DTJ.",
    "defaultNote": "Owner-verified 2026-07-19 (Tyler): Bulenox keeps extending this sale without emailing; treat up-to-89%-off as the standing default."
   }

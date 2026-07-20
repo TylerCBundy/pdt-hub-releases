@@ -1,5 +1,5 @@
 {
-  "_note": "Rolodex format (2026-07-17): apps v0.2.46+ rotate through `banners` on a rotateSeconds schedule (14400 = 4h — Tyler: consistent presence, not an annoyance; dismissing hides only until the next slot). Top-level id/message/linkText/url = LEGACY single-banner shape for older apps — keep it mirroring the strongest promo. Rules: only code DTJ, only codeWorks firms, never invent a promo, url = affiliateUrl, unique id per promotion.",
+  "_note": "Rolodex format (2026-07-17): apps v0.2.46+ rotate through `banners` on a rotateSeconds schedule (14400 = 4h — Tyler: consistent presence, not an annoyance; dismissing hides only until the next slot). Top-level id/message/linkText/url = LEGACY single-banner shape for older apps — keep it mirroring the strongest promo. Rules: only code DTJ, only codeWorks firms, never invent a promo, url = affiliateUrl, unique id per promotion. NEVER write 'no current sale' — if a promo can't be verified, the fallback line is just '<Firm> — code DTJ works anytime.' (asserting absence was wrong 5-for-7 on 2026-07-19).",
   "id": "apex-90off-2026-07",
   "message": "Apex Trader Funding is running up to 90% off evaluations right now — use code DTJ.",
   "linkText": "Grab the deal",
@@ -14,38 +14,38 @@
       "url": "https://apextraderfunding.com/member/aff/go/tbundy3688"
     },
     {
-      "id": "tpt-nosale-2026-07-17",
+      "id": "tpt-40life-2026-07-19",
       "firm": "Take Profit Trader",
-      "message": "Take Profit Trader — no current sale; code DTJ works anytime.",
-      "linkText": "Visit",
+      "message": "Take Profit Trader — 40% off for life + no activation fee — use code DTJ.",
+      "linkText": "Grab the deal",
       "url": "https://takeprofittrader.com/?referralCode=DTJ"
     },
     {
-      "id": "tradeify-nosale-2026-07-17",
+      "id": "tradeify-40off-2026-07-19",
       "firm": "Tradeify",
-      "message": "Tradeify — no current sale; code DTJ works anytime.",
-      "linkText": "Visit",
+      "message": "Tradeify — 40% off your first 5 payments, then 30% off, through July 31 — use code DTJ.",
+      "linkText": "Grab the deal",
       "url": "https://tradeify.co/ref/DTJ/"
     },
     {
-      "id": "lucid-nosale-2026-07-17",
+      "id": "lucid-40off-2026-07-19",
       "firm": "Lucid Trading",
-      "message": "Lucid Trading — no current sale; code DTJ works anytime.",
-      "linkText": "Visit",
+      "message": "Lucid Trading — 40% off Pro evaluations (30% off Flex & Direct) — use code DTJ.",
+      "linkText": "Grab the deal",
       "url": "https://lucidtrading.com/ref/dtj"
     },
     {
-      "id": "mff-nosale-2026-07-17",
+      "id": "mff-50off-2026-07-19",
       "firm": "MyFundedFutures",
-      "message": "MyFundedFutures — no current sale; code DTJ works anytime.",
-      "linkText": "Visit",
+      "message": "MyFundedFutures — 50% off Rapid, Builder (50K) & Pro evals — use code DTJ.",
+      "linkText": "Grab the deal",
       "url": "https://myfundedfutures.com/?ref=5020"
     },
     {
-      "id": "fundednext-nosale-2026-07-17",
+      "id": "fundednext-47off-2026-07-19",
       "firm": "FundedNext Futures",
-      "message": "FundedNext Futures — no current sale; code DTJ works anytime.",
-      "linkText": "Visit",
+      "message": "FundedNext Futures — 47% off Flex challenges — use code DTJ.",
+      "linkText": "Grab the deal",
       "url": "https://fundednext.com/?fpr=tyler49"
     },
     {
