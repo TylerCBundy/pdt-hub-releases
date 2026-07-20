@@ -4,7 +4,7 @@
  "rules": [
   "CHECK THE FIRM'S OWN SITE FIRST with the per-firm `method` below — web search is a last resort only (2026-07-19 incident: search-first missed live sales on 5 of 7 firms while every homepage showed one in plain HTML).",
   "Only publish a promo when the firm's own page/email clearly shows an active sale (percentage off, promo code, limited-time offer). Quote what the page actually says; include the end date when shown.",
-  "Always include the affiliate code DTJ in the message when codeWorks is true. NEVER publish a firm's sitewide code (JULY, NOFEE40, VAULT, SAVENOW, 300k, JLFLEX...) — report sitewide codes in the run summary so Tyler can spot-check that DTJ gets the same deal.",
+  "Always include the affiliate code DTJ in the message when codeWorks is true. NEVER publish a firm's sitewide code (JULY, NOFEE40, VAULT, SAVENOW, 300k, JLFLEX...) — OWNER-CONFIRMED 2026-07-19 (Tyler): DTJ always matches every firm's sitewide promo pricing, so stating the % with DTJ is correct. Still report sitewide codes in the run summary.",
   "The banner id must be unique per promotion (e.g. tradeify-40off-2026-07-19) and STABLE while that promo is unchanged.",
   "Banner url must ALWAYS be the firm's affiliateUrl — that's how clicks are attributed to Tyler.",
   "NEVER write 'no current sale' — that asserts a fact a failed check cannot know. When no promo can be verified and there is no defaultMessage, the fallback line is exactly: '<Firm> — code DTJ works anytime.'",
