@@ -1,6 +1,6 @@
 {
   "note": "Prop-firm eval rules for the survival simulator + Eval Gameplan. Live-updatable like copilot-notes (no app release needed). Rules change CONSTANTLY — verify against firm sites before trusting; 'verified' = date last checked, 'confidence' high|partial|low. drawdown.type: 'intraday' (real-time high-watermark incl. unrealized) or 'eod' (threshold recalculated at day close). stopsTrailing: null = trails until target; {lockAtStartPlus:N} = floor locks N above start. cost: structure 'onetime' (pay once, keep the eval) or 'per30d' (30-day access clock / monthly billing — evalPromo = first period with code DTJ, renewal = each later period). funded: buffer/payout mechanics for the Gameplan phase-2 simulator (bufferAmount omitted = app defaults to drawdown+100).",
-  "updated": "2026-07-09",
+  "updated": "2026-07-20",
   "disclaimer": "Educational estimates. Rules and prices change frequently — always confirm at the firm before purchasing. PDT may earn a commission (code DTJ).",
   "simCaveat": "Simulation uses trade-close granularity: intraday trailing that counts UNREALIZED highs can breach in ways trade-level data cannot see. Survival numbers for intraday-type accounts are optimistic estimates.",
   "firms": [
@@ -15,7 +15,12 @@
           "label": "Apex 50K",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2500, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 2500,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": null,
           "maxContracts": 6,
           "minTradingDays": 1,
@@ -46,7 +51,9 @@
             "isSim": true,
             "verified": "2026-07-09",
             "confidence": "partial",
-            "note": "Safety Net = drawdown+$100 held for PA life. Payout ladder caps rise per payout (50K ≈ $1,500→$3,000); PA closes after the 6th payout (lifetime ≈ $13k). 5 qualifying days (~$250/day) before each payout. ACTIVATION (verified 2026-07-09, third-party sources): ONE-TIME fee tied to drawdown type — $79 intraday / $99 EOD, any size; due within 7 days of passing; promo codes do NOT apply. A newer $0-activation purchase mode exists (eval costs more) — not modeled."
+            "note": "Safety Net = drawdown+$100 held for PA life. Payout ladder caps rise per payout (50K ≈ $1,500→$3,000); PA closes after the 6th payout (lifetime ≈ $13k). 5 qualifying days (~$250/day) before each payout. ACTIVATION (verified 2026-07-09, third-party sources): ONE-TIME fee tied to drawdown type — $79 intraday / $99 EOD, any size; due within 7 days of passing; promo codes do NOT apply. A newer $0-activation purchase mode exists (eval costs more) — not modeled.",
+            "lifetimePayoutCapUsd": 14500,
+            "lifetimeNote": "50K INTRADAY ladder ≈ 14,500 USD across 6 payouts (EOD ≈ 13,000); PA closes after the 6th."
           }
         },
         {
@@ -54,7 +61,12 @@
           "label": "Apex 150K",
           "accountSize": 150000,
           "profitTarget": 9000,
-          "drawdown": { "amount": 5000, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 5000,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": null,
           "maxContracts": 17,
           "minTradingDays": 1,
@@ -88,7 +100,11 @@
             "note": "150K ladder ≈ $2,500→$5,000 per payout, lifetime ≈ $20.5k, closes after 6th payout. Activation: one-time $79 (intraday-type account); promo codes do NOT apply."
           }
         }
-      ]
+      ],
+      "maxFundedAccounts": 20,
+      "maxFundedNote": "Up to 20 active PAs simultaneously (EOD/intraday/legacy combined).",
+      "maxFundedVerified": "2026-07-20",
+      "maxFundedConfidence": "partial"
     },
     {
       "id": "tpt",
@@ -101,7 +117,12 @@
           "label": "TPT 50K Test",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 2000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": null,
           "maxContracts": 6,
           "minTradingDays": 5,
@@ -118,7 +139,12 @@
             "confidence": "partial"
           },
           "funded": {
-            "drawdown": { "amount": 2000, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+            "drawdown": {
+              "amount": 2000,
+              "type": "intraday",
+              "includesUnrealized": true,
+              "stopsTrailing": null
+            },
             "bufferAmount": 2000,
             "minDaysToFirstPayout": 0,
             "payoutFrequencyDays": 1,
@@ -137,7 +163,12 @@
           "label": "TPT 150K Test",
           "accountSize": 150000,
           "profitTarget": 9000,
-          "drawdown": { "amount": 4500, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 4500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": null,
           "maxContracts": 15,
           "minTradingDays": 5,
@@ -154,7 +185,12 @@
             "confidence": "partial"
           },
           "funded": {
-            "drawdown": { "amount": 4500, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+            "drawdown": {
+              "amount": 4500,
+              "type": "intraday",
+              "includesUnrealized": true,
+              "stopsTrailing": null
+            },
             "bufferAmount": 4500,
             "minDaysToFirstPayout": 0,
             "payoutFrequencyDays": 1,
@@ -167,7 +203,11 @@
             "confidence": "partial"
           }
         }
-      ]
+      ],
+      "maxFundedAccounts": 5,
+      "maxFundedNote": "Up to 5 active PRO/PRO+ accounts total; unlimited test accounts.",
+      "maxFundedVerified": "2026-07-20",
+      "maxFundedConfidence": "partial"
     },
     {
       "id": "tradeify",
@@ -180,7 +220,12 @@
           "label": "Tradeify Select 50K",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 2000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": null,
           "maxContracts": 6,
           "minTradingDays": 3,
@@ -215,7 +260,12 @@
           "label": "Tradeify Growth 50K",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 2000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": 1250,
           "maxContracts": 6,
           "minTradingDays": 1,
@@ -244,7 +294,11 @@
             "note": "Needs balance ≥ $53,000 ($3,000 buffer) + 5 profitable days of $150+ before payouts; 1st payout capped $1,500; 35% funded consistency."
           }
         }
-      ]
+      ],
+      "maxFundedAccounts": 5,
+      "maxFundedNote": "Max 5 funded accounts in any combination; unlimited evaluations.",
+      "maxFundedVerified": "2026-07-20",
+      "maxFundedConfidence": "partial"
     },
     {
       "id": "lucid",
@@ -257,7 +311,12 @@
           "label": "LucidPro 50K",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 2000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": null,
           "maxContracts": 6,
           "minTradingDays": 1,
@@ -291,7 +350,12 @@
           "label": "LucidFlex 50K",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 2000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": null,
           "maxContracts": 6,
           "minTradingDays": 1,
@@ -320,7 +384,11 @@
             "note": "No buffer; each payout cycle needs 5 days at the minimum required profit (cycle resets on payout). Contract size scales with sim profit, updated EOD. minPayout unverified — $500 assumed."
           }
         }
-      ]
+      ],
+      "maxFundedAccounts": null,
+      "maxFundedNote": "Funded-account limit NOT verified (10 active evals per household documented; funded cap unstated).",
+      "maxFundedVerified": "2026-07-20",
+      "maxFundedConfidence": "low"
     },
     {
       "id": "mff",
@@ -333,7 +401,14 @@
           "label": "MFF Rapid 50K",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2000, "type": "intraday", "includesUnrealized": true, "stopsTrailing": { "lockAtStartPlus": 100 } },
+          "drawdown": {
+            "amount": 2000,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": {
+              "lockAtStartPlus": 100
+            }
+          },
           "dailyLossLimit": null,
           "maxContracts": 6,
           "minTradingDays": 1,
@@ -363,7 +438,11 @@
             "note": "$2,100 realized-profit buffer before any payout, then daily payouts (90/10, $500 min). Intraday-only — holding overnight is a breach. 'Rapid Live' conversion path exists."
           }
         }
-      ]
+      ],
+      "maxFundedAccounts": 5,
+      "maxFundedNote": "Up to 5 sim-funded 50K accounts (100K/150K drops the cap to 3; Builder = 1; 10 total incl. evals).",
+      "maxFundedVerified": "2026-07-20",
+      "maxFundedConfidence": "partial"
     },
     {
       "id": "fundednext",
@@ -376,7 +455,14 @@
           "label": "FundedNext Bolt 50K",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2000, "type": "eod", "includesUnrealized": false, "stopsTrailing": { "lockAtStartPlus": 100 } },
+          "drawdown": {
+            "amount": 2000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": {
+              "lockAtStartPlus": 100
+            }
+          },
           "dailyLossLimit": null,
           "dailySoftLossLimit": 1000,
           "maxContracts": 6,
@@ -405,10 +491,16 @@
             "isSim": true,
             "verified": "2026-07-08",
             "confidence": "partial",
-            "note": "CLOSED-END: daily rewards (80%, $250 min, $1,200 cap for the first 4); the 5th payout concludes the account — lifetime ≈ $7.7k, then buy a new eval. Fixed 3 minis / 9 micros."
+            "note": "CLOSED-END: daily rewards (80%, $250 min, $1,200 cap for the first 4); the 5th payout concludes the account — lifetime ≈ $7.7k, then buy a new eval. Fixed 3 minis / 9 micros.",
+            "lifetimePayoutCapUsd": 7700,
+            "lifetimeNote": "Closed-end: ~250 min + 4x1,200 caps then conclude ≈ 7,700 USD, then buy a new eval."
           }
         }
-      ]
+      ],
+      "maxFundedAccounts": null,
+      "maxFundedNote": "Account/allocation limit exists per their help center but the exact number is UNVERIFIED (page blocks fetch).",
+      "maxFundedVerified": "2026-07-20",
+      "maxFundedConfidence": "low"
     },
     {
       "id": "bulenox",
@@ -422,7 +514,12 @@
           "label": "Bulenox 50K (Trailing)",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2500, "type": "intraday", "includesUnrealized": true, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 2500,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": null,
           "maxContracts": 7,
           "minTradingDays": 1,
@@ -457,7 +554,12 @@
           "label": "Bulenox 50K (EOD + DLL)",
           "accountSize": 50000,
           "profitTarget": 3000,
-          "drawdown": { "amount": 2500, "type": "eod", "includesUnrealized": false, "stopsTrailing": null },
+          "drawdown": {
+            "amount": 2500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
           "dailyLossLimit": 1100,
           "maxContracts": 7,
           "minTradingDays": 1,
@@ -486,7 +588,11 @@
             "confidence": "partial"
           }
         }
-      ]
+      ],
+      "maxFundedAccounts": 3,
+      "maxFundedNote": "3 Master accounts active simultaneously; up to 11 lifetime — each extra activates after a prior one builds its drawdown back to start.",
+      "maxFundedVerified": "2026-07-20",
+      "maxFundedConfidence": "partial"
     }
   ]
 }
