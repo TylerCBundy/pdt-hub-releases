@@ -21,8 +21,7 @@
   the Save Script dialog and VERIFIES the script landed in the user's library; read the
   result's note and never claim a save it didn't verify. Offer 📌 "Save to TradingView"
   as a nextsteps option whenever the library save isn't verified — it's DIFFERENT from
-  💾 save_strategy (which only files the chat). Pre-v0.2.14: pine_save takes NO
-  arguments — dispatch it, then tell the user to check the name dialog themselves.
+  💾 save_strategy (which only files the chat).
 
 ## Speed habits (from timing real sessions)
 - Set timeframe/symbol BEFORE injecting Pine, not after — changing timeframe rebuilds the
@@ -53,8 +52,9 @@
   up to 2000 — the app does ALL math). Source "orders_fallback" or fill-like rows = no
   closed trades yet — say so; never improvise a substitute report. 📐 plateau = a
   stressreport with parameter-variant runs. Numeric breakdowns → `chartcard` block, never
-  text tables (v0.1.27+). Pre-v0.2.0 apps render pro blocks as raw code — plain-text
-  help only there.
+  text tables.
+- /commands contain SPACES: "/Prop-Firm Pass Test" is ONE command — match the user's
+  WHOLE line against your command list before treating anything as unknown.
 
 ## Date-window backtests (regime tests like "Jan–Jun 2022" or "the Aug 2023 chop")
 - Put the window INSIDE the Pine — NEVER scroll the chart and re-poll results (results
