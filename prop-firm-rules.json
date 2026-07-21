@@ -1,6 +1,7 @@
 {
-  "note": "Prop-firm eval rules for the survival simulator + Eval Gameplan. Live-updatable like copilot-notes (no app release needed). Rules change CONSTANTLY — verify against firm sites before trusting; 'verified' = date last checked, 'confidence' high|partial|low. drawdown.type: 'intraday' (real-time high-watermark incl. unrealized) or 'eod' (threshold recalculated at day close). stopsTrailing: null = trails until target; {lockAtStartPlus:N} = floor locks N above start. cost: structure 'onetime' (pay once, keep the eval) or 'per30d' (30-day access clock / monthly billing — evalPromo = first period with code DTJ, renewal = each later period). funded: buffer/payout mechanics for the Gameplan phase-2 simulator (bufferAmount omitted = app defaults to drawdown+100).",
+  "note": "Prop-firm eval rules for the survival simulator + Prop-Firm Gameplan. Live-updatable like copilot-notes (no app release needed). Rules change CONSTANTLY — verify against firm sites before trusting; 'verified' = date last checked, 'confidence' high|partial|low. drawdown.type: 'intraday' (real-time high-watermark incl. unrealized) or 'eod' (threshold recalculated at day close). stopsTrailing: null = trails until target; {lockAtStartPlus:N} = floor locks N above start. cost: structure 'onetime' (pay once, keep the eval) or 'per30d' (30-day access clock / monthly billing — evalPromo = first period with code DTJ, renewal = each later period; evalPromo null = promo price FILL-IN from Tyler's dashboard, app falls back to evalFull). funded: buffer/payout mechanics for the Gameplan phase-2 simulator (bufferAmount omitted = app defaults to the drawdown). maxFundedAccounts on an ACCOUNT overrides the firm level (v0.2.78+) — some firms cap by size.",
   "updated": "2026-07-20",
+  "tierNote": "TIERS (researched 2026-07-20, per-number sources in the session log): 25K + 100K added for every firm that offers them. 75K exists at Take Profit Trader ONLY (Apex retired 75K/250K/300K in the 4.0 overhaul eff. 2026-03-01) — omitted by owner decision. FundedNext Bolt was RETIRED ~2026-07-10; replaced here by its successor Rapid Daily (same closed-end daily-reward model, 90% share vs Bolt's 80%).",
   "disclaimer": "Educational estimates. Rules and prices change frequently — always confirm at the firm before purchasing. PDT may earn a commission (code DTJ).",
   "simCaveat": "Simulation uses trade-close granularity: intraday trailing that counts UNREALIZED highs can breach in ways trade-level data cannot see. Survival numbers for intraday-type accounts are optimistic estimates.",
   "firms": [
@@ -9,34 +10,80 @@
       "name": "Apex Trader Funding",
       "affiliateUrl": "https://apextraderfunding.com/member/aff/go/tbundy3688",
       "code": "DTJ",
+      "firmNote": "Apex 4.0 (eff. 2026-03-01): sizes 25K/50K/100K/150K only, each in Intraday (modeled here, no DLL) and EOD (pricier, has DLL) flavors. Evals are a one-time purchase of a 30-DAY WINDOW — modeled per30d because failing the window means repurchasing. DTJ promo prices per size = FILL-IN from Tyler's dashboard (public codes float 80-90% off).",
       "accounts": [
+        {
+          "id": "apex-25k",
+          "label": "Apex 25K",
+          "accountSize": 25000,
+          "profitTarget": 1500,
+          "drawdown": {
+            "amount": 1000,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 4,
+          "minTradingDays": 0,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "windowDays": 30,
+            "evalFull": 199,
+            "evalPromo": null,
+            "renewal": 199,
+            "promoNote": "FILL-IN: DTJ price from Tyler's dashboard (Apex codes run 80-90% off near-constantly). $199 = Intraday full price (EOD flavor $390). One-time buy of a 30-day window — repurchase from scratch if not passed.",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 1600,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 14,
+            "minPayout": 500,
+            "maxPayoutPct": 100,
+            "payoutCap": 1000,
+            "maxPayoutsLifetime": 6,
+            "consistencyMaxDayPct": 50,
+            "activationFee": 79,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "Safety-net balance $26,600 (start + drawdown + $600). 25K cap flat $1,000 across all 6 payouts. Activation $79 intraday / $99 EOD, one-time, no promo codes.",
+            "lifetimePayoutCapUsd": 6000,
+            "lifetimeNote": "25K ladder ≈ 6,000 USD across 6 payouts; PA closes after the 6th."
+          }
+        },
         {
           "id": "apex-50k",
           "label": "Apex 50K",
           "accountSize": 50000,
           "profitTarget": 3000,
           "drawdown": {
-            "amount": 2500,
+            "amount": 2000,
             "type": "intraday",
             "includesUnrealized": true,
-            "stopsTrailing": null
+            "stopsTrailing": { "lockAtStartPlus": 100 }
           },
           "dailyLossLimit": null,
           "maxContracts": 6,
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
-          "verified": "2026-07-07",
-          "confidence": "high",
+          "verified": "2026-07-20",
+          "confidence": "partial",
           "cost": {
             "structure": "per30d",
             "windowDays": 30,
-            "evalFull": 167,
-            "evalPromo": 28,
-            "renewal": 167,
-            "promoNote": "code DTJ ≈ 90% off the FIRST purchase; repurchases bill at full price",
-            "verified": "2026-07-08",
-            "confidence": "high",
-            "structureNote": "CONFIRMED (Tyler, 2026-07-08): the fee buys a 30-DAY EVAL WINDOW — pass inside it or the eval closes and you repurchase from scratch (progress does not carry). The simulator caps each attempt at ~21 trading days; Patience Path sizing is not possible on this account."
+            "evalFull": 249,
+            "evalPromo": null,
+            "renewal": 249,
+            "promoNote": "UPDATED to 4.0 (2026-07-20): one-time ~$249 buy of a 30-day window (was legacy $167/mo). FILL-IN: exact price + DTJ promo from Tyler's dashboard. ⚠ Tyler spot-check: eval drawdown corrected $2,500 → $2,000 per 4.0.",
+            "verified": "2026-07-20",
+            "confidence": "partial",
+            "structureNote": "4.0: the fee buys a 30-DAY EVAL WINDOW — pass inside it or repurchase from scratch (progress does not carry). The simulator caps each attempt at ~21 trading days."
           },
           "funded": {
             "bufferAmount": 2600,
@@ -51,9 +98,54 @@
             "isSim": true,
             "verified": "2026-07-09",
             "confidence": "partial",
-            "note": "Safety Net = drawdown+$100 held for PA life. Payout ladder caps rise per payout (50K ≈ $1,500→$3,000); PA closes after the 6th payout (lifetime ≈ $13k). 5 qualifying days (~$250/day) before each payout. ACTIVATION (verified 2026-07-09, third-party sources): ONE-TIME fee tied to drawdown type — $79 intraday / $99 EOD, any size; due within 7 days of passing; promo codes do NOT apply. A newer $0-activation purchase mode exists (eval costs more) — not modeled.",
+            "note": "Safety Net = drawdown+$600 held for PA life. Payout ladder caps rise per payout (50K ≈ $1,500→$3,000); PA closes after the 6th payout. 5 qualifying days (~$250/day) before each payout. ACTIVATION: one-time $79 intraday / $99 EOD; due within 7 days of passing; promo codes do NOT apply.",
             "lifetimePayoutCapUsd": 14500,
             "lifetimeNote": "50K INTRADAY ladder ≈ 14,500 USD across 6 payouts (EOD ≈ 13,000); PA closes after the 6th."
+          }
+        },
+        {
+          "id": "apex-100k",
+          "label": "Apex 100K",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3000,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 8,
+          "minTradingDays": 0,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "windowDays": 30,
+            "evalFull": 399,
+            "evalPromo": null,
+            "renewal": 399,
+            "promoNote": "FILL-IN: DTJ price from Tyler's dashboard. $399 = Intraday full price (EOD $790). One-time 30-day window; repurchase if not passed.",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 3600,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 14,
+            "minPayout": 500,
+            "maxPayoutPct": 100,
+            "payoutCap": 2000,
+            "maxPayoutsLifetime": 6,
+            "consistencyMaxDayPct": 50,
+            "activationFee": 79,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "partial",
+            "note": "Safety-net balance $103,600 (start + $3,000 + $600). Payout ladder starts $2,000 rising to ~$4,000 across 6 payouts. Eval contracts 8; PA scales to 6 until safety net reached.",
+            "lifetimePayoutCapUsd": 18500,
+            "lifetimeNote": "100K INTRADAY ladder ≈ 18,500 USD across 6 payouts; PA closes after the 6th."
           }
         },
         {
@@ -62,27 +154,27 @@
           "accountSize": 150000,
           "profitTarget": 9000,
           "drawdown": {
-            "amount": 5000,
+            "amount": 4000,
             "type": "intraday",
             "includesUnrealized": true,
-            "stopsTrailing": null
+            "stopsTrailing": { "lockAtStartPlus": 100 }
           },
           "dailyLossLimit": null,
           "maxContracts": 17,
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
-          "verified": "2026-07-07",
+          "verified": "2026-07-20",
           "confidence": "partial",
           "cost": {
             "structure": "per30d",
             "windowDays": 30,
             "evalFull": 297,
-            "evalPromo": 30,
+            "evalPromo": null,
             "renewal": 297,
-            "promoNote": "code DTJ ≈ 90% off the FIRST purchase; repurchases bill at full price",
-            "verified": "2026-07-08",
-            "confidence": "high",
-            "structureNote": "CONFIRMED (Tyler, 2026-07-08): 30-day eval window, same as apex-50k — pass inside the window or repurchase from scratch."
+            "promoNote": "⚠ 4.0 CHANGES PARTIALLY APPLIED (2026-07-20): drawdown corrected $5,000 → $4,000 per 4.0 research; the 4.0 one-time PRICE for 150K was NOT captured — $297 is the legacy figure, FILL-IN from Tyler's dashboard along with the DTJ promo.",
+            "verified": "2026-07-20",
+            "confidence": "low",
+            "structureNote": "4.0: 30-day eval window, same as apex-50k — pass inside the window or repurchase from scratch."
           },
           "funded": {
             "bufferAmount": 5100,
@@ -97,12 +189,12 @@
             "isSim": true,
             "verified": "2026-07-09",
             "confidence": "partial",
-            "note": "150K ladder ≈ $2,500→$5,000 per payout, lifetime ≈ $20.5k, closes after 6th payout. Activation: one-time $79 (intraday-type account); promo codes do NOT apply."
+            "note": "150K ladder ≈ $2,500→$5,000 per payout, lifetime ≈ $20.5k, closes after 6th payout. Activation: one-time $79 (intraday); promo codes do NOT apply."
           }
         }
       ],
       "maxFundedAccounts": 20,
-      "maxFundedNote": "Up to 20 active PAs simultaneously (EOD/intraday/legacy combined).",
+      "maxFundedNote": "Up to 20 active PAs simultaneously (EOD/intraday/legacy combined). Not re-verified under 4.0 — confirm.",
       "maxFundedVerified": "2026-07-20",
       "maxFundedConfidence": "partial"
     },
@@ -111,7 +203,54 @@
       "name": "Take Profit Trader",
       "affiliateUrl": "https://takeprofittrader.com/?referralCode=DTJ",
       "code": "DTJ",
+      "firmNote": "Ladder is linear: target = 6% of size; DD 25K $1,500 / 50K $2,000 / 75K $2,500 / 100K $3,000 / 150K $4,500; contracts = size/12,500 minis. Eval DD is EOD; funded PRO switches to INTRADAY trailing of the same amount. 75K exists but is omitted by owner decision (only firm offering it). ⚠ reconcile flag: current TPT sources say the eval has NO hard minTradingDays (only a weekly-activity rule) — entries keep 5 pending Tyler's confirm.",
       "accounts": [
+        {
+          "id": "tpt-25k",
+          "label": "TPT 25K Test",
+          "accountSize": 25000,
+          "profitTarget": 1500,
+          "drawdown": {
+            "amount": 1500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 3,
+          "minTradingDays": 5,
+          "consistencyMaxDayPct": 50,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 150,
+            "evalPromo": 90,
+            "renewal": 90,
+            "promoNote": "40%-off-for-life codes common (verify DTJ terms) → $90/30d recurring. Reset fee $79.",
+            "verified": "2026-07-20",
+            "confidence": "high"
+          },
+          "funded": {
+            "drawdown": {
+              "amount": 1500,
+              "type": "intraday",
+              "includesUnrealized": true,
+              "stopsTrailing": { "lockAtStartPlus": 0 }
+            },
+            "bufferAmount": 1500,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "consistencyMaxDayPct": null,
+            "activationFee": 130,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "PRO = sim, intraday trailing $1,500 off peak balance, locks at the $25,000 start. Withdraw only above start+DD ($26,500). 80/20 daily payouts, no cap, no payout-consistency rule; payouts under $250 incur a $50 fee. $130 one-time PRO activation. PRO+ (live, 90/10) exists after ~$5k cumulative."
+          }
+        },
         {
           "id": "tpt-50k",
           "label": "TPT 50K Test",
@@ -156,6 +295,52 @@
             "verified": "2026-07-08",
             "confidence": "partial",
             "note": "PRO = sim, intraday trailing, withdraw only above the $2,000 buffer (80/20, daily). PRO+ after ~$5k cumulative profits: LIVE account, EOD drawdown, 90/10, no buffer. Buffer profits mostly unrecoverable on termination."
+          }
+        },
+        {
+          "id": "tpt-100k",
+          "label": "TPT 100K Test",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 12,
+          "minTradingDays": 5,
+          "consistencyMaxDayPct": 50,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 330,
+            "evalPromo": 198,
+            "renewal": 198,
+            "promoNote": "40%-off-for-life codes → $198/30d recurring. Reset fee $169.",
+            "verified": "2026-07-20",
+            "confidence": "high"
+          },
+          "funded": {
+            "drawdown": {
+              "amount": 3000,
+              "type": "intraday",
+              "includesUnrealized": true,
+              "stopsTrailing": { "lockAtStartPlus": 0 }
+            },
+            "bufferAmount": 3000,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "consistencyMaxDayPct": null,
+            "activationFee": 130,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "PRO = sim, intraday trailing $3,000 off peak, locks at the $100,000 start. Withdraw above $103,000. 80/20 daily, no cap, no payout-consistency rule; <$250 payouts incur $50 fee. $130 one-time activation."
           }
         },
         {
@@ -214,7 +399,48 @@
       "name": "Tradeify",
       "affiliateUrl": "https://tradeify.co/ref/DTJ/",
       "code": "DTJ",
+      "firmNote": "Sizes 25K/50K/100K/150K (no 75K). Lines: Select (3 min days, 40% eval consistency) and Growth (1 min day, DLL, 35% funded consistency). ⚠ 2026-07-20 research corrections applied: Select 50K contracts 6→4, Growth 50K funded buffer $3,000→$2,100 (current schedule $1,100/$2,100/$2,600/$3,600 by size) — Tyler spot-check.",
       "accounts": [
+        {
+          "id": "tradeify-select-25k",
+          "label": "Tradeify Select 25K",
+          "accountSize": 25000,
+          "profitTarget": 1500,
+          "drawdown": {
+            "amount": 1000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 1,
+          "minTradingDays": 3,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 109,
+            "evalPromo": null,
+            "promoNote": "FILL-IN: 25K full price single-source ($109) — verify; ~30-40% promo codes typical (DTJ % from dashboard). One-time fee, no renewals. Reset $95.",
+            "verified": "2026-07-20",
+            "confidence": "low"
+          },
+          "funded": {
+            "bufferAmount": 1100,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "payoutCap": 600,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "partial",
+            "note": "Select Daily path: $1,100 buffer, daily payouts, $600/day cap (inferred from the $600-$2,500 size ladder — verify), 90/10, 50% profit-release rule on withdrawals. Flex path alternative chosen at funding."
+          }
+        },
         {
           "id": "tradeify-select-50k",
           "label": "Tradeify Select 50K",
@@ -227,10 +453,10 @@
             "stopsTrailing": null
           },
           "dailyLossLimit": null,
-          "maxContracts": 6,
+          "maxContracts": 4,
           "minTradingDays": 3,
           "consistencyMaxDayPct": 40,
-          "verified": "2026-07-07",
+          "verified": "2026-07-20",
           "confidence": "partial",
           "cost": {
             "structure": "onetime",
@@ -252,7 +478,86 @@
             "isSim": true,
             "verified": "2026-07-08",
             "confidence": "partial",
-            "note": "Daily payout path modeled ($2,100 buffer, daily payouts, $1,000/day cap, 90/10). The alternative Flex path (5 winning days of $150+, no buffer, 50% of profits max $3k/payout) is chosen once at funding."
+            "note": "Daily payout path modeled ($2,100 buffer, daily payouts, $1,000/day cap, 90/10). The alternative Flex path (5 winning days of $150+, no buffer, 50% of profits max $3k/payout) is chosen once at funding. ⚠ contracts corrected 6→4 (2026-07-20 research) — Tyler spot-check."
+          }
+        },
+        {
+          "id": "tradeify-select-100k",
+          "label": "Tradeify Select 100K",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 8,
+          "minTradingDays": 3,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 259,
+            "evalPromo": null,
+            "promoNote": "FILL-IN DTJ %: full $259 multi-source; ~30-40% codes typical. One-time fee. Reset $95.",
+            "verified": "2026-07-20",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 2600,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "payoutCap": 1500,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "Select Daily: $2,600 buffer, up to $1,500/day, 90/10, 50% profit-release rule; soft funded DLL $1,250 at 100K."
+          }
+        },
+        {
+          "id": "tradeify-growth-25k",
+          "label": "Tradeify Growth 25K",
+          "accountSize": 25000,
+          "profitTarget": 1500,
+          "drawdown": {
+            "amount": 1000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": 600,
+          "maxContracts": 1,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 99,
+            "evalPromo": null,
+            "promoNote": "FILL-IN: 25K full price single-source ($99) — verify; ~30-40% codes typical. One-time fee. Reset $85.",
+            "verified": "2026-07-20",
+            "confidence": "low"
+          },
+          "funded": {
+            "bufferAmount": 1100,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "consistencyMaxDayPct": 35,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "partial",
+            "note": "Growth funded: $1,100 buffer + 5 profitable days of $100+ before payouts, then every 5 days; 35% funded consistency; split 100% on first $15k of payouts then 90%."
           }
         },
         {
@@ -281,7 +586,7 @@
             "confidence": "partial"
           },
           "funded": {
-            "bufferAmount": 3000,
+            "bufferAmount": 2100,
             "minDaysToFirstPayout": 5,
             "payoutFrequencyDays": 5,
             "minPayout": 250,
@@ -289,23 +594,103 @@
             "consistencyMaxDayPct": 35,
             "activationFee": 0,
             "isSim": true,
-            "verified": "2026-07-08",
+            "verified": "2026-07-20",
             "confidence": "partial",
-            "note": "Needs balance ≥ $53,000 ($3,000 buffer) + 5 profitable days of $150+ before payouts; 1st payout capped $1,500; 35% funded consistency."
+            "note": "⚠ buffer corrected $3,000→$2,100 (2026-07-20 research: current schedule $1,100/$2,100/$2,600/$3,600 by size) — Tyler spot-check. Needs 5 profitable days of $150+ before payouts; 1st payout capped $1,500; 35% funded consistency."
+          }
+        },
+        {
+          "id": "tradeify-growth-100k",
+          "label": "Tradeify Growth 100K",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": 2500,
+          "maxContracts": 8,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 249,
+            "evalPromo": null,
+            "promoNote": "FILL-IN DTJ %: full $249 multi-source; ~30-40% codes typical. One-time fee. Reset $169.",
+            "verified": "2026-07-20",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 2600,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "consistencyMaxDayPct": 35,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "partial",
+            "note": "Growth funded: $2,600 buffer, 5 profitable days of $100+ first, then every 5 days; 35% consistency; split 100% first $15k then 90%. Note Growth 100K eval DD is $3,500 (vs Select's $3,000)."
           }
         }
       ],
       "maxFundedAccounts": 5,
-      "maxFundedNote": "Max 5 funded accounts in any combination; unlimited evaluations.",
+      "maxFundedNote": "Max 5 simulated funded accounts in any combination ($750K combined allocation cap); unlimited evaluations.",
       "maxFundedVerified": "2026-07-20",
-      "maxFundedConfidence": "partial"
+      "maxFundedConfidence": "high"
     },
     {
       "id": "lucid",
       "name": "Lucid Trading",
       "affiliateUrl": "https://lucidtrading.com/ref/dtj",
       "code": "DTJ",
+      "firmNote": "Sizes 25K/50K/100K/150K (no 75K), lines Pro + Flex. ⚠ 2026-07-20 research corrections applied (official help center): 50K contracts 6→4 both lines; promo now ~40% off (auto-applied checkout coupon; third parties cite code DGT — DTJ exact terms FILL-IN). Funded-account limit now VERIFIED = 5.",
       "accounts": [
+        {
+          "id": "lucid-pro-25k",
+          "label": "LucidPro 25K",
+          "accountSize": 25000,
+          "profitTarget": 1250,
+          "drawdown": {
+            "amount": 1000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 2,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 135,
+            "evalPromo": 81,
+            "promoNote": "one-time fee; current checkout coupon ~40% off (promos rotate; DTJ exact terms FILL-IN)",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 1100,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 3,
+            "minPayout": 500,
+            "maxPayoutPct": 90,
+            "payoutCap": 1000,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "Buffer = MLL + $100 ($26,100 level). Payout cap cycle 1 $1,000, cycle 2+ $1,500. Min cycle profit $250. 40% best-day rule per cycle. No eval consistency rule."
+          }
+        },
         {
           "id": "lucid-pro-50k",
           "label": "LucidPro 50K",
@@ -318,18 +703,18 @@
             "stopsTrailing": null
           },
           "dailyLossLimit": null,
-          "maxContracts": 6,
+          "maxContracts": 4,
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
-          "verified": "2026-07-07",
+          "verified": "2026-07-20",
           "confidence": "partial",
           "cost": {
             "structure": "onetime",
             "evalFull": 185,
-            "evalPromo": 130,
-            "promoNote": "one-time fee — no renewals; 30-40% codes typical (verify DTJ %)",
-            "verified": "2026-07-08",
-            "confidence": "low"
+            "evalPromo": 111,
+            "promoNote": "one-time fee — no renewals; current coupon ~40% off (was listed ~30%; corrected 2026-07-20 — DTJ exact terms FILL-IN)",
+            "verified": "2026-07-20",
+            "confidence": "partial"
           },
           "funded": {
             "bufferAmount": 2100,
@@ -340,9 +725,90 @@
             "consistencyMaxDayPct": 40,
             "activationFee": 0,
             "isSim": true,
-            "verified": "2026-07-08",
+            "verified": "2026-07-20",
             "confidence": "partial",
-            "note": "Buffer = initial max-loss limit + $100 (unwithdrawable); payouts every 3 days; 40% best-day rule per payout cycle. minPayout unverified — $500 assumed."
+            "note": "Buffer = initial max-loss limit + $100 (unwithdrawable); payouts every 3 days; 40% best-day rule per payout cycle. minPayout $500 now confirmed official. ⚠ contracts corrected 6→4 (2026-07-20) — Tyler spot-check."
+          }
+        },
+        {
+          "id": "lucid-pro-100k",
+          "label": "LucidPro 100K",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": 1800,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 285,
+            "evalPromo": 171,
+            "promoNote": "one-time fee; current coupon ~40% off (DTJ exact terms FILL-IN)",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 3100,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 3,
+            "minPayout": 500,
+            "maxPayoutPct": 90,
+            "payoutCap": 2500,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "Buffer $103,100 level. Payout cap cycle 1 $2,500, cycle 2+ $3,000. Min cycle profit $750. Funded fixed DLL $1,800 + scaling DLL 60% of peak EOD."
+          }
+        },
+        {
+          "id": "lucid-flex-25k",
+          "label": "LucidFlex 25K",
+          "accountSize": 25000,
+          "profitTarget": 1250,
+          "drawdown": {
+            "amount": 1000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 2,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": 50,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 100,
+            "evalPromo": 60,
+            "promoNote": "one-time fee; current coupon ~40% off (DTJ exact terms FILL-IN)",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 0,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 7,
+            "minPayout": 500,
+            "maxPayoutPct": 90,
+            "payoutCap": 1000,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "No buffer; each cycle needs 5 days of $100+ daily profit. Payout = 50% of profit up to $1,000 (does not scale). Up to 5 payouts, then moved live. 50% consistency applies to the EVAL only."
           }
         },
         {
@@ -357,18 +823,18 @@
             "stopsTrailing": null
           },
           "dailyLossLimit": null,
-          "maxContracts": 6,
+          "maxContracts": 4,
           "minTradingDays": 1,
           "consistencyMaxDayPct": 50,
-          "verified": "2026-07-07",
+          "verified": "2026-07-20",
           "confidence": "partial",
           "cost": {
             "structure": "onetime",
             "evalFull": 140,
-            "evalPromo": 95,
-            "promoNote": "one-time fee — no renewals; 30-40% codes typical (verify DTJ %)",
-            "verified": "2026-07-08",
-            "confidence": "low"
+            "evalPromo": 84,
+            "promoNote": "one-time fee — no renewals; current coupon ~40% off (was ~30%; corrected 2026-07-20 — DTJ exact terms FILL-IN)",
+            "verified": "2026-07-20",
+            "confidence": "partial"
           },
           "funded": {
             "bufferAmount": 0,
@@ -376,26 +842,112 @@
             "payoutFrequencyDays": 7,
             "minPayout": 500,
             "maxPayoutPct": 90,
+            "maxPayoutsLifetime": 5,
             "consistencyMaxDayPct": null,
             "activationFee": 0,
             "isSim": true,
-            "verified": "2026-07-08",
+            "verified": "2026-07-20",
             "confidence": "partial",
-            "note": "No buffer; each payout cycle needs 5 days at the minimum required profit (cycle resets on payout). Contract size scales with sim profit, updated EOD. minPayout unverified — $500 assumed."
+            "note": "No buffer; each payout cycle needs 5 days at the minimum required profit (cycle resets on payout). Up to 5 payouts then moved live (added 2026-07-20, official). Contract size scales with sim profit. ⚠ contracts corrected 6→4 — Tyler spot-check."
+          }
+        },
+        {
+          "id": "lucid-flex-100k",
+          "label": "LucidFlex 100K",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": 50,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 225,
+            "evalPromo": 135,
+            "promoNote": "one-time fee; current coupon ~40% off (DTJ exact terms FILL-IN)",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 0,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 7,
+            "minPayout": 500,
+            "maxPayoutPct": 90,
+            "payoutCap": 2500,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "No buffer; 5 days of $200+ daily profit per cycle. Payout = 50% of profit up to $2,500 (does not scale). Up to 5 payouts, then moved live."
           }
         }
       ],
-      "maxFundedAccounts": null,
-      "maxFundedNote": "Funded-account limit NOT verified (10 active evals per household documented; funded cap unstated).",
+      "maxFundedAccounts": 5,
+      "maxFundedNote": "VERIFIED 2026-07-20 (official 'Maximum Number of Accounts' help article): up to 5 funded accounts per household across all funded types; up to 10 total incl. evals.",
       "maxFundedVerified": "2026-07-20",
-      "maxFundedConfidence": "low"
+      "maxFundedConfidence": "high"
     },
     {
       "id": "mff",
       "name": "MyFundedFutures",
       "affiliateUrl": "https://myfundedfutures.com/?ref=5020",
       "code": "DTJ",
+      "firmNote": "Current lineup Rapid/Builder/Pro; sizes 25K/50K/100K/150K (no 75K). Rapid modeled here. ⚠ 2026-07-20 research corrections applied (official help center): Rapid 50K contracts 6→5, minTradingDays 1→2 — Tyler spot-check. Account cap varies by size (acct-level maxFundedAccounts, v0.2.78+): 25K/50K → 5; holding any 100K/150K → 3.",
       "accounts": [
+        {
+          "id": "mff-rapid-25k",
+          "label": "MFF Rapid 25K",
+          "accountSize": 25000,
+          "profitTarget": 1500,
+          "drawdown": {
+            "amount": 1000,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": {
+              "lockAtStartPlus": 100
+            }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 3,
+          "minTradingDays": 2,
+          "consistencyMaxDayPct": 50,
+          "maxFundedAccounts": 5,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 109,
+            "evalPromo": 87,
+            "renewal": 87,
+            "promoNote": "monthly subscription — billing auto-stops once you pass; ~20% codes (verify DTJ %); promos rotate",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 1100,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 500,
+            "maxPayoutPct": 90,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "$1,100 realized-profit buffer before any payout, then daily payouts (90/10, $500 min; first payout 24h after first trade). Sim-funded switches to intraday trailing (start+$100 lock). 25K/50K cap: 5 accounts."
+          }
+        },
         {
           "id": "mff-rapid-50k",
           "label": "MFF Rapid 50K",
@@ -410,10 +962,11 @@
             }
           },
           "dailyLossLimit": null,
-          "maxContracts": 6,
-          "minTradingDays": 1,
+          "maxContracts": 5,
+          "minTradingDays": 2,
           "consistencyMaxDayPct": null,
-          "verified": "2026-07-07",
+          "maxFundedAccounts": 5,
+          "verified": "2026-07-20",
           "confidence": "partial",
           "cost": {
             "structure": "per30d",
@@ -435,12 +988,55 @@
             "isSim": true,
             "verified": "2026-07-08",
             "confidence": "high",
-            "note": "$2,100 realized-profit buffer before any payout, then daily payouts (90/10, $500 min). Intraday-only — holding overnight is a breach. 'Rapid Live' conversion path exists."
+            "note": "$2,100 realized-profit buffer before any payout, then daily payouts (90/10, $500 min). Intraday-only — holding overnight is a breach. 'Rapid Live' conversion path exists. ⚠ corrections 2026-07-20: contracts 6→5, minTradingDays 1→2 (official) — Tyler spot-check."
+          }
+        },
+        {
+          "id": "mff-rapid-100k",
+          "label": "MFF Rapid 100K",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3000,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": {
+              "lockAtStartPlus": 100
+            }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 8,
+          "minTradingDays": 2,
+          "consistencyMaxDayPct": 50,
+          "maxFundedAccounts": 3,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 267,
+            "evalPromo": 214,
+            "renewal": 214,
+            "promoNote": "monthly subscription; promos rotate ~20-50% off (verify DTJ %)",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 3100,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 500,
+            "maxPayoutPct": 90,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "$3,100 buffer, daily payouts (90/10, $500 min; first 24h after first trade). Holding any 100K/150K caps total sim-funded accounts at 3."
           }
         }
       ],
       "maxFundedAccounts": 5,
-      "maxFundedNote": "Up to 5 sim-funded 50K accounts (100K/150K drops the cap to 3; Builder = 1; 10 total incl. evals).",
+      "maxFundedNote": "Up to 5 sim-funded at 25K/50K; holding any 100K/150K drops the cap to 3 (acct-level values carry the per-size truth); Builder = 1; 10 total incl. evals.",
       "maxFundedVerified": "2026-07-20",
       "maxFundedConfidence": "partial"
     },
@@ -449,10 +1045,57 @@
       "name": "FundedNext Futures",
       "affiliateUrl": "https://fundednext.com/?fpr=tyler49",
       "code": "DTJ",
+      "firmNote": "BOLT RETIRED ~2026-07-10 (owner decision 2026-07-20: replaced by successor RAPID DAILY — same closed-end daily-reward model, 90% share vs Bolt's 80%). Sizes 25K/50K/100K/150K (no 75K). Other lines (Flex/Legacy/Rapid Pro) exist — not modeled yet.",
       "accounts": [
         {
-          "id": "fn-bolt-50k",
-          "label": "FundedNext Bolt 50K",
+          "id": "fn-rapiddaily-25k",
+          "label": "FundedNext Rapid Daily 25K",
+          "accountSize": 25000,
+          "profitTarget": 1500,
+          "drawdown": {
+            "amount": 1000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": {
+              "lockAtStartPlus": 100
+            }
+          },
+          "dailyLossLimit": null,
+          "dailySoftLossLimit": 500,
+          "maxContracts": 2,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 159.98,
+            "evalPromo": 79.99,
+            "promoNote": "one-time fee, no activation; on-site code RAPID50 = 50% off (DTJ exact terms FILL-IN; promos rotate)",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 1100,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "payoutCap": 800,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "CLOSED-END: daily rewards (90%, $250 min, $800 cap); the 5th payout concludes the account. Withdrawal buffer = start+MLL+$100 ($26,100 level). First withdrawal resets MLL to initial balance.",
+            "lifetimePayoutCapUsd": 4000,
+            "lifetimeNote": "≈ 5 × $800 cap (gross, approximate); concluded after the 5th payout, then buy a new eval."
+          }
+        },
+        {
+          "id": "fn-rapiddaily-50k",
+          "label": "FundedNext Rapid Daily 50K",
           "accountSize": 50000,
           "profitTarget": 3000,
           "drawdown": {
@@ -465,42 +1108,88 @@
           },
           "dailyLossLimit": null,
           "dailySoftLossLimit": 1000,
-          "maxContracts": 6,
+          "maxContracts": 4,
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
-          "verified": "2026-07-07",
+          "verified": "2026-07-20",
           "confidence": "partial",
           "cost": {
             "structure": "onetime",
-            "evalFull": 100,
-            "evalPromo": 95,
-            "promoNote": "one-time fee — no renewals, no activation; resets $92; small sitewide codes (verify DTJ %)",
-            "verified": "2026-07-08",
-            "confidence": "high"
+            "evalFull": null,
+            "evalPromo": null,
+            "promoNote": "FILL-IN: Rapid Daily 50K price not captured (25K $159.98 / 100K $499.98, code RAPID50 = 50% off) — check fundednext.com/futures/rapid. Retired Bolt 50K was $100; do NOT reuse it.",
+            "verified": "2026-07-20",
+            "confidence": "low"
           },
           "funded": {
-            "bufferAmount": 0,
+            "bufferAmount": 2100,
             "minDaysToFirstPayout": 0,
             "payoutFrequencyDays": 1,
             "minPayout": 250,
-            "maxPayoutPct": 80,
+            "maxPayoutPct": 90,
             "payoutCap": 1200,
             "maxPayoutsLifetime": 5,
             "consistencyMaxDayPct": null,
             "activationFee": 0,
             "isSim": true,
-            "verified": "2026-07-08",
+            "verified": "2026-07-20",
             "confidence": "partial",
-            "note": "CLOSED-END: daily rewards (80%, $250 min, $1,200 cap for the first 4); the 5th payout concludes the account — lifetime ≈ $7.7k, then buy a new eval. Fixed 3 minis / 9 micros.",
-            "lifetimePayoutCapUsd": 7700,
-            "lifetimeNote": "Closed-end: ~250 min + 4x1,200 caps then conclude ≈ 7,700 USD, then buy a new eval."
+            "note": "CLOSED-END successor to Bolt 50K (same target/MLL/daily/cap; share 90% vs Bolt 80%; buffer now start+MLL+$100 = $52,100 level vs Bolt's none). 5th payout concludes the account.",
+            "lifetimePayoutCapUsd": 6000,
+            "lifetimeNote": "≈ 5 × $1,200 cap (gross, approximate); concluded after the 5th payout."
+          }
+        },
+        {
+          "id": "fn-rapiddaily-100k",
+          "label": "FundedNext Rapid Daily 100K",
+          "accountSize": 100000,
+          "profitTarget": 5000,
+          "drawdown": {
+            "amount": 2500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": {
+              "lockAtStartPlus": 100
+            }
+          },
+          "dailyLossLimit": null,
+          "dailySoftLossLimit": 1250,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 499.98,
+            "evalPromo": 249.99,
+            "promoNote": "one-time fee, no activation; code RAPID50 = 50% off (DTJ exact terms FILL-IN). Note target is $5,000 (5%), not 6%.",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "bufferAmount": 2600,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "payoutCap": 2500,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "CLOSED-END: daily rewards (90%, $250 min, $2,500 cap); 5th payout concludes. Buffer = start+MLL+$100 ($102,600 level). First withdrawal resets MLL.",
+            "lifetimePayoutCapUsd": 12500,
+            "lifetimeNote": "≈ 5 × $2,500 cap (gross, approximate); concluded after the 5th payout."
           }
         }
       ],
-      "maxFundedAccounts": null,
-      "maxFundedNote": "Account/allocation limit exists per their help center but the exact number is UNVERIFIED (page blocks fetch).",
+      "maxFundedAccounts": 5,
+      "maxFundedNote": "VERIFIED 2026-07-20 (official help article 14261075): up to 5 FundedNext funded accounts simultaneously per user AND household, any size mix; challenge allocation cap $750K.",
       "maxFundedVerified": "2026-07-20",
-      "maxFundedConfidence": "low"
+      "maxFundedConfidence": "high"
     },
     {
       "id": "bulenox",
@@ -508,7 +1197,88 @@
       "affiliateUrl": "https://bulenox.com/member/aff/go/tbundy3688",
       "code": "DTJ",
       "codeNote": "Bulenox honors both DTJ and DTJ7",
+      "firmNote": "Sizes 10K/25K/50K/100K/150K/250K — NO 75K. Every size has two variants: Trailing (real-time DD, full contracts day 1) and EOD+DLL (EOD DD + daily loss limit + progressive scaling to the same max contracts). 3 Masters simultaneous / 11 lifetime holds across all sizes.",
       "accounts": [
+        {
+          "id": "bulenox-25k-td",
+          "label": "Bulenox 25K (Trailing)",
+          "accountSize": 25000,
+          "profitTarget": 1500,
+          "drawdown": {
+            "amount": 1500,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 3,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 145,
+            "evalPromo": null,
+            "renewal": 145,
+            "promoNote": "FILL-IN: 25K lists flat $145/mo with no standard $-off (unlike 50K/100K); DTJ/DTJ7 honored — exact 25K DTJ price from Tyler's dashboard. $143 one-time Master activation.",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "minDaysToFirstPayout": 10,
+            "payoutFrequencyDays": 7,
+            "minPayout": 1000,
+            "maxPayoutPct": 100,
+            "payoutCap": 1000,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 143,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "Weekly payouts (Wednesdays), $1,000 min, first 3 capped $1,000; first $10k is 100% to trader then 90/10; 40% best-day rule blocks (not breaches) a payout. Master trailing DD locks at start+$100."
+          }
+        },
+        {
+          "id": "bulenox-25k-eod",
+          "label": "Bulenox 25K (EOD + DLL)",
+          "accountSize": 25000,
+          "profitTarget": 1500,
+          "drawdown": {
+            "amount": 1500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": 500,
+          "maxContracts": 3,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 145,
+            "evalPromo": null,
+            "renewal": 145,
+            "promoNote": "Same price as the Trailing variant ($145/mo). DTJ/DTJ7 honored — exact 25K DTJ price FILL-IN.",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "minDaysToFirstPayout": 10,
+            "payoutFrequencyDays": 7,
+            "minPayout": 1000,
+            "maxPayoutPct": 100,
+            "payoutCap": 1000,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 143,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "EOD drawdown + $500 daily loss limit + progressive scaling (2 contracts until $1,500 profit, then 3). Same payout rules as the Trailing variant."
+          }
+        },
         {
           "id": "bulenox-50k-td",
           "label": "Bulenox 50K (Trailing)",
@@ -587,12 +1357,92 @@
             "verified": "2026-07-08",
             "confidence": "partial"
           }
+        },
+        {
+          "id": "bulenox-100k-td",
+          "label": "Bulenox 100K (Trailing)",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3000,
+            "type": "intraday",
+            "includesUnrealized": true,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 12,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 215,
+            "evalPromo": 155,
+            "renewal": 155,
+            "promoNote": "monthly billing; standard $60/mo off ($215→$155); DTJ/DTJ7 honored (verify exact %); $248 one-time Master activation",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "minDaysToFirstPayout": 10,
+            "payoutFrequencyDays": 7,
+            "minPayout": 1000,
+            "maxPayoutPct": 100,
+            "payoutCap": 1750,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 248,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "Weekly payouts (Wednesdays), $1,000 min, first 3 capped $1,750; first $10k 100% then 90/10; 40% best-day rule. Master trailing DD locks at start+$100 ($100,100 floor)."
+          }
+        },
+        {
+          "id": "bulenox-100k-eod",
+          "label": "Bulenox 100K (EOD + DLL)",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": 2200,
+          "maxContracts": 12,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-20",
+          "confidence": "high",
+          "cost": {
+            "structure": "per30d",
+            "evalFull": 215,
+            "evalPromo": 155,
+            "renewal": 155,
+            "promoNote": "Same pricing as the Trailing variant ($215→$155, $60/mo off). DTJ/DTJ7 honored.",
+            "verified": "2026-07-20",
+            "confidence": "partial"
+          },
+          "funded": {
+            "minDaysToFirstPayout": 10,
+            "payoutFrequencyDays": 7,
+            "minPayout": 1000,
+            "maxPayoutPct": 100,
+            "payoutCap": 1750,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 248,
+            "isSim": true,
+            "verified": "2026-07-20",
+            "confidence": "high",
+            "note": "EOD drawdown + $2,200 daily loss limit + four-tier scaling (3→5→8→12 contracts as profit grows). Same payout rules as the Trailing variant."
+          }
         }
       ],
       "maxFundedAccounts": 3,
-      "maxFundedNote": "3 Master accounts active simultaneously; up to 11 lifetime — each extra activates after a prior one builds its drawdown back to start.",
+      "maxFundedNote": "3 Master accounts active simultaneously; up to 11 lifetime — each extra activates after a prior one builds its drawdown back to start. Size-independent (confirmed 2026-07-20).",
       "maxFundedVerified": "2026-07-20",
-      "maxFundedConfidence": "partial"
+      "maxFundedConfidence": "high"
     }
   ]
 }
