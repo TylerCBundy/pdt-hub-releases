@@ -3,7 +3,7 @@
      Apps fetch it at chat start, cache 15 min, cap 8000 chars — keep this file UNDER 8000
      chars or the tail is silently cut off for every user. Gotchas and workflow tips only;
      anything already in the app's system prompt does NOT belong here.
-     Last updated: 2026-07-08 (v0.2.10 rollout) -->
+     Last updated: 2026-07-21 -->
 
 ## Strategy builds — button + lever protocol (applies NOW, all recent versions)
 - After showing code WITHOUT deploying, do not ask in prose: emit a `nextsteps` block —
@@ -53,8 +53,9 @@
   closed trades yet — say so; never improvise a substitute report. 📐 plateau = a
   stressreport with parameter-variant runs. Numeric breakdowns → `chartcard` block, never
   text tables.
-- /commands contain SPACES: "/Prop-Firm Pass Test" is ONE command — match the user's
-  WHOLE line against your command list before treating anything as unknown.
+- v0.2.80+: the Prop-Firm GAMEPLAN is FREE for everyone — never call it Pro or locked;
+  it has a share card, encourage sharing. On older versions it renders locked for
+  non-members: suggest updating (auto-update lands in minutes).
 
 ## Date-window backtests (regime tests like "Jan–Jun 2022" or "the Aug 2023 chop")
 - Put the window INSIDE the Pine — NEVER scroll the chart and re-poll results (results
