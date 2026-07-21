@@ -1045,8 +1045,386 @@
       "name": "FundedNext Futures",
       "affiliateUrl": "https://fundednext.com/?fpr=tyler49",
       "code": "DTJ",
-      "firmNote": "BOLT RETIRED ~2026-07-10 (owner decision 2026-07-20: replaced by successor RAPID DAILY — same closed-end daily-reward model, 90% share vs Bolt's 80%). Sizes 25K/50K/100K/150K (no 75K). Other lines (Flex/Legacy/Rapid Pro) exist — not modeled yet.",
+      "firmNote": "FULL LINEUP modeled from Tyler's own pricing-page capture 2026-07-21 (eval numbers OWNER-VERIFIED): FLEX 50/100/150K (47% off code JLFLEX, buffer line, 80% share w/ 95% add-on) · LEGACY 25/50/100K (the advertised NO-BUFFER line, 80%, open-ended) · RAPID PRO 25/50/100K (no DLL, rewards every 3 days, 40% funded consistency) · RAPID DAILY 25/50/100K (Bolt's closed-end successor: daily rewards, DLL, 5 payouts then concluded). All drawdowns EOD-trailing locking at start+$100. payoutCap = the max SINGLE withdrawal (Tyler 2026-07-21: 'Rapid 25K can't withdraw more than $800 at a single time'). Bolt retired ~2026-07-10.",
       "accounts": [
+        {
+          "id": "fn-flex-50k",
+          "label": "FundedNext Flex 50K",
+          "accountSize": 50000,
+          "profitTarget": 2500,
+          "drawdown": {
+            "amount": 1500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 3,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 133.99,
+            "evalPromo": 69.99,
+            "promoNote": "one-time fee; 47% off code JLFLEX at capture (DTJ exact terms FILL-IN; promos rotate). Reset $77.99. Owner-verified 2026-07-21.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 1600,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "payoutCap": 1500,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "Rewards in 5 days; max single withdrawal $1,500 (owner-verified); 80% share, 95% via paid add-on. Five reward journeys then live-funding review pool. Buffer MODELED at MLL+$100 (Legacy is the advertised no-buffer line) — buffer amount itself unconfirmed.",
+            "lifetimePayoutCapUsd": 7500,
+            "lifetimeNote": "≈ 5 journeys × $1,500 cap (gross, approximate)."
+          }
+        },
+        {
+          "id": "fn-flex-100k",
+          "label": "FundedNext Flex 100K",
+          "accountSize": 100000,
+          "profitTarget": 5000,
+          "drawdown": {
+            "amount": 2500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 5,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 249.99,
+            "evalPromo": 129.99,
+            "promoNote": "one-time fee; 47% off code JLFLEX at capture (DTJ FILL-IN). Reset $144.99. Owner-verified 2026-07-21.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 2600,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "payoutCap": 2500,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "Rewards in 5 days; max single withdrawal $2,500 (owner-verified); 80% share, 95% add-on. Buffer MODELED at MLL+$100 — unconfirmed.",
+            "lifetimePayoutCapUsd": 12500,
+            "lifetimeNote": "≈ 5 journeys × $2,500 cap (gross, approximate)."
+          }
+        },
+        {
+          "id": "fn-flex-150k",
+          "label": "FundedNext Flex 150K",
+          "accountSize": 150000,
+          "profitTarget": 8000,
+          "drawdown": {
+            "amount": 4000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 8,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 483.99,
+            "evalPromo": 249.99,
+            "promoNote": "one-time fee; 47% off code JLFLEX at capture (DTJ FILL-IN). Reset $278.99. Owner-verified 2026-07-21.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 4100,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "payoutCap": 4000,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "Rewards in 5 days; max single withdrawal $4,000 (owner-verified); 80% share, 95% add-on. Buffer MODELED at MLL+$100 — unconfirmed.",
+            "lifetimePayoutCapUsd": 20000,
+            "lifetimeNote": "≈ 5 journeys × $4,000 cap (gross, approximate)."
+          }
+        },
+        {
+          "id": "fn-legacy-25k",
+          "label": "FundedNext Legacy 25K",
+          "accountSize": 25000,
+          "profitTarget": 1250,
+          "drawdown": {
+            "amount": 1000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 2,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 79.99,
+            "evalPromo": null,
+            "promoNote": "one-time fee; no on-site discount at capture (DTJ FILL-IN). Reset $73.99. Owner-verified 2026-07-21.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 0,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "payoutCap": 3000,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "OPEN-ENDED, NO BUFFER (the line's advertised edge). Rewards in 5 days; max single withdrawal $3,000 (owner-verified); 80% share. Cycle needs benchmark profit days (≈$100+/day at 25K); after 30 benchmark days payouts go 100% and uncapped. Funded contracts bump to 3 minis."
+          }
+        },
+        {
+          "id": "fn-legacy-50k",
+          "label": "FundedNext Legacy 50K",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": {
+            "amount": 2000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 3,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 199.99,
+            "evalPromo": null,
+            "promoNote": "one-time fee; no on-site discount at capture (DTJ FILL-IN). Reset $183.99. Owner-verified 2026-07-21.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 0,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "payoutCap": 6000,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "OPEN-ENDED, NO BUFFER. Rewards in 5 days; max single withdrawal $6,000 (owner-verified); 80% share. Benchmark-day cycles; after 30 benchmark days 100% and uncapped. Funded contracts bump to 5 minis."
+          }
+        },
+        {
+          "id": "fn-legacy-100k",
+          "label": "FundedNext Legacy 100K",
+          "accountSize": 100000,
+          "profitTarget": 6000,
+          "drawdown": {
+            "amount": 3000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 5,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 239.99,
+            "evalPromo": null,
+            "promoNote": "one-time fee; no on-site discount at capture (DTJ FILL-IN). Reset $220.79. Owner-verified 2026-07-21. NOTE: Legacy 100K ($239.99) is cheaper than Legacy 50K ($199.99)? — prices as shown on the firm's page.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 0,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 80,
+            "payoutCap": 6000,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "OPEN-ENDED, NO BUFFER. Rewards in 5 days; max single withdrawal $6,000 (owner-verified); 80% share. Benchmark ≈$200+/day; after 30 benchmark days 100% and uncapped. Funded contracts bump to 7 minis."
+          }
+        },
+        {
+          "id": "fn-rapidpro-25k",
+          "label": "FundedNext Rapid Pro 25K",
+          "accountSize": 25000,
+          "profitTarget": 1500,
+          "drawdown": {
+            "amount": 1000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 2,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 159.98,
+            "evalPromo": 79.99,
+            "promoNote": "one-time fee; 50% off code RAPID50 at capture (DTJ FILL-IN). Reset $87.99. Owner-verified 2026-07-21.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 1100,
+            "minDaysToFirstPayout": 3,
+            "payoutFrequencyDays": 3,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "payoutCap": 800,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "CLOSED-END: rewards every 3 days (90%, max single withdrawal $800 owner-verified); no DLL; 40% consistency in FUNDED (none in eval); 5th payout concludes. Buffer MODELED at MLL+$100.",
+            "lifetimePayoutCapUsd": 4000,
+            "lifetimeNote": "≈ 5 × $800 cap (gross, approximate)."
+          }
+        },
+        {
+          "id": "fn-rapidpro-50k",
+          "label": "FundedNext Rapid Pro 50K",
+          "accountSize": 50000,
+          "profitTarget": 3000,
+          "drawdown": {
+            "amount": 2000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 4,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 299.98,
+            "evalPromo": 149.99,
+            "promoNote": "one-time fee; 50% off code RAPID50 at capture (DTJ FILL-IN). Reset $157.99. Owner-verified 2026-07-21.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 2100,
+            "minDaysToFirstPayout": 3,
+            "payoutFrequencyDays": 3,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "payoutCap": 1200,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "CLOSED-END: rewards every 3 days (90%, max single withdrawal $1,200 owner-verified); no DLL; 40% funded consistency; 5th payout concludes. Buffer MODELED at MLL+$100.",
+            "lifetimePayoutCapUsd": 6000,
+            "lifetimeNote": "≈ 5 × $1,200 cap (gross, approximate)."
+          }
+        },
+        {
+          "id": "fn-rapidpro-100k",
+          "label": "FundedNext Rapid Pro 100K",
+          "accountSize": 100000,
+          "profitTarget": 5000,
+          "drawdown": {
+            "amount": 2500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": { "lockAtStartPlus": 100 }
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 6,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 499.98,
+            "evalPromo": 249.99,
+            "promoNote": "one-time fee; 50% off code RAPID50 at capture (DTJ FILL-IN). Reset $257.99. Owner-verified 2026-07-21.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 2600,
+            "minDaysToFirstPayout": 3,
+            "payoutFrequencyDays": 3,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "payoutCap": 2500,
+            "maxPayoutsLifetime": 5,
+            "consistencyMaxDayPct": 40,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "CLOSED-END: rewards every 3 days (90%, max single withdrawal $2,500 owner-verified); no DLL; 40% funded consistency; 5th payout concludes. Buffer MODELED at MLL+$100.",
+            "lifetimePayoutCapUsd": 12500,
+            "lifetimeNote": "≈ 5 × $2,500 cap (gross, approximate)."
+          }
+        },
         {
           "id": "fn-rapiddaily-25k",
           "label": "FundedNext Rapid Daily 25K",
@@ -1065,15 +1443,15 @@
           "maxContracts": 2,
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
-          "verified": "2026-07-20",
+          "verified": "2026-07-21",
           "confidence": "high",
           "cost": {
             "structure": "onetime",
             "evalFull": 159.98,
             "evalPromo": 79.99,
-            "promoNote": "one-time fee, no activation; on-site code RAPID50 = 50% off (DTJ exact terms FILL-IN; promos rotate)",
-            "verified": "2026-07-20",
-            "confidence": "partial"
+            "promoNote": "one-time fee, no activation; 50% off code RAPID50 at capture (DTJ FILL-IN). Reset $87.99. Owner-verified 2026-07-21.",
+            "verified": "2026-07-21",
+            "confidence": "high"
           },
           "funded": {
             "bufferAmount": 1100,
@@ -1086,9 +1464,9 @@
             "consistencyMaxDayPct": null,
             "activationFee": 0,
             "isSim": true,
-            "verified": "2026-07-20",
+            "verified": "2026-07-21",
             "confidence": "high",
-            "note": "CLOSED-END: daily rewards (90%, $250 min, $800 cap); the 5th payout concludes the account. Withdrawal buffer = start+MLL+$100 ($26,100 level). First withdrawal resets MLL to initial balance.",
+            "note": "CLOSED-END: daily rewards (90%, $250 min, max single withdrawal $800 owner-verified); DLL $500; the 5th payout concludes the account. Withdrawal buffer = start+MLL+$100 ($26,100 level). First withdrawal resets MLL.",
             "lifetimePayoutCapUsd": 4000,
             "lifetimeNote": "≈ 5 × $800 cap (gross, approximate); concluded after the 5th payout, then buy a new eval."
           }
@@ -1111,15 +1489,15 @@
           "maxContracts": 4,
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
-          "verified": "2026-07-20",
-          "confidence": "partial",
+          "verified": "2026-07-21",
+          "confidence": "high",
           "cost": {
             "structure": "onetime",
-            "evalFull": null,
-            "evalPromo": null,
-            "promoNote": "FILL-IN: Rapid Daily 50K price not captured (25K $159.98 / 100K $499.98, code RAPID50 = 50% off) — check fundednext.com/futures/rapid. Retired Bolt 50K was $100; do NOT reuse it.",
-            "verified": "2026-07-20",
-            "confidence": "low"
+            "evalFull": 299.98,
+            "evalPromo": 149.99,
+            "promoNote": "one-time fee, no activation; 50% off code RAPID50 at capture (DTJ FILL-IN). Reset $157.99. FILLED IN + owner-verified 2026-07-21 (was unknown).",
+            "verified": "2026-07-21",
+            "confidence": "high"
           },
           "funded": {
             "bufferAmount": 2100,
@@ -1132,9 +1510,9 @@
             "consistencyMaxDayPct": null,
             "activationFee": 0,
             "isSim": true,
-            "verified": "2026-07-20",
-            "confidence": "partial",
-            "note": "CLOSED-END successor to Bolt 50K (same target/MLL/daily/cap; share 90% vs Bolt 80%; buffer now start+MLL+$100 = $52,100 level vs Bolt's none). 5th payout concludes the account.",
+            "verified": "2026-07-21",
+            "confidence": "high",
+            "note": "CLOSED-END successor to Bolt 50K (share 90% vs Bolt 80%; DLL $1,000; max single withdrawal $1,200 owner-verified; buffer start+MLL+$100 = $52,100 level). 5th payout concludes the account.",
             "lifetimePayoutCapUsd": 6000,
             "lifetimeNote": "≈ 5 × $1,200 cap (gross, approximate); concluded after the 5th payout."
           }
@@ -1157,15 +1535,15 @@
           "maxContracts": 6,
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
-          "verified": "2026-07-20",
+          "verified": "2026-07-21",
           "confidence": "high",
           "cost": {
             "structure": "onetime",
             "evalFull": 499.98,
             "evalPromo": 249.99,
-            "promoNote": "one-time fee, no activation; code RAPID50 = 50% off (DTJ exact terms FILL-IN). Note target is $5,000 (5%), not 6%.",
-            "verified": "2026-07-20",
-            "confidence": "partial"
+            "promoNote": "one-time fee, no activation; 50% off code RAPID50 at capture (DTJ FILL-IN). Reset $257.99. Owner-verified 2026-07-21. Note target is $5,000 (5%), not 6%.",
+            "verified": "2026-07-21",
+            "confidence": "high"
           },
           "funded": {
             "bufferAmount": 2600,
@@ -1178,9 +1556,9 @@
             "consistencyMaxDayPct": null,
             "activationFee": 0,
             "isSim": true,
-            "verified": "2026-07-20",
+            "verified": "2026-07-21",
             "confidence": "high",
-            "note": "CLOSED-END: daily rewards (90%, $250 min, $2,500 cap); 5th payout concludes. Buffer = start+MLL+$100 ($102,600 level). First withdrawal resets MLL.",
+            "note": "CLOSED-END: daily rewards (90%, $250 min, max single withdrawal $2,500 owner-verified); DLL $1,250; 5th payout concludes. Buffer = start+MLL+$100 ($102,600 level). First withdrawal resets MLL.",
             "lifetimePayoutCapUsd": 12500,
             "lifetimeNote": "≈ 5 × $2,500 cap (gross, approximate); concluded after the 5th payout."
           }
