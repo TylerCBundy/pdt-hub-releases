@@ -10,7 +10,7 @@
       "name": "Apex Trader Funding",
       "affiliateUrl": "https://apextraderfunding.com/member/aff/go/tbundy3688",
       "code": "DTJ",
-      "firmNote": "Apex 4.0 (eff. 2026-03-01): sizes 25K/50K/100K/150K only, each in Intraday (modeled here, no DLL) and EOD (pricier, has DLL) flavors. Evals are a one-time purchase of a 30-DAY WINDOW — modeled per30d because failing the window means repurchasing. DTJ promo prices per size = FILL-IN from Tyler's dashboard (public codes float 80-90% off).",
+      "firmNote": "Apex 4.0 (eff. 2026-03-01): sizes 25K/50K/100K/150K only, each in Intraday (modeled here, no DLL) and EOD (pricier, has DLL) flavors. Evals are a one-time purchase of a 30-DAY WINDOW — modeled per30d because failing the window means repurchasing. OWNER RULE (Tyler 2026-07-21): Apex sells ONLY through affiliates — the DTJ price is EXACTLY whatever Apex is promoting at the time. evalPromo stays null until the current promoted per-size price is captured (the daily watcher reports it; last verified sale 'up to 90% off').",
       "accounts": [
         {
           "id": "apex-25k",
@@ -399,7 +399,7 @@
       "name": "Tradeify",
       "affiliateUrl": "https://tradeify.co/ref/DTJ/",
       "code": "DTJ",
-      "firmNote": "Sizes 25K/50K/100K/150K (no 75K). Lines: Select (3 min days, 40% eval consistency) and Growth (1 min day, DLL, 35% funded consistency). ⚠ 2026-07-20 research corrections applied: Select 50K contracts 6→4, Growth 50K funded buffer $3,000→$2,100 (current schedule $1,100/$2,100/$2,600/$3,600 by size) — Tyler spot-check.",
+      "firmNote": "Sizes 25K/50K/100K/150K (no 75K). Lines: Select (pass in 3 days, 40% eval consistency, daily payouts) and Growth (pass in 1 day, DLL, no eval consistency, 35% funded consistency). EVAL PRICES + RULES OWNER-VERIFIED 2026-07-21 from Tyler's pricing capture (code JULY; DTJ matches promoted pricing — owner rule). Funded buffer schedule $1,100/$2,100/$2,600/$3,600 by size (research). Lightning (instant funding) line not modeled.",
       "accounts": [
         {
           "id": "tradeify-select-25k",
@@ -421,10 +421,10 @@
           "cost": {
             "structure": "onetime",
             "evalFull": 109,
-            "evalPromo": null,
-            "promoNote": "FILL-IN: 25K full price single-source ($109) — verify; ~30-40% promo codes typical (DTJ % from dashboard). One-time fee, no renewals. Reset $95.",
-            "verified": "2026-07-20",
-            "confidence": "low"
+            "evalPromo": 65,
+            "promoNote": "OWNER-VERIFIED 2026-07-21 (Tyler's capture): $109 → $65 with code JULY; DTJ matches promoted pricing (owner rule). One-time fee. Reset $65.",
+            "verified": "2026-07-21",
+            "confidence": "high"
           },
           "funded": {
             "bufferAmount": 1100,
@@ -460,11 +460,11 @@
           "confidence": "partial",
           "cost": {
             "structure": "onetime",
-            "evalFull": 159,
-            "evalPromo": 111,
-            "promoNote": "one-time fee — no renewals however long the eval takes; ~30% promo codes typical (verify DTJ %)",
-            "verified": "2026-07-08",
-            "confidence": "partial"
+            "evalFull": 165,
+            "evalPromo": 99,
+            "promoNote": "OWNER-VERIFIED 2026-07-21 (Tyler's capture): $165 → $99 with code JULY; DTJ matches promoted pricing (owner rule). One-time fee. Reset $99.",
+            "verified": "2026-07-21",
+            "confidence": "high"
           },
           "funded": {
             "bufferAmount": 2100,
@@ -478,7 +478,7 @@
             "isSim": true,
             "verified": "2026-07-08",
             "confidence": "partial",
-            "note": "Daily payout path modeled ($2,100 buffer, daily payouts, $1,000/day cap, 90/10). The alternative Flex path (5 winning days of $150+, no buffer, 50% of profits max $3k/payout) is chosen once at funding. ⚠ contracts corrected 6→4 (2026-07-20 research) — Tyler spot-check."
+            "note": "Daily payout path modeled ($2,100 buffer, daily payouts, $1,000/day cap, 90/10). The alternative Flex path (5 winning days of $150+, no buffer, 50% of profits max $3k/payout) is chosen once at funding. Contracts 4 minis OWNER-CONFIRMED 2026-07-21 (Tyler's capture)."
           }
         },
         {
@@ -500,10 +500,10 @@
           "confidence": "high",
           "cost": {
             "structure": "onetime",
-            "evalFull": 259,
-            "evalPromo": null,
-            "promoNote": "FILL-IN DTJ %: full $259 multi-source; ~30-40% codes typical. One-time fee. Reset $95.",
-            "verified": "2026-07-20",
+            "evalFull": 265,
+            "evalPromo": 159,
+            "promoNote": "OWNER-VERIFIED 2026-07-21 (Tyler's capture): $265 → $159 with code JULY; DTJ matches promoted pricing (owner rule). One-time fee. Reset $155.",
+            "verified": "2026-07-21",
             "confidence": "high"
           },
           "funded": {
@@ -519,6 +519,46 @@
             "verified": "2026-07-20",
             "confidence": "high",
             "note": "Select Daily: $2,600 buffer, up to $1,500/day, 90/10, 50% profit-release rule; soft funded DLL $1,250 at 100K."
+          }
+        },
+        {
+          "id": "tradeify-select-150k",
+          "label": "Tradeify Select 150K",
+          "accountSize": 150000,
+          "profitTarget": 9000,
+          "drawdown": {
+            "amount": 4500,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": null,
+          "maxContracts": 12,
+          "minTradingDays": 3,
+          "consistencyMaxDayPct": 40,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 369,
+            "evalPromo": 221,
+            "promoNote": "OWNER-VERIFIED 2026-07-21 (Tyler's capture): $369 → $221 with code JULY; DTJ matches promoted pricing (owner rule). One-time fee. Reset $215.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 3600,
+            "minDaysToFirstPayout": 0,
+            "payoutFrequencyDays": 1,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "payoutCap": 2500,
+            "consistencyMaxDayPct": null,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "Select Daily path: $3,600 buffer (size schedule), daily payouts, $2,500/day cap (size ladder — verify), 90/10, 50% profit-release rule. Eval numbers owner-verified; funded mechanics research-based."
           }
         },
         {
@@ -541,10 +581,10 @@
           "cost": {
             "structure": "onetime",
             "evalFull": 99,
-            "evalPromo": null,
-            "promoNote": "FILL-IN: 25K full price single-source ($99) — verify; ~30-40% codes typical. One-time fee. Reset $85.",
-            "verified": "2026-07-20",
-            "confidence": "low"
+            "evalPromo": 59,
+            "promoNote": "OWNER-VERIFIED 2026-07-21 (Tyler's capture): $99 → $59 with code JULY; DTJ matches promoted pricing (owner rule). One-time fee. Reset $60.",
+            "verified": "2026-07-21",
+            "confidence": "high"
           },
           "funded": {
             "bufferAmount": 1100,
@@ -572,18 +612,18 @@
             "stopsTrailing": null
           },
           "dailyLossLimit": 1250,
-          "maxContracts": 6,
+          "maxContracts": 4,
           "minTradingDays": 1,
           "consistencyMaxDayPct": null,
-          "verified": "2026-07-07",
-          "confidence": "partial",
+          "verified": "2026-07-21",
+          "confidence": "high",
           "cost": {
             "structure": "onetime",
-            "evalFull": 139,
-            "evalPromo": 97,
-            "promoNote": "one-time fee — no renewals; ~30% promo codes typical (verify DTJ %)",
-            "verified": "2026-07-08",
-            "confidence": "partial"
+            "evalFull": 145,
+            "evalPromo": 87,
+            "promoNote": "OWNER-VERIFIED 2026-07-21 (Tyler's capture): $145 → $87 with code JULY; DTJ matches promoted pricing (owner rule). One-time fee. Reset $95. Contracts corrected 6→4 (capture shows 4 minis/40 micros).",
+            "verified": "2026-07-21",
+            "confidence": "high"
           },
           "funded": {
             "bufferAmount": 2100,
@@ -618,10 +658,10 @@
           "confidence": "high",
           "cost": {
             "structure": "onetime",
-            "evalFull": 249,
-            "evalPromo": null,
-            "promoNote": "FILL-IN DTJ %: full $249 multi-source; ~30-40% codes typical. One-time fee. Reset $169.",
-            "verified": "2026-07-20",
+            "evalFull": 255,
+            "evalPromo": 153,
+            "promoNote": "OWNER-VERIFIED 2026-07-21 (Tyler's capture): $255 → $153 with code JULY; DTJ matches promoted pricing (owner rule). One-time fee. Reset $169.",
+            "verified": "2026-07-21",
             "confidence": "high"
           },
           "funded": {
@@ -636,6 +676,45 @@
             "verified": "2026-07-20",
             "confidence": "partial",
             "note": "Growth funded: $2,600 buffer, 5 profitable days of $100+ first, then every 5 days; 35% consistency; split 100% first $15k then 90%. Note Growth 100K eval DD is $3,500 (vs Select's $3,000)."
+          }
+        },
+        {
+          "id": "tradeify-growth-150k",
+          "label": "Tradeify Growth 150K",
+          "accountSize": 150000,
+          "profitTarget": 9000,
+          "drawdown": {
+            "amount": 5000,
+            "type": "eod",
+            "includesUnrealized": false,
+            "stopsTrailing": null
+          },
+          "dailyLossLimit": 3750,
+          "maxContracts": 12,
+          "minTradingDays": 1,
+          "consistencyMaxDayPct": null,
+          "verified": "2026-07-21",
+          "confidence": "high",
+          "cost": {
+            "structure": "onetime",
+            "evalFull": 369,
+            "evalPromo": 221,
+            "promoNote": "OWNER-VERIFIED 2026-07-21 (Tyler's capture): $369 → $221 with code JULY; DTJ matches promoted pricing (owner rule). One-time fee. Reset $229.",
+            "verified": "2026-07-21",
+            "confidence": "high"
+          },
+          "funded": {
+            "bufferAmount": 3600,
+            "minDaysToFirstPayout": 5,
+            "payoutFrequencyDays": 5,
+            "minPayout": 250,
+            "maxPayoutPct": 90,
+            "consistencyMaxDayPct": 35,
+            "activationFee": 0,
+            "isSim": true,
+            "verified": "2026-07-21",
+            "confidence": "partial",
+            "note": "Growth funded: $3,600 buffer (size schedule), 5 profitable days first, then every 5 days; 35% consistency; split 100% first $15k then 90%. Eval numbers owner-verified; funded mechanics research-based. Note Growth 150K eval DD $5,000 (vs Select's $4,500)."
           }
         }
       ],
