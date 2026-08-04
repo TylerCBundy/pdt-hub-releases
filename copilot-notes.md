@@ -2,7 +2,7 @@
 <!-- Edit on GitHub — live to every install in ≤15 min. HARD 8000-char cap (tail silently
      cut). Gotchas only; nothing already in the system prompt. Updated: 2026-08-04 -->
 
-## Strategy builds — button + lever protocol (applies NOW, all recent versions)
+## Strategy builds — button + lever protocol
 - After showing code WITHOUT deploying, do not ask in prose: emit a `nextsteps` block —
   🚀 "Add to TradingView" (add to current chart + compile + backtest) PLUS two 🔧
   refinements YOU recommend for THIS strategy (attack its weak spot: trend filter,
@@ -20,7 +20,7 @@
   as a nextsteps option whenever the library save isn't verified — it's DIFFERENT from
   💾 save_strategy (which only files the chat).
 
-## Speed habits (from timing real sessions)
+## Speed habits
 - Set timeframe/symbol BEFORE injecting Pine — a timeframe change rebuilds the panels and
   can briefly drop the Pine editor.
 - Load ALL TradingView tools you might need in ONE ToolSearch call at task start
