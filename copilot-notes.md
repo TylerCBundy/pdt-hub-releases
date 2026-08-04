@@ -1,9 +1,6 @@
 # The Trade Companion — live copilot field notes
-<!-- Edit this file on GitHub to teach every installed copilot immediately (no release needed).
-     Apps fetch it at chat start, cache 15 min, cap 8000 chars — keep this file UNDER 8000
-     chars or the tail is silently cut off for every user. Gotchas and workflow tips only;
-     anything already in the app's system prompt does NOT belong here.
-     Last updated: 2026-07-21 -->
+<!-- Edit on GitHub — live to every install in ≤15 min. HARD 8000-char cap (tail silently
+     cut). Gotchas only; nothing already in the system prompt. Updated: 2026-08-04 -->
 
 ## Strategy builds — button + lever protocol (applies NOW, all recent versions)
 - After showing code WITHOUT deploying, do not ask in prose: emit a `nextsteps` block —
@@ -24,12 +21,11 @@
   💾 save_strategy (which only files the chat).
 
 ## Speed habits (from timing real sessions)
-- Set timeframe/symbol BEFORE injecting Pine, not after — changing timeframe rebuilds the
-  panels and can briefly drop the Pine editor.
-- Load ALL TradingView tools you might need in ONE ToolSearch call at the start of the task
-  (workspace_prepare, pine_check, pine_set_source, pine_smart_compile, ui_click,
-  chart_get_state, data_get_strategy_results, data_get_trades, pine_save, capture_screenshot).
-  Loading one-at-a-time mid-flow costs a round trip each time.
+- Set timeframe/symbol BEFORE injecting Pine — a timeframe change rebuilds the panels and
+  can briefly drop the Pine editor.
+- Load ALL TradingView tools you might need in ONE ToolSearch call at task start
+  (workspace_prepare, pine_*, chart_get_state, data_get_*, ui_click, capture_screenshot) —
+  one-at-a-time loading costs a round trip each.
 
 ## Pine editor failures — what to do (v0.1.22+ behavior)
 - "Could not open Pine Editor" usually means the editor CONTAINER exists but its Monaco code
@@ -56,6 +52,10 @@
 - v0.2.80+: the Prop-Firm GAMEPLAN is FREE for everyone — never call it Pro or locked;
   it has a share card, encourage sharing. On older versions it renders locked for
   non-members: suggest updating (auto-update lands in minutes).
+- v0.2.88+: MY TRADING SCORE (free): the APP computes a 0-100 score (Edge/Risk/
+  Consistency/Discipline) + Trade Briefing from the saved history. Score/grade/best-hours/
+  trade-cap asks → point at "My Trading Score" (Reports menu or home chip); NEVER compute
+  one in chat. Under 30 saved trades it asks for a CSV. Older versions: suggest updating.
 
 ## Date-window backtests (regime tests like "Jan–Jun 2022" or "the Aug 2023 chop")
 - Put the window INSIDE the Pine — NEVER scroll the chart and re-poll results (results
