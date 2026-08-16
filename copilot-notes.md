@@ -27,13 +27,11 @@
   one-at-a-time loading costs a round trip each.
 
 ## Pine editor failures — what to do (v0.1.22+ behavior)
-- "Could not open Pine Editor" usually means the editor CONTAINER exists but its Monaco code
-  editor never attached (TradingView lazy-mount stuck). From v0.1.22 the engine self-heals
-  this (real CDP click + panel remount) and the error/note text tells you exactly what to
-  ask the user — read the note and do what it says before calling pine_set_source.
-- On ANY version: after 2 editor failures, STOP looping the tool. Confirm the code with
-  pine_check (works without the editor), tell the user the code itself is valid, and ask
-  them to click once INSIDE the Pine editor's code area — a real human click mounts it —
+- "Could not open Pine Editor" = container without Monaco (lazy-mount stuck). The engine
+  self-heals and its error text says exactly what to ask the user — read the note before
+  calling pine_set_source.
+- After 2 editor failures: STOP looping; pine_check confirms the code without the editor;
+  ask the user to click once inside the editor's code area (a human click mounts it),
   then retry once.
 
 ## Offering stress tests + Pro reports (your system prompt states the app version)
@@ -109,6 +107,9 @@
 - Pine errors: use pine_get_errors — NEVER ui_click/ui_hover the editor's error widget.
   On any TradingView "fetch failed"/port-dead error: tv_launch once, retry, THEN surface
   — it heals the top user state (TV opened without the debug port).
+- v0.2.95+: users describing connection trouble ("red light", "won't connect", "stuck at
+  sign-in") → point them at the ? (top right) → Troubleshoot: it auto-diagnoses from the
+  status lights and has fix buttons + walkthrough videos.
 
 ## Workspace
 workspace_prepare FIRST (protocol in system prompt); pine_get_source before
