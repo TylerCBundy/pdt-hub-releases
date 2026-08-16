@@ -1,0 +1,70 @@
+{
+  "updated": "2026-08-16",
+  "entries": [
+    {
+      "id": "claude-terminal-signin",
+      "title": "Stuck at the Claude sign-in terminal window",
+      "match": { "light": "claude", "state": "off" },
+      "symptoms": ["terminal", "command shell", "powershell window", "connect claude", "what do I do with the terminal", "/login", "stuck on second screen"],
+      "video": null,
+      "steps": [
+        "The black terminal window IS the sign-in — the Claude desktop app is a separate product and does not connect the Trade Companion.",
+        "If it asks \"Do you trust this folder?\" — press Enter on \"Yes, I trust this folder\". That's your own home folder; this is normal.",
+        "If you see a sign-in wizard: choose \"Claude account with subscription\" and finish in the browser.",
+        "If it opens to a normal prompt instead (you've used Claude Code before): type /login and press Enter, then choose \"Claude account with subscription\".",
+        "Make sure the browser that opens is signed into claude.ai with the same account as your subscription, then approve.",
+        "Close the terminal when it says you're logged in — the Claude light turns green by itself within a few seconds."
+      ]
+    },
+    {
+      "id": "port-red-launch-from-app",
+      "title": "\"Connection port live\" stays red",
+      "match": { "light": "cdp", "state": "off" },
+      "symptoms": ["port red", "connection port", "cdp", "can't connect to tradingview", "spent hours red light"],
+      "video": null,
+      "steps": [
+        "This light is about TradingView, not Claude — TradingView must be STARTED BY THE APP so the two can talk.",
+        "Close TradingView completely (check the system tray — right-click the TradingView icon and quit).",
+        "Click \"Launch TradingView\" inside the Trade Companion.",
+        "The light goes green within seconds of TradingView finishing its load.",
+        "Every time you restart TradingView, launch it from the app again — a normally-started TradingView can never connect."
+      ]
+    },
+    {
+      "id": "tv-not-running",
+      "title": "\"TradingView running\" is red",
+      "match": { "light": "tv", "state": "off" },
+      "symptoms": ["tradingview not running", "tradingview closed"],
+      "video": null,
+      "steps": [
+        "TradingView Desktop isn't open. Click \"Launch TradingView\" in the app — it starts TradingView the connected way.",
+        "No TradingView Desktop installed yet? Download it free from tradingview.com/desktop, install, then use the app's Launch button (not the desktop shortcut)."
+      ]
+    },
+    {
+      "id": "engine-missing",
+      "title": "\"Engine installed\" is red",
+      "match": { "light": "engine", "state": "off" },
+      "symptoms": ["engine installed red", "engine missing", "tools don't work"],
+      "video": null,
+      "steps": [
+        "Part of the app's install is missing — this is usually an antivirus quarantine on a fresh install.",
+        "Open Windows Security → Protection history, and restore anything quarantined from the tv-command-hub folder.",
+        "If nothing shows there, reinstall the app from your original download link — the installer restores everything.",
+        "Still red after a reinstall? Use \"Report to PDT\" on any failed tool in chat so the details reach the developer."
+      ]
+    },
+    {
+      "id": "all-green-chat-errors",
+      "title": "Everything is green but chat replies with an error",
+      "match": null,
+      "symptoms": ["all green but not working", "chat error", "claude error result", "not logged in error in chat"],
+      "video": null,
+      "steps": [
+        "Click the Claude status light even if it looks connected — if it's yellow, your sign-in expired: run the sign-in again (terminal → /login → Claude account with subscription).",
+        "If chat mentions usage limits, your Claude plan hit its cap — it resets on Claude's schedule; the app itself is fine.",
+        "If a specific tool keeps failing, click \"Report to PDT\" on the failed tool — the report carries the technical details automatically."
+      ]
+    }
+  ]
+}
