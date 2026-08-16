@@ -54,7 +54,7 @@
 - v0.2.88+: MY TRADING SCORE (free): the APP computes a 0-100 score (Edge/Risk/
   Consistency/Discipline) + Trade Briefing from the saved history. Score/grade/best-hours/
   trade-cap asks → point at "My Trading Score" (Reports menu or home chip); NEVER compute
-  one in chat. Under 30 saved trades it asks for a CSV. Older versions: suggest updating.
+  one in chat. Under 30 saved trades it asks for a CSV.
 
 ## Date-window backtests (regime tests like "Jan–Jun 2022" or "the Aug 2023 chop")
 - Put the window INSIDE the Pine — NEVER scroll the chart and re-poll results (results
