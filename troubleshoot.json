@@ -27,7 +27,7 @@
       "match": { "light": "cdp", "state": "off" },
       "action": { "kind": "launch-tv", "label": "Launch TradingView for me" },
       "symptoms": ["port red", "connection port", "cdp", "can't connect to tradingview", "spent hours red light"],
-      "video": null,
+      "video": "https://player.mediadelivery.net/play/729569/86dd11de-eb3f-4593-a629-ec48d51428bf",
       "steps": [
         "This light is about TradingView, not Claude — TradingView must be STARTED BY THE APP so the two can talk.",
         "Close TradingView completely (check the system tray — right-click the TradingView icon and quit).",
