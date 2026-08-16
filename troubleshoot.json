@@ -4,7 +4,10 @@
     {
       "id": "claude-terminal-signin",
       "title": "Stuck at the Claude sign-in terminal window",
+      "sub": "The black window is the sign-in — here is exactly what to press",
+      "icon": "terminal",
       "match": { "light": "claude", "state": "off" },
+      "action": { "kind": "connect-claude", "label": "Open the Claude sign-in" },
       "symptoms": ["terminal", "command shell", "powershell window", "connect claude", "what do I do with the terminal", "/login", "stuck on second screen"],
       "video": null,
       "steps": [
@@ -19,13 +22,16 @@
     {
       "id": "port-red-launch-from-app",
       "title": "\"Connection port live\" stays red",
+      "sub": "TradingView must be started by the app — not from its own shortcut",
+      "icon": "plug",
       "match": { "light": "cdp", "state": "off" },
+      "action": { "kind": "launch-tv", "label": "Launch TradingView for me" },
       "symptoms": ["port red", "connection port", "cdp", "can't connect to tradingview", "spent hours red light"],
       "video": null,
       "steps": [
         "This light is about TradingView, not Claude — TradingView must be STARTED BY THE APP so the two can talk.",
         "Close TradingView completely (check the system tray — right-click the TradingView icon and quit).",
-        "Click \"Launch TradingView\" inside the Trade Companion.",
+        "Press the button below (or \"Launch TradingView\" in the sidebar).",
         "The light goes green within seconds of TradingView finishing its load.",
         "Every time you restart TradingView, launch it from the app again — a normally-started TradingView can never connect."
       ]
@@ -33,18 +39,24 @@
     {
       "id": "tv-not-running",
       "title": "\"TradingView running\" is red",
+      "sub": "TradingView Desktop is not open yet",
+      "icon": "bolt",
       "match": { "light": "tv", "state": "off" },
+      "action": { "kind": "launch-tv", "label": "Launch TradingView for me" },
       "symptoms": ["tradingview not running", "tradingview closed"],
       "video": null,
       "steps": [
-        "TradingView Desktop isn't open. Click \"Launch TradingView\" in the app — it starts TradingView the connected way.",
-        "No TradingView Desktop installed yet? Download it free from tradingview.com/desktop, install, then use the app's Launch button (not the desktop shortcut)."
+        "TradingView Desktop isn't open. The button below starts it the connected way.",
+        "No TradingView Desktop installed yet? Download it free from tradingview.com/desktop, install, then come back and use the button below (not the desktop shortcut)."
       ]
     },
     {
       "id": "engine-missing",
       "title": "\"Engine installed\" is red",
+      "sub": "Usually an antivirus quarantine on a fresh install",
+      "icon": "shield",
       "match": { "light": "engine", "state": "off" },
+      "action": null,
       "symptoms": ["engine installed red", "engine missing", "tools don't work"],
       "video": null,
       "steps": [
@@ -57,7 +69,10 @@
     {
       "id": "all-green-chat-errors",
       "title": "Everything is green but chat replies with an error",
+      "sub": "Expired sign-ins and plan limits look like app problems — they aren't",
+      "icon": "chat",
       "match": null,
+      "action": null,
       "symptoms": ["all green but not working", "chat error", "claude error result", "not logged in error in chat"],
       "video": null,
       "steps": [
