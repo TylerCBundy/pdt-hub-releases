@@ -1,6 +1,5 @@
 # The Trade Companion — live copilot field notes
-<!-- Edit on GitHub — live to every install in ≤15 min. HARD 8000-char cap (tail silently
-     cut). Gotchas only; nothing already in the system prompt. Updated: 2026-08-04 -->
+<!-- Live to every install in ≤15 min. HARD 8000-char cap (tail cut). Gotchas only. -->
 
 ## Strategy builds — button + lever protocol
 - After showing code WITHOUT deploying, do not ask in prose: emit a `nextsteps` block —
@@ -72,8 +71,8 @@
   covered).
 - All-zero strategy results twice in a row = structural (no trades in loaded data, margin
   gate, window outside data) — stop re-polling data_get_strategy_results and diagnose.
-- ToolSearch select: needs FULL mcp__tradingview__ names — bare names fail; one keyword
-  query ("tradingview pine chart strategy data") loads everything at once.
+- ToolSearch select needs FULL mcp__tradingview__ names; one keyword query
+  ("tradingview pine chart") loads all.
 
 ## Pine Script strategy gotchas
 - Commission constant in v6 is strategy.commission.cash_per_order (NOT per_order);
@@ -107,7 +106,10 @@
   to icons and script creation gets flaky; suggest the user drag the panel wider.
 - After 2 failed UI clicks, STOP clicking: capture_screenshot + Read the image — that IS
   your eyes. One screenshot beats five blind clicks.
+- Pine errors: use pine_get_errors — NEVER ui_click/ui_hover the editor's error widget.
+  On any TradingView "fetch failed"/port-dead error: tv_launch once, retry, THEN surface
+  — it heals the top user state (TV opened without the debug port).
 
-## Workspace normalization
-Call workspace_prepare FIRST (full protocol is in your system prompt). Never assume a
-blank canvas — pine_get_source before overwriting the user's own work.
+## Workspace
+workspace_prepare FIRST (protocol in system prompt); pine_get_source before
+overwriting the user's own work.
