@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-16",
+  "updated": "2026-08-17",
   "entries": [
     {
       "id": "claude-terminal-signin",
@@ -64,6 +64,24 @@
         "Open Windows Security → Protection history, and restore anything quarantined from the tv-command-hub folder.",
         "If nothing shows there, reinstall the app from your original download link — the installer restores everything.",
         "Still red after a reinstall? Use \"Report to PDT\" on any failed tool in chat so the details reach the developer."
+      ]
+    },
+    {
+      "id": "launch-blocked-windows",
+      "title": "\"Could not start TradingView: spawn EPERM\"",
+      "sub": "Windows blocked the launch — fixed automatically in v0.2.98 and later",
+      "icon": "shield",
+      "match": null,
+      "action": { "kind": "launch-tv", "label": "Launch TradingView for me" },
+      "symptoms": ["spawn eperm", "eperm", "could not start tradingview", "windows blocked", "windowsapps", "msix", "store version", "access denied launching"],
+      "video": null,
+      "steps": [
+        "TradingView now ships for Windows as a Microsoft Store style package, which installs into a protected folder. On most machines the app can start it normally, but on some accounts Windows refuses the launch and reports \"spawn EPERM\".",
+        "FIRST: make sure you are on v0.2.98 or later (the ? menu shows your version). From v0.2.98 the app detects the refusal and starts TradingView the way Windows wants instead — no action needed from you. Restart the app to pick up the update, then press the button below.",
+        "If you are on v0.2.98+ and it still fails, start TradingView yourself with the connection port open. Close TradingView completely, open PowerShell, and paste this one line:",
+        "Start-Process -FilePath \"shell:AppsFolder\\TradingView.Desktop_n534cwy3pjxzj!TradingView.Desktop\" -ArgumentList \"--remote-debugging-port=9222\"",
+        "Wait for TradingView to finish loading, then open the Trade Companion — both \"TradingView running\" and \"Connection port live\" should be green, and you can skip the Launch button.",
+        "Starting TradingView from its normal shortcut or Start menu will NOT work — that opens it without the connection port, which is why the port light stays red even though TradingView is clearly running."
       ]
     },
     {
