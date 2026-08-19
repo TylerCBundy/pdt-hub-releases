@@ -21,11 +21,16 @@
         "connect claude",
         "what do I do with the terminal",
         "/login",
-        "stuck on second screen"
+        "stuck on second screen",
+        "different login screen",
+        "choose text style",
+        "theme",
+        "dark mode light mode list"
       ],
       "video": "https://player.mediadelivery.net/play/729569/86dd11de-eb3f-4593-a629-ec48d51428bf",
       "steps": [
         "The black terminal window IS the sign-in — the Claude desktop app is a separate product and does not connect the Trade Companion.",
+        "If the window asks you to choose a text style or theme (a list of Dark mode / Light mode options with a little robot above it) — that is normal, it is the very first screen. Press Enter to accept any choice; the sign-in step comes right after.",
         "If it asks \"Do you trust this folder?\" — press Enter on \"Yes, I trust this folder\". That's your own home folder; this is normal.",
         "If you see a sign-in wizard: choose \"Claude account with subscription\" and finish in the browser.",
         "If it opens to a normal prompt instead (you've used Claude Code before): type /login and press Enter, then choose \"Claude account with subscription\".",
