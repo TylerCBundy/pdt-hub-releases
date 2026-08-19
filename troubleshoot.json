@@ -1,14 +1,28 @@
 {
-  "updated": "2026-08-17",
+  "updated": "2026-08-19",
   "entries": [
     {
       "id": "claude-terminal-signin",
       "title": "Stuck at the Claude sign-in terminal window",
       "sub": "The black window is the sign-in — here is exactly what to press",
       "icon": "terminal",
-      "match": { "light": "claude", "state": "off" },
-      "action": { "kind": "connect-claude", "label": "Open the Claude sign-in" },
-      "symptoms": ["terminal", "command shell", "powershell window", "connect claude", "what do I do with the terminal", "/login", "stuck on second screen"],
+      "match": {
+        "light": "claude",
+        "state": "off"
+      },
+      "action": {
+        "kind": "connect-claude",
+        "label": "Open the Claude sign-in"
+      },
+      "symptoms": [
+        "terminal",
+        "command shell",
+        "powershell window",
+        "connect claude",
+        "what do I do with the terminal",
+        "/login",
+        "stuck on second screen"
+      ],
       "video": "https://player.mediadelivery.net/play/729569/86dd11de-eb3f-4593-a629-ec48d51428bf",
       "steps": [
         "The black terminal window IS the sign-in — the Claude desktop app is a separate product and does not connect the Trade Companion.",
@@ -24,9 +38,21 @@
       "title": "\"Connection port live\" stays red",
       "sub": "TradingView must be started by the app — not from its own shortcut",
       "icon": "plug",
-      "match": { "light": "cdp", "state": "off" },
-      "action": { "kind": "launch-tv", "label": "Launch TradingView for me" },
-      "symptoms": ["port red", "connection port", "cdp", "can't connect to tradingview", "spent hours red light"],
+      "match": {
+        "light": "cdp",
+        "state": "off"
+      },
+      "action": {
+        "kind": "launch-tv",
+        "label": "Launch TradingView for me"
+      },
+      "symptoms": [
+        "port red",
+        "connection port",
+        "cdp",
+        "can't connect to tradingview",
+        "spent hours red light"
+      ],
       "video": "https://player.mediadelivery.net/play/729569/de43389b-135e-470d-b430-915bd4a94a29",
       "steps": [
         "This light is about TradingView, not Claude — TradingView must be STARTED BY THE APP so the two can talk.",
@@ -41,9 +67,18 @@
       "title": "\"TradingView running\" is red",
       "sub": "TradingView Desktop is not open yet",
       "icon": "bolt",
-      "match": { "light": "tv", "state": "off" },
-      "action": { "kind": "launch-tv", "label": "Launch TradingView for me" },
-      "symptoms": ["tradingview not running", "tradingview closed"],
+      "match": {
+        "light": "tv",
+        "state": "off"
+      },
+      "action": {
+        "kind": "launch-tv",
+        "label": "Launch TradingView for me"
+      },
+      "symptoms": [
+        "tradingview not running",
+        "tradingview closed"
+      ],
       "video": null,
       "steps": [
         "TradingView Desktop isn't open. The button below starts it the connected way.",
@@ -55,9 +90,16 @@
       "title": "\"Engine installed\" is red",
       "sub": "Usually an antivirus quarantine on a fresh install",
       "icon": "shield",
-      "match": { "light": "engine", "state": "off" },
+      "match": {
+        "light": "engine",
+        "state": "off"
+      },
       "action": null,
-      "symptoms": ["engine installed red", "engine missing", "tools don't work"],
+      "symptoms": [
+        "engine installed red",
+        "engine missing",
+        "tools don't work"
+      ],
       "video": null,
       "steps": [
         "Part of the app's install is missing — this is usually an antivirus quarantine on a fresh install.",
@@ -69,19 +111,32 @@
     {
       "id": "launch-blocked-windows",
       "title": "\"Could not start TradingView: spawn EPERM\"",
-      "sub": "Windows blocked the launch — fixed automatically in v0.2.98 and later",
+      "sub": "Windows blocked the launch — one paste fixes it",
       "icon": "shield",
       "match": null,
-      "action": { "kind": "launch-tv", "label": "Launch TradingView for me" },
-      "symptoms": ["spawn eperm", "eperm", "could not start tradingview", "windows blocked", "windowsapps", "msix", "store version", "access denied launching"],
+      "action": {
+        "kind": "launch-tv",
+        "label": "Launch TradingView for me"
+      },
+      "symptoms": [
+        "spawn eperm",
+        "eperm",
+        "could not start tradingview",
+        "windows blocked",
+        "windowsapps",
+        "msix",
+        "store version",
+        "access denied launching"
+      ],
       "video": null,
       "steps": [
-        "TradingView now ships for Windows as a Microsoft Store style package, which installs into a protected folder. On most machines the app can start it normally, but on some accounts Windows refuses the launch and reports \"spawn EPERM\".",
-        "FIRST: make sure you are on v0.2.98 or later (the ? menu shows your version). From v0.2.98 the app detects the refusal and starts TradingView the way Windows wants instead — no action needed from you. Restart the app to pick up the update, then press the button below.",
-        "If you are on v0.2.98+ and it still fails, start TradingView yourself with the connection port open. Close TradingView completely, open PowerShell, and paste this one line:",
-        "Start-Process -FilePath \"shell:AppsFolder\\TradingView.Desktop_n534cwy3pjxzj!TradingView.Desktop\" -ArgumentList \"--remote-debugging-port=9222\"",
-        "Wait for TradingView to finish loading, then open the Trade Companion — both \"TradingView running\" and \"Connection port live\" should be green, and you can skip the Launch button.",
-        "Starting TradingView from its normal shortcut or Start menu will NOT work — that opens it without the connection port, which is why the port light stays red even though TradingView is clearly running."
+        "TradingView now ships for Windows as a Microsoft Store style package, which installs into a protected folder. On some machines Windows refuses to let the app start it, and the Launch button fails with \"spawn EPERM\" — or TradingView simply closes and never comes back.",
+        "The fix: close TradingView completely, open PowerShell (press the Windows key, type \"powershell\", Enter), and paste this one line:",
+        "irm https://desk.thepurposedriventrader.com/launch-tv.ps1 | iex",
+        "That runs our small launch helper — it starts TradingView the way Windows wants, with the connection port open, and tells you in plain words when it has connected. (Cautious? Open the link in your browser first and read it — it is short.)",
+        "When it says \"Connected\", open the Trade Companion: both \"TradingView running\" and \"Connection port live\" should be green. You can skip the Launch button and start TradingView this way any time.",
+        "Also make sure you are on the latest app version (the ? menu shows it) — newer releases handle more of these machines automatically, and updates install themselves.",
+        "Starting TradingView from its normal shortcut will NOT work — that opens it without the connection port, which is why the port light stays red even though TradingView is clearly running."
       ]
     },
     {
@@ -91,7 +146,12 @@
       "icon": "chat",
       "match": null,
       "action": null,
-      "symptoms": ["all green but not working", "chat error", "claude error result", "not logged in error in chat"],
+      "symptoms": [
+        "all green but not working",
+        "chat error",
+        "claude error result",
+        "not logged in error in chat"
+      ],
       "video": null,
       "steps": [
         "Click the Claude status light even if it looks connected — if it's yellow, your sign-in expired: run the sign-in again (terminal → /login → Claude account with subscription).",
