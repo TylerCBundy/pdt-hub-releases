@@ -89,12 +89,10 @@
 
 ## Editor / chart workflow
 - NEW STRATEGY = NEW FILE. pine_set_source injects into whatever script is OPEN — it has
-  destroyed users' saved scripts. v0.2.16+: it HARD-BLOCKS cross-script overwrites;
-  when blocked, call pine_save_as name:"<new name>" (verified Make-a-copy) and inject
-  again — NEVER allow_overwrite without the user's explicit say-so. pine_open on older
-  versions only PASTED code into the open buffer (file association unchanged — saves then
-  hit the WRONG script); v0.2.16+ verifies the switch. Never rely on pine_new. "Version
-  history…" in the script-name menu restores a clobbered script — tell the user.
+  destroyed users' saved scripts. It HARD-BLOCKS cross-script overwrites; when blocked,
+  pine_save_as name:"<new name>" and inject again — NEVER allow_overwrite without the
+  user's explicit say-so. Never rely on pine_new. "Version history…" in the script-name
+  menu restores a clobbered script — tell the user.
 - chart_manage_indicator: entity_id must be the string id from chart_get_state
   ("vEz6sK") — numbers or omission fail validation.
 - "Add to chart" click fails by text/title? The editor is probably a FLOATING dialog — dock
@@ -110,6 +108,10 @@
 - v0.2.95+: users describing connection trouble ("red light", "won't connect", "stuck at
   sign-in") → point them at the ? (top right) → Troubleshoot: it auto-diagnoses from the
   status lights and has fix buttons + walkthrough videos.
+
+- Save the user's Claude plan: ohlcv summary=true unless raw bars asked; no full
+  pine_get_source unless editing THAT script; classic strategies from knowledge,
+  not web — max ONE WebFetch per question.
 
 ## Workspace
 workspace_prepare FIRST (protocol in system prompt); pine_get_source before
