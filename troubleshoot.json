@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-19",
+  "updated": "2026-08-23",
   "entries": [
     {
       "id": "claude-terminal-signin",
@@ -36,6 +36,41 @@
         "If it opens to a normal prompt instead (you've used Claude Code before): type /login and press Enter, then choose \"Claude account with subscription\".",
         "Make sure the browser that opens is signed into claude.ai with the same account as your subscription, then approve.",
         "Close the terminal when it says you're logged in — the Claude light turns green by itself within a few seconds."
+      ]
+    },
+    {
+      "id": "claude-cannot-reach-anthropic",
+      "title": "The Claude sign-in window closes instantly, or says it can't connect",
+      "sub": "This one is your internet path to Anthropic — not the app, not your subscription",
+      "icon": "plug",
+      "match": {
+        "light": "claude",
+        "state": "off"
+      },
+      "action": {
+        "kind": "connect-claude",
+        "label": "Open the Claude sign-in"
+      },
+      "symptoms": [
+        "window pops up then closes",
+        "terminal opens and disappears",
+        "hangs then closes",
+        "unable to connect to anthropic services",
+        "failed to connect to platform.claude.com",
+        "ERR_SOCKET_CLOSED",
+        "please check your internet connection and network settings",
+        "claude will not connect",
+        "cannot get claude to connect"
+      ],
+      "video": null,
+      "steps": [
+        "First: the window is no longer allowed to vanish. On current versions it stays open and prints the reason, and that message is the whole diagnosis — read it before changing anything.",
+        "If it says \"Unable to connect to Anthropic services\" or \"Failed to connect to platform.claude.com\", nothing is wrong with the app, your install, or your Claude subscription. Your computer could not open a connection to Anthropic, so the sign-in had nothing to talk to.",
+        "Fastest way to split the problem in one move: turn on your phone's hotspot, connect this computer to it, and run the sign-in again. If it works on the hotspot, the block is in your normal network — router, ISP, DNS filtering, or a VPN — not on this computer.",
+        "If the hotspot fails too, it is something on the computer. The usual culprit is a security suite that inspects HTTPS traffic (Avast, AVG, Bitdefender, Kaspersky, ESET, Norton). Turn its web shield / HTTPS scanning off temporarily, retry the sign-in, then turn it back on once you are signed in.",
+        "Turn off any VPN and retry. Work, school, and guest networks block this often too — if you are on one, try a home network.",
+        "Windows Firewall can also block it: allow claude.exe (in the app's folder, under resources) through the firewall, or retry with the firewall briefly off on a network you trust.",
+        "Still stuck after the hotspot test? Send the exact text from that window to tyler@thepurposedriventrader.com — that message names the real cause and is the fastest thing to act on."
       ]
     },
     {
