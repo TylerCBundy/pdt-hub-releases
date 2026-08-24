@@ -23,8 +23,7 @@
   can briefly drop the Pine editor.
 - Load ALL TradingView tools you might need in ONE ToolSearch call at task start
   (workspace_prepare, pine_*, chart_get_state, data_get_*, ui_click, capture_screenshot).
-  select needs FULL mcp__tradingview__ names; one keyword query ("tradingview pine
-  chart") loads all.
+  select needs FULL mcp__tradingview__ names; keyword "tradingview pine chart" loads all.
 
 ## Pine editor failures
 - "Could not open Pine Editor" = container without Monaco (lazy-mount stuck). The engine
@@ -36,21 +35,20 @@
 ## Offering stress tests + Pro reports
 - ANY stress-test offer (first backtest, refinement, resumed chat) is a `nextsteps`
   block (⚡ buttons tailored to the strategy), never a plain-text question.
-- Repeat stress report in one chat: include "changes" (one line vs the prior run) and
-  compare grades.
+- Repeat stress report in one chat: "changes" field (one line vs prior) + compare grades.
 - Pro analyses (system prompt is authoritative): "give me the pro report" = the prodata
   flow with the RAW data_get_trades list (source "report_trades", up to 2000 — the app
   does ALL math). Source "orders_fallback" or fill-like rows = no closed trades yet —
   say so; never improvise a substitute report. 📐 plateau = a stressreport with
   parameter-variant runs. Numeric breakdowns → `chartcard` block, never text tables.
-- The Prop-Firm GAMEPLAN is FREE for everyone — never call it Pro or locked; it has a
-  share card, encourage sharing.
+- The Prop-Firm GAMEPLAN is FREE for everyone — never call it Pro or locked;
+  encourage sharing its card.
 - MY TRADING SCORE (free): the APP computes a 0-100 score (Edge/Risk/Consistency/
   Discipline) + Trade Briefing from the saved history. Score/grade/best-hours/trade-cap
   asks → point at "My Trading Score" (Reports menu or home chip); NEVER compute one in
   chat. Under 30 saved trades it asks for a CSV.
 
-## Date-window backtests (regime tests like "Jan–Jun 2022" or "the Aug 2023 chop")
+## Date-window backtests (regime tests)
 - Put the window INSIDE the Pine — NEVER scroll the chart and re-poll results (results
   don't change with scrolling; a live session lost 5+ minutes to this):
   startT = input.time(timestamp("2022-01-01T00:00:00"), "Window start")
@@ -73,9 +71,13 @@
 - Zero trades, logic looks right? Debug counters first (table.new: bars seen / gate
   hits / entry calls / closedtrades). entries > 0 but closed = 0 = execution-layer
   rejection (margin, qty, session), not entry logic.
-- Strategy shorttitle must be 10 characters or fewer or the compile fails.
+- Strategy shorttitle: 10 chars max or the compile fails.
 
 ## Tool availability + arguments
+- FILE INTAKE: chat input is TEXT-only — attach/paste/drag of files does NOT exist
+  (+ Attach = trade-history CSV/TXT only); never suggest them. The user pastes file
+  PATHS (the app shows a Copy-as-path hint on drop attempts); Read them — PDF by
+  page ranges, PNG/JPG/CSV/TXT directly; PPTX/DOCX unreadable → ask for PDF export.
 - Never attempt Skill, Task, Bash, PowerShell, Write, or Edit — always denied in the
   app; the denial wastes a turn.
 - Read IS allowed for files a tool result handed you (screenshots, uploads); big file
@@ -100,8 +102,8 @@
   workspace_prepare does this docking automatically.
 - workspace_prepare reports pine_editor_width — under ~200px the editor's buttons
   collapse to icons and script creation gets flaky; suggest dragging the panel wider.
-- After 2 failed UI clicks, STOP clicking: capture_screenshot + Read the image — that IS
-  your eyes. One screenshot beats five blind clicks.
+- After 2 failed UI clicks, STOP clicking: capture_screenshot + Read the image —
+  that IS your eyes.
 - Pine errors: use pine_get_errors — NEVER ui_click/ui_hover the editor's error widget.
   On any TradingView "fetch failed"/port-dead error: tv_launch once, retry, THEN surface
   — it heals the top user state (TV opened without the debug port).
@@ -112,6 +114,5 @@
   pine_get_source unless editing THAT script; classic strategies from knowledge,
   not web — max ONE WebFetch per question.
 
-## Workspace
-workspace_prepare FIRST (protocol in system prompt); pine_get_source before
-overwriting the user's own work.
+- workspace_prepare FIRST (protocol in system prompt); pine_get_source before
+  overwriting the user's own work.
