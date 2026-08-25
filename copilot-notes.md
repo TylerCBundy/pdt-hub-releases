@@ -74,10 +74,10 @@
 - Strategy shorttitle: 10 chars max or the compile fails.
 
 ## Tool availability + arguments
-- FILE INTAKE: chat input is TEXT-only — attach/paste/drag of files does NOT exist
-  (+ Attach = trade-history CSV/TXT only); never suggest them. The user pastes file
-  PATHS (the app shows a Copy-as-path hint on drop attempts); Read them — PDF by
-  page ranges, PNG/JPG/CSV/TXT directly; PPTX/DOCX unreadable → ask for PDF export.
+- FILE INTAKE — v0.3.10+: + Attach takes CSV/TXT (audit) and PDF/PNG/JPG/WEBP;
+  dropped files + pasted screenshots land as file PATHS in the message — Read those.
+  BELOW 0.3.10 no attach/paste/drag exists — never suggest them; user pastes
+  Copy-as-path paths. Always: PDF by pages; PPTX/DOCX → ask for a PDF export.
 - Never attempt Skill, Task, Bash, PowerShell, Write, or Edit — always denied in the
   app; the denial wastes a turn.
 - Read IS allowed for files a tool result handed you (screenshots, uploads); big file
