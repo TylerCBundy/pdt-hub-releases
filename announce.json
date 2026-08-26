@@ -1,22 +1,22 @@
 {
   "_note": "Rolodex format (2026-07-17): apps v0.2.46+ rotate through `banners` on a rotateSeconds schedule (14400 = 4h — Tyler: consistent presence, not an annoyance; dismissing hides only until the next slot). Top-level id/message/linkText/url = LEGACY single-banner shape for older apps — keep it mirroring the strongest promo. Rules: only code DTJ, only codeWorks firms, never invent a promo, url = affiliateUrl, unique id per promotion. NEVER write 'no current sale' — if a promo can't be verified, the fallback line is just '<Firm> — code DTJ works anytime.' (asserting absence was wrong 5-for-7 on 2026-07-19).",
-  "id": "apex-90off-aug25-2026-08-12",
-  "message": "Apex Trader Funding — up to 90% off any size eval through August 25 — use code DTJ.",
+  "id": "apex-90off-sep8-2026-08-26",
+  "message": "Apex Trader Funding — up to 90% off any size eval through September 8 — use code DTJ.",
   "linkText": "Grab the deal",
   "url": "https://apextraderfunding.com/member/aff/go/tbundy3688",
   "rotateSeconds": 14400,
   "banners": [
     {
-      "id": "apex-90off-aug25-2026-08-12",
+      "id": "apex-90off-sep8-2026-08-26",
       "firm": "Apex Trader Funding",
-      "message": "Apex Trader Funding — up to 90% off any size eval through August 25 — use code DTJ.",
+      "message": "Apex Trader Funding — up to 90% off any size eval through September 8 — use code DTJ.",
       "linkText": "Grab the deal",
       "url": "https://apextraderfunding.com/member/aff/go/tbundy3688"
     },
     {
-      "id": "tpt-50life-3day-2026-08-21",
+      "id": "tpt-40off-life-2026-08-26",
       "firm": "Take Profit Trader",
-      "message": "Take Profit Trader — evals now 3 days; 50% off for life + no activation fee — use code DTJ.",
+      "message": "Take Profit Trader — 40% off for life + never pay an activation fee — use code DTJ.",
       "linkText": "Grab the deal",
       "url": "https://takeprofittrader.com/?referralCode=DTJ"
     },
@@ -35,9 +35,9 @@
       "url": "https://lucidtrading.com/ref/dtj"
     },
     {
-      "id": "mff-eod50-2026-08-25",
+      "id": "mff-onetime-club50-2026-08-26",
       "firm": "MyFundedFutures",
-      "message": "MyFundedFutures — 50% off the new Rapid EOD plan: EOD drawdown, daily payouts — use code DTJ.",
+      "message": "MyFundedFutures — one-time purchases are here, plus 4 uses of 50% off — use code DTJ.",
       "linkText": "Grab the deal",
       "url": "https://myfundedfutures.com/?ref=5020"
     },
