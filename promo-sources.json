@@ -63,6 +63,13 @@
    "method": "Do NOT scrape the website. Check Gmail: from:support@bulenox.com newer_than:3d, subject like 'new promotion added to your dashboard'. No email = promo unchanged (fall back to defaultMessage).",
    "defaultMessage": "Bulenox — up to 89% off evaluations; use code DTJ.",
    "defaultNote": "Owner-verified 2026-07-19 (Tyler): Bulenox keeps extending this sale without emailing; treat up-to-89%-off as the standing default."
+  },
+  {
+   "name": "Topstep",
+   "promoPage": "https://www.topstep.com/",
+   "affiliateUrl": null,
+   "codeWorks": false,
+   "method": "Homepage + help.topstep.com/en/articles/9208217-topstep-pricing (Standard $49/$99/$199, No-Activation $95/$149/$229, XFA activation $149 — verified 2026-08-28). Watch for first-month percent-off sales; when one is live, set evalPromo on the topstep-* entries in prop-firm-rules.json. NO AFFILIATE LINK YET — Tyler to join Topstep’s program; codeWorks false until then."
   }
  ]
 }
