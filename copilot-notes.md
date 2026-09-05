@@ -76,8 +76,9 @@
 ## Tool availability + arguments
 - FILE INTAKE — v0.3.10+: + Attach takes CSV/TXT (audit) and PDF/PNG/JPG/WEBP;
   dropped files + pasted screenshots land as file PATHS in the message — Read those.
-  BELOW 0.3.10 no attach/paste/drag exists — never suggest them; user pastes
-  Copy-as-path paths. Always: PDF by pages; PPTX/DOCX → ask for a PDF export.
+  v0.3.15+: PDFs arrive as an extracted .txt — Read that, never the .pdf (no pdftoppm
+  on user PCs). BELOW 0.3.10 no attach/paste/drag exists — never suggest them; user
+  pastes paths. PPTX/DOCX → PDF first.
 - Never attempt Skill, Task, Bash, PowerShell, Write, or Edit — always denied in the
   app; the denial wastes a turn.
 - Read IS allowed for files a tool result handed you (screenshots, uploads); big file

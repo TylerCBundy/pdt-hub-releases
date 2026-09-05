@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-23",
+  "updated": "2026-09-05",
   "entries": [
     {
       "id": "claude-terminal-signin",
@@ -99,7 +99,9 @@
         "Close TradingView completely (check the system tray — right-click the TradingView icon and quit).",
         "Press the button below (or \"Launch TradingView\" in the sidebar).",
         "The light goes green within seconds of TradingView finishing its load.",
-        "Every time you restart TradingView, launch it from the app again — a normally-started TradingView can never connect."
+        "Every time you restart TradingView, launch it from the app again — a normally-started TradingView can never connect.",
+        "Launch works but the port light STILL stays red? Something else on this computer may be using the connection port TradingView needs. Close other tools that use browser automation or \"remote debugging\" (other trading bots, screen-automation apps, a browser started with a debugging flag), then click Launch again — the app now tells you if it finds one.",
+        "On Windows 10, if Launch keeps timing out after 30 seconds: close TradingView completely (check the system tray), wait ten seconds, then click Launch once more. Still stuck? Use the ? menu → Troubleshoot → \"Email me\" — your report now carries exactly how the last launch ended."
       ]
     },
     {
