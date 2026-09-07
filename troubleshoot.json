@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05",
+  "updated": "2026-09-07",
   "entries": [
     {
       "id": "claude-terminal-signin",
@@ -199,6 +199,32 @@
         "Click the Claude status light even if it looks connected — if it's yellow, your sign-in expired: run the sign-in again (terminal → /login → Claude account with subscription).",
         "If chat mentions usage limits, your Claude plan hit its cap — it resets on Claude's schedule; the app itself is fine.",
         "If a specific tool keeps failing, click \"Report to PDT\" on the failed tool — the report carries the technical details automatically."
+      ]
+    },
+    {
+      "id": "claude-subscription-billing",
+      "title": "Cancelling or managing your Claude subscription",
+      "sub": "This app never bills you — your Claude plan lives with Anthropic",
+      "icon": "chat",
+      "match": null,
+      "action": null,
+      "symptoms": [
+        "cancel subscription",
+        "cancel claude",
+        "renewal",
+        "billing",
+        "refund",
+        "stop paying",
+        "unsubscribe claude",
+        "how much does it cost"
+      ],
+      "video": null,
+      "steps": [
+        "The Trade Companion is free and never charges you. The copilot runs on YOUR Claude account, so any Claude charge comes from Anthropic (or the App Store / Google Play if you subscribed on your phone) — not from this app.",
+        "Subscribed on the web: claude.ai → your profile → Settings → Billing → Cancel plan.",
+        "Subscribed in the Claude phone app (the usual reason it does not appear under Billing on the website): cancel in the App Store → Subscriptions, or Google Play → Payments & subscriptions.",
+        "Using an API key from platform.claude.com instead: nothing renews — it is pay-as-you-go and stops when the balance runs out.",
+        "After cancelling, the copilot stops working (no Claude account to run on), but the app stays installed and costs nothing; sign in again any time to resume."
       ]
     }
   ]
