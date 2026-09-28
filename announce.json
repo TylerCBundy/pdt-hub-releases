@@ -7,9 +7,9 @@
   "rotateSeconds": 14400,
   "banners": [
     {
-      "id": "apex-90off-sep27-2026-09-27",
+      "id": "apex-fallback-2026-09-28",
       "firm": "Apex Trader Funding",
-      "message": "Apex Trader Funding — up to 90% off any size eval, through September 27 — use code DTJ.",
+      "message": "Apex Trader Funding — code DTJ works anytime.",
       "linkText": "Grab the deal",
       "url": "https://apextraderfunding.com/member/aff/go/tbundy3688"
     },
@@ -28,9 +28,9 @@
       "url": "https://tradeify.co/ref/DTJ/"
     },
     {
-      "id": "lucid-30off-daily40-2026-09-27",
+      "id": "lucid-fallback-2026-09-28",
       "firm": "Lucid Trading",
-      "message": "Lucid Trading — 30% off Pro, Flex & Direct evals, 40% off LucidDaily — use code DTJ.",
+      "message": "Lucid Trading — code DTJ works anytime.",
       "linkText": "Grab the deal",
       "url": "https://lucidtrading.com/ref/dtj"
     },
@@ -42,9 +42,9 @@
       "url": "https://myfundedfutures.com/?ref=5020"
     },
     {
-      "id": "fundednext-flex47-2026-08-23",
+      "id": "fundednext-fallback-2026-09-28",
       "firm": "FundedNext Futures",
-      "message": "FundedNext Futures — 47% off Flex challenge evals — use code DTJ.",
+      "message": "FundedNext Futures — code DTJ works anytime.",
       "linkText": "Grab the deal",
       "url": "https://fundednext.com/?fpr=tyler49"
     },
