@@ -1,7 +1,7 @@
 {
   "_note": "Rolodex format (2026-07-17): apps v0.2.46+ rotate through `banners` on a rotateSeconds schedule (14400 = 4h — Tyler: consistent presence, not an annoyance; dismissing hides only until the next slot). Top-level id/message/linkText/url = LEGACY single-banner shape for older apps — keep it mirroring the strongest promo. Rules: only code DTJ, only codeWorks firms, never invent a promo, url = affiliateUrl, unique id per promotion. NEVER write 'no current sale' — if a promo can't be verified, the fallback line is just '<Firm> — code DTJ works anytime.' (asserting absence was wrong 5-for-7 on 2026-07-19).",
-  "id": "bulenox-default-89off-2026-09-23",
-  "message": "Bulenox — up to 89% off evaluations; use code DTJ.",
+  "id": "bulenox-89off-oct13-2026-09-29",
+  "message": "Bulenox — up to 89% off evaluations through October 13 — use code DTJ.",
   "linkText": "Grab the deal",
   "url": "https://bulenox.com/member/aff/go/tbundy3688",
   "rotateSeconds": 14400,
@@ -42,16 +42,16 @@
       "url": "https://myfundedfutures.com/?ref=5020"
     },
     {
-      "id": "fundednext-fallback-2026-09-28",
+      "id": "fundednext-47off-flex-2026-09-29",
       "firm": "FundedNext Futures",
-      "message": "FundedNext Futures — code DTJ works anytime.",
+      "message": "FundedNext Futures — save 47% on Flex challenges — use code DTJ.",
       "linkText": "Grab the deal",
       "url": "https://fundednext.com/?fpr=tyler49"
     },
     {
-      "id": "bulenox-default-89off-2026-09-23",
+      "id": "bulenox-89off-oct13-2026-09-29",
       "firm": "Bulenox",
-      "message": "Bulenox — up to 89% off evaluations; use code DTJ.",
+      "message": "Bulenox — up to 89% off evaluations through October 13 — use code DTJ.",
       "linkText": "Grab the deal",
       "url": "https://bulenox.com/member/aff/go/tbundy3688"
     }
