@@ -1,15 +1,15 @@
 {
   "_note": "Rolodex format (2026-07-17): apps v0.2.46+ rotate through `banners` on a rotateSeconds schedule (14400 = 4h — Tyler: consistent presence, not an annoyance; dismissing hides only until the next slot). Top-level id/message/linkText/url = LEGACY single-banner shape for older apps — keep it mirroring the strongest promo. Rules: only code DTJ, only codeWorks firms, never invent a promo, url = affiliateUrl, unique id per promotion. NEVER write 'no current sale' — if a promo can't be verified, the fallback line is just '<Firm> — code DTJ works anytime.' (asserting absence was wrong 5-for-7 on 2026-07-19).",
-  "id": "apex-92off-oct13-2026-10-06",
-  "message": "Apex Trader Funding — up to 92% off any size evals through October 13 — use code DTJ.",
+  "id": "apex-92off-oct12-2026-10-08",
+  "message": "Apex Trader Funding — up to 92% off any size evals through October 12 — use code DTJ.",
   "linkText": "Grab the deal",
   "url": "https://apextraderfunding.com/member/aff/go/tbundy3688",
   "rotateSeconds": 14400,
   "banners": [
     {
-      "id": "apex-92off-oct13-2026-10-06",
+      "id": "apex-92off-oct12-2026-10-08",
       "firm": "Apex Trader Funding",
-      "message": "Apex Trader Funding — up to 92% off any size evals through October 13 — use code DTJ.",
+      "message": "Apex Trader Funding — up to 92% off any size evals through October 12 — use code DTJ.",
       "linkText": "Grab the deal",
       "url": "https://apextraderfunding.com/member/aff/go/tbundy3688"
     },
