@@ -257,8 +257,8 @@
     },
     {
       "id": "signed-in-but-light-yellow",
-      "title": "Claude light is yellow and chat says \"Connect Claude first\" — but you ARE signed in",
-      "sub": "Claude Code moved its sign-in into the Windows vault; versions up to 0.3.16 could not see it",
+      "title": "Claude light is yellow, or chat says you are not signed in - but you ARE",
+      "sub": "Another Claude Code install moved your sign-in into the Windows vault, where the app cannot read it",
       "icon": "key",
       "match": {
         "light": "claude",
@@ -280,11 +280,11 @@
       ],
       "video": null,
       "steps": [
-        "Check the app version at the bottom of Settings. On 0.3.17 and later this is fixed — let the app update itself (it checks on every launch) and the light turns green on the next start.",
-        "Why it happens: a recent Claude Code update moved your sign-in into the Windows credential vault and left only a placeholder file behind. The app was reading that file, saw no token in it, and reported you as signed out even though your sign-in was live.",
-        "Running the sign-in again does not help, and nothing is wrong with your subscription — that is why it feels like a loop.",
-        "If you need to work right now and cannot update: open Settings → Claude connection and paste an Anthropic API key, which bypasses the subscription check entirely.",
-        "Still yellow on 0.3.17 or later? That is a genuine expired sign-in: click the Claude light, run the sign-in, and choose \"Claude account with subscription\"."
+        "This happens when Claude Code is also installed on the computer separately and updates itself: it moves your sign-in into the Windows credential vault and leaves only a placeholder behind. The copy of Claude inside the Trade Companion cannot read the vault, so it sees no sign-in.",
+        "The fix, once: click the yellow Claude light in the sidebar and finish the sign-in it opens. That window runs the app OWN copy of Claude, which puts the sign-in back where both can see it. Nothing is wrong with your subscription.",
+        "An Anthropic API key in Settings skips the whole thing if you would rather not deal with it again.",
+        "On 0.3.17 and later the app also explains this in the chat error instead of just refusing to send, and it no longer blocks you while a sign-in is mid-refresh. Let the app update itself - it checks on every launch.",
+        "Still yellow after signing in through the app? That is a genuine network or expired-sign-in problem - the entries above on the sign-in window and the connection cover it."
       ]
     }
   ]
