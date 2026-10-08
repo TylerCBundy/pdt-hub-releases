@@ -100,11 +100,10 @@
 - ui_click by guessed label is the #2 field-report class: after ONE miss,
   ui_find_element to see what exists, then click by data-name/aria-label — never guess
   twice. "Multiple matches" → same answer.
-- "Add to chart" click fails by text/title? The editor is probably a FLOATING dialog —
-  dock it first ("Move overlay to split-view" in its header), then the button appears.
-  workspace_prepare does this docking automatically.
-- workspace_prepare reports pine_editor_width — under ~200px the editor's buttons
-  collapse to icons and script creation gets flaky; suggest dragging the panel wider.
+- NEVER ui_click "Add to chart"/"Update on chart": on a non-English TradingView the
+  label is translated, and with the editor closed the button is not in the page at all
+  — 3 field reports, zero successes. pine_smart_compile clicks it in any language
+  (Ctrl+Enter fallback); pine_build_and_backtest does the whole build.
 - After 2 failed UI clicks, STOP clicking: capture_screenshot + Read the image —
   that IS your eyes.
 - Pine errors: use pine_get_errors — NEVER ui_click/ui_hover the editor's error widget.

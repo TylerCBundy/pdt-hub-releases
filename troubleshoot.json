@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07",
+  "updated": "2026-10-08",
   "entries": [
     {
       "id": "claude-terminal-signin",
@@ -225,6 +225,66 @@
         "Subscribed in the Claude phone app (the usual reason it does not appear under Billing on the website): cancel in the App Store → Subscriptions, or Google Play → Payments & subscriptions.",
         "Using an API key from platform.claude.com instead: nothing renews — it is pay-as-you-go and stops when the balance runs out.",
         "After cancelling, the copilot stops working (no Claude account to run on), but the app stays installed and costs nothing; sign in again any time to resume."
+      ]
+    },
+    {
+      "id": "arm-runtime-crash",
+      "title": "Chat says Claude’s runtime crashed (Snapdragon / ARM laptops)",
+      "sub": "A Windows-on-ARM laptop running an Intel-only program — your install is fine",
+      "icon": "chip",
+      "match": null,
+      "action": null,
+      "symptoms": [
+        "runtime crashed",
+        "claude runtime crashed mid-turn",
+        "crashed twice in a row",
+        "STATUS_ACCESS_VIOLATION",
+        "snapdragon",
+        "surface laptop arm",
+        "copilot+ pc",
+        "chat dies halfway through",
+        "message disappears then error"
+      ],
+      "video": null,
+      "steps": [
+        "If your laptop has a Snapdragon processor (most Copilot+ PCs, the ARM Surface Laptop), this is a known crash and it is not your install, your sign-in, or your subscription — nothing you reinstall will change it.",
+        "Claude’s own program ships only as an Intel build, so Windows translates it while it runs. That translation layer is where it dies, mid-answer.",
+        "The app already resends your message automatically when this happens, and the resend usually goes through. When it still fails, send the same message once more by hand — in the reports we have, the hand-resend succeeds about half the time within two minutes.",
+        "If it crashes several times in a row, close and reopen the app once, then resend. A fresh run clears whatever state the emulator was in.",
+        "Your chat history is never lost to this crash, and no trade data is affected.",
+        "Please click \"Report to PDT\" when it happens: those reports are how we are tracking a native ARM build. Mention \"Snapdragon\" in an email to tyler@thepurposedriventrader.com if you want to be told when it ships."
+      ]
+    },
+    {
+      "id": "signed-in-but-light-yellow",
+      "title": "Claude light is yellow and chat says \"Connect Claude first\" — but you ARE signed in",
+      "sub": "Claude Code moved its sign-in into the Windows vault; versions up to 0.3.16 could not see it",
+      "icon": "key",
+      "match": {
+        "light": "claude",
+        "state": "off"
+      },
+      "action": {
+        "kind": "connect-claude",
+        "label": "Open the Claude sign-in"
+      },
+      "symptoms": [
+        "connect claude first",
+        "already signed in but light is yellow",
+        "claude light yellow after update",
+        "claude code works but the app says connect",
+        "login loop",
+        "says I am already logged in",
+        "signed in yesterday now it asks again",
+        "send button does nothing"
+      ],
+      "video": null,
+      "steps": [
+        "Check the app version at the bottom of Settings. On 0.3.17 and later this is fixed — let the app update itself (it checks on every launch) and the light turns green on the next start.",
+        "Why it happens: a recent Claude Code update moved your sign-in into the Windows credential vault and left only a placeholder file behind. The app was reading that file, saw no token in it, and reported you as signed out even though your sign-in was live.",
+        "Running the sign-in again does not help, and nothing is wrong with your subscription — that is why it feels like a loop.",
+        "If you need to work right now and cannot update: open Settings → Claude connection and paste an Anthropic API key, which bypasses the subscription check entirely.",
+        "Still yellow on 0.3.17 or later? That is a genuine expired sign-in: click the Claude light, run the sign-in, and choose \"Claude account with subscription\"."
       ]
     }
   ]
