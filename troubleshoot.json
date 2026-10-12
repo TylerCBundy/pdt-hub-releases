@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08",
+  "updated": "2026-10-12",
   "entries": [
     {
       "id": "claude-terminal-signin",
@@ -25,7 +25,12 @@
         "different login screen",
         "choose text style",
         "theme",
-        "dark mode light mode list"
+        "dark mode light mode list",
+        "401 missing authentication header",
+        "api usage billing",
+        "welcome back",
+        "retrying in",
+        "console account"
       ],
       "video": "https://player.mediadelivery.net/play/729569/86dd11de-eb3f-4593-a629-ec48d51428bf",
       "steps": [
@@ -34,6 +39,7 @@
         "If it asks \"Do you trust this folder?\" — press Enter on \"Yes, I trust this folder\". That's your own home folder; this is normal.",
         "If you see a sign-in wizard: choose \"Claude account with subscription\" and finish in the browser.",
         "If it opens to a normal prompt instead (you've used Claude Code before): type /login and press Enter, then choose \"Claude account with subscription\".",
+        "If the window says \"Welcome back!\" and the bottom line reads \"401 Missing Authentication Header - Retrying\", the very first run picked the Anthropic Console (API billing) option instead of the subscription. Your subscription is fine. Press Esc once to stop the retries, type /login and press Enter, then choose \"Claude account with subscription\".",
         "Make sure the browser that opens is signed into claude.ai with the same account as your subscription, then approve.",
         "Close the terminal when it says you're logged in — the Claude light turns green by itself within a few seconds."
       ]
