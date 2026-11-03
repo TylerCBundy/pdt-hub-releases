@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12",
+  "updated": "2026-11-03",
   "entries": [
     {
       "id": "claude-terminal-signin",
@@ -291,6 +291,30 @@
         "An Anthropic API key in Settings skips the whole thing if you would rather not deal with it again.",
         "On 0.3.17 and later the app also explains this in the chat error instead of just refusing to send, and it no longer blocks you while a sign-in is mid-refresh. Let the app update itself - it checks on every launch.",
         "Still yellow after signing in through the app? That is a genuine network or expired-sign-in problem - the entries above on the sign-in window and the connection cover it."
+      ]
+    },
+    {
+      "id": "max-turns-safety-stop",
+      "title": "Chat stops with \"Reached maximum number of turns (100)\"",
+      "sub": "The app’s own per-message safety stop, not a Claude limit. Say \"continue\" and it picks up where it left off",
+      "icon": "chat",
+      "match": null,
+      "action": null,
+      "symptoms": [
+        "error_max_turns",
+        "maximum number of turns",
+        "reached maximum number of turns",
+        "stops coding",
+        "claude stopped halfway",
+        "have to tell it to continue",
+        "stops after a while"
+      ],
+      "video": null,
+      "steps": [
+        "The app lets Claude take up to 100 steps (tool calls) on one message. A long loop, such as sweeping a parameter value by value, can use all 100, and the run stops with this message. Nothing is wrong with your account, your subscription, or the script.",
+        "Send \"continue\". Claude keeps its full memory of the run and gets a fresh 100 steps. Everything it built so far is still in the editor and on the chart.",
+        "For long sweeps, ask for a small batch per message (four or five values), let it report, then send the next batch. Each message resets the counter and you get a checkpoint of results along the way.",
+        "The cap exists on purpose: every step spends your own Claude usage, and the cap is what stops a stuck loop from running up a bill unattended."
       ]
     }
   ]
