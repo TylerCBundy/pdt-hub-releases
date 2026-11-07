@@ -23,14 +23,14 @@
     {
       "id": "tradeify-30off-growth40-2026-11-01",
       "firm": "Tradeify",
-      "message": "Tradeify — 30% off evaluations, 40% off Growth accounts, through Nov 13 — use code DTJ.",
+      "message": "Tradeify — 30% off evaluations, 40% off Growth accounts — use code DTJ.",
       "linkText": "Grab the deal",
       "url": "https://tradeify.co/ref/DTJ/"
     },
     {
-      "id": "lucid-30off-2026-10-31",
+      "id": "lucid-fallback-2026-11-07",
       "firm": "Lucid Trading",
-      "message": "Lucid Trading — 30% off all evals: Pro, Flex, Daily & Direct — use code DTJ.",
+      "message": "Lucid Trading — code DTJ works anytime.",
       "linkText": "Grab the deal",
       "url": "https://lucidtrading.com/ref/dtj"
     },
