@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03",
+  "updated": "2026-11-10",
   "entries": [
     {
       "id": "claude-terminal-signin",
@@ -30,18 +30,20 @@
         "api usage billing",
         "welcome back",
         "retrying in",
-        "console account"
+        "console account",
+        "invalid code",
+        "oauth error",
+        "paste code here",
+        "browser did not open"
       ],
       "video": "https://player.mediadelivery.net/play/729569/86dd11de-eb3f-4593-a629-ec48d51428bf",
       "steps": [
-        "The black terminal window IS the sign-in — the Claude desktop app is a separate product and does not connect the Trade Companion.",
-        "If the window asks you to choose a text style or theme (a list of Dark mode / Light mode options with a little robot above it) — that is normal, it is the very first screen. Press Enter to accept any choice; the sign-in step comes right after.",
-        "If it asks \"Do you trust this folder?\" — press Enter on \"Yes, I trust this folder\". That's your own home folder; this is normal.",
-        "If you see a sign-in wizard: choose \"Claude account with subscription\" and finish in the browser.",
-        "If it opens to a normal prompt instead (you've used Claude Code before): type /login and press Enter, then choose \"Claude account with subscription\".",
-        "If the window says \"Welcome back!\" and the bottom line reads \"401 Missing Authentication Header - Retrying\", the very first run picked the Anthropic Console (API billing) option instead of the subscription. Your subscription is fine. Press Esc once to stop the retries, type /login and press Enter, then choose \"Claude account with subscription\".",
-        "Make sure the browser that opens is signed into claude.ai with the same account as your subscription, then approve.",
-        "Close the terminal when it says you're logged in — the Claude light turns green by itself within a few seconds."
+        "The black window IS the sign-in. The Claude desktop app is a separate product and does not connect the Trade Companion.",
+        "Version 0.3.18 and later: the window sends you straight to your browser. Sign in to claude.ai with the account that has your subscription and click Authorize. The window then says \"Login successful\". Close it and the light turns green by itself.",
+        "Browser did not open? The window prints a link: select it, right-click to copy, and paste it into your browser. After you authorize, the page shows a code with a # in the middle. Copy ALL of it, both halves, then right-click in the black window to paste it at \"Paste code here if prompted >\" and press Enter. A code works once and expires in a few minutes, so if it says \"Invalid code\", close the window and start again from the Claude light.",
+        "Version 0.3.17 and earlier: if it asks you to choose a text style or theme, press Enter. If it asks \"Do you trust this folder?\", press Enter on \"Yes\". On a sign-in wizard, choose \"Claude account with subscription\". On a normal prompt (or \"Welcome back!\"), type /login, press Enter, and choose \"Claude account with subscription\".",
+        "If the window says \"Welcome back!\" and the bottom line reads \"401 Missing Authentication Header - Retrying\", the very first run picked the Anthropic Console (API billing) option. Your subscription is fine: press Esc once, type /login, press Enter, and choose \"Claude account with subscription\".",
+        "Make sure the browser is signed into claude.ai with the same account as your subscription."
       ]
     },
     {
@@ -136,7 +138,7 @@
     {
       "id": "engine-missing",
       "title": "\"Engine installed\" is red",
-      "sub": "Usually an antivirus quarantine on a fresh install",
+      "sub": "Part of the install is missing: an antivirus quarantine, or an update that was interrupted",
       "icon": "shield",
       "match": {
         "light": "engine",
@@ -146,13 +148,17 @@
       "symptoms": [
         "engine installed red",
         "engine missing",
+        "node runtime not found",
+        "node runtime red",
+        "red after update",
         "tools don't work"
       ],
       "video": null,
       "steps": [
-        "Part of the app's install is missing — this is usually an antivirus quarantine on a fresh install.",
-        "Open Windows Security → Protection history, and restore anything quarantined from the tv-command-hub folder.",
-        "If nothing shows there, reinstall the app from your original download link — the installer restores everything.",
+        "Part of the app's install is missing. The two usual causes are an antivirus quarantine, and an automatic update that was interrupted while the app's helper was still running. If \"Node runtime\" is red too, it is almost always the update.",
+        "Close the Trade Companion completely (check the system tray too), then reinstall from desk.thepurposedriventrader.com/download. The installer goes over the top and keeps your chats and settings.",
+        "If it goes red again later, open Windows Security, then Protection history, and restore anything quarantined from the tv-command-hub folder. Tell me which antivirus you use.",
+        "Version 0.3.18 and later stop the helper before an update installs, so an update can no longer leave it half-removed.",
         "Still red after a reinstall? Use \"Report to PDT\" on any failed tool in chat so the details reach the developer."
       ]
     },
@@ -263,8 +269,8 @@
     },
     {
       "id": "signed-in-but-light-yellow",
-      "title": "Claude light is yellow, or chat says you are not signed in - but you ARE",
-      "sub": "Another Claude Code install moved your sign-in into the Windows vault, where the app cannot read it",
+      "title": "Chat says your Claude sign-in moved to the vault or was emptied out",
+      "sub": "Another Claude Code install on this PC changed the sign-in the app was sharing. One sign-in through the app fixes it",
       "icon": "key",
       "match": {
         "light": "claude",
@@ -275,27 +281,33 @@
         "label": "Open the Claude sign-in"
       },
       "symptoms": [
+        "credential vault",
+        "emptied out",
         "connect claude first",
         "already signed in but light is yellow",
         "claude light yellow after update",
+        "light is green but chat says sign in",
         "claude code works but the app says connect",
         "login loop",
+        "sign-in loop",
+        "welcome back but not logged in",
         "says I am already logged in",
         "signed in yesterday now it asks again",
+        "worked until the update",
         "send button does nothing"
       ],
       "video": null,
       "steps": [
-        "This happens when Claude Code is also installed on the computer separately and updates itself: it moves your sign-in into the Windows credential vault and leaves only a placeholder behind. The copy of Claude inside the Trade Companion cannot read the vault, so it sees no sign-in.",
-        "The fix, once: click the yellow Claude light in the sidebar and finish the sign-in it opens. That window runs the app OWN copy of Claude, which puts the sign-in back where both can see it. Nothing is wrong with your subscription.",
-        "An Anthropic API key in Settings skips the whole thing if you would rather not deal with it again.",
-        "On 0.3.17 and later the app also explains this in the chat error instead of just refusing to send, and it no longer blocks you while a sign-in is mid-refresh. Let the app update itself - it checks on every launch.",
-        "Still yellow after signing in through the app? That is a genuine network or expired-sign-in problem - the entries above on the sign-in window and the connection cover it."
+        "This happens when Claude Code is also installed on the PC on its own. It moves the sign-in the two were sharing into the Windows credential vault, or replaces it with its own, and the copy of Claude inside the Trade Companion is left with an empty one. Nothing is wrong with your subscription.",
+        "Version 0.3.18 or later (Settings shows the version): click the yellow Claude light at the top of the sidebar, then \"Open the Claude sign-in window\". Your browser opens to claude.ai: sign in and click Authorize. The window says \"Login successful\" and the light turns green. From then on the app keeps its own sign-in, separate from other Claude installs.",
+        "Version 0.3.17, where the light can stay green: press Windows key + R, paste this line, and press Enter: \"%LOCALAPPDATA%\\Programs\\tv-command-hub\\resources\\app.asar.unpacked\\node_modules\\@anthropic-ai\\claude-agent-sdk-win32-x64\\claude.exe\" auth login . Approve in the browser that opens; the window closes by itself when it is done. Then resend your message.",
+        "An Anthropic API key in Settings also works and skips the sign-in entirely.",
+        "The app updates itself: it checks on every launch and installs the update when you close it."
       ]
     },
     {
       "id": "max-turns-safety-stop",
-      "title": "Chat stops with \"Reached maximum number of turns (100)\"",
+      "title": "Chat stops after many steps (\"maximum number of turns\")",
       "sub": "The app’s own per-message safety stop, not a Claude limit. Say \"continue\" and it picks up where it left off",
       "icon": "chat",
       "match": null,
@@ -311,9 +323,9 @@
       ],
       "video": null,
       "steps": [
-        "The app lets Claude take up to 100 steps (tool calls) on one message. A long loop, such as sweeping a parameter value by value, can use all 100, and the run stops with this message. Nothing is wrong with your account, your subscription, or the script.",
-        "Send \"continue\". Claude keeps its full memory of the run and gets a fresh 100 steps. Everything it built so far is still in the editor and on the chart.",
-        "For long sweeps, ask for a small batch per message (four or five values), let it report, then send the next batch. Each message resets the counter and you get a checkpoint of results along the way.",
+        "The app lets Claude take a set number of steps (tool calls) on one message: 100 up to version 0.3.17, 200 from 0.3.18. A long job, such as checking an indicator across several timeframes and tickers, can use them all, and the run pauses. Nothing is wrong with your account, your subscription, or the script.",
+        "Send \"continue\". Claude keeps its full memory of the run and gets a fresh set of steps. Everything it built so far is still in the editor and on the chart.",
+        "For very long jobs, a few messages of a few parts each also give you results along the way.",
         "The cap exists on purpose: every step spends your own Claude usage, and the cap is what stops a stuck loop from running up a bill unattended."
       ]
     }
