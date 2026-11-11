@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "entries": [
     {
       "id": "claude-terminal-signin",
@@ -323,7 +323,7 @@
       ],
       "video": null,
       "steps": [
-        "The app lets Claude take a set number of steps (tool calls) on one message: 100 up to version 0.3.17, 200 from 0.3.18. A long job, such as checking an indicator across several timeframes and tickers, can use them all, and the run pauses. Nothing is wrong with your account, your subscription, or the script.",
+        "The app lets Claude take a set number of steps (tool calls) on one message: 100 up to version 0.3.17, and from 0.3.18 200 in Full mode and 100 in Saver. A long job, such as checking an indicator across several timeframes and tickers, can use them all, and the run pauses. Nothing is wrong with your account, your subscription, or the script.",
         "Send \"continue\". Claude keeps its full memory of the run and gets a fresh set of steps. Everything it built so far is still in the editor and on the chart.",
         "For very long jobs, a few messages of a few parts each also give you results along the way.",
         "The cap exists on purpose: every step spends your own Claude usage, and the cap is what stops a stuck loop from running up a bill unattended."
